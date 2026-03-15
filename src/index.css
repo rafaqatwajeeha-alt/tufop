@@ -1,0 +1,51 @@
+@import "tailwindcss";
+
+@theme {
+  --color-zinc-950: #050505;
+  --color-zinc-900: #0a0a0a;
+  --color-zinc-800: #141414;
+  --color-zinc-700: #1f1f1f;
+  --color-zinc-600: #2e2e2e;
+  --color-zinc-500: #71717a;
+  --color-zinc-400: #a1a1aa;
+  --color-zinc-300: #d4d4d8;
+  --color-zinc-200: #e4e4e7;
+  --color-zinc-100: #f4f4f5;
+  --color-zinc-50: #fafafa;
+  --color-accent: #3b82f6;
+}
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+  }
+
+  .dark {
+    --background: 0 0% 2%;
+    --foreground: 0 0% 98%;
+  }
+}
+
+body {
+  @apply bg-zinc-50 text-zinc-950 antialiased transition-colors duration-300 selection:bg-blue-500/30;
+}
+
+.dark body {
+  @apply bg-zinc-950 text-zinc-50;
+}
+
+/* Custom Scrollbar for Dark Mode */
+.dark ::-webkit-scrollbar {
+  width: 8px;
+}
+.dark ::-webkit-scrollbar-track {
+  background: #050505;
+}
+.dark ::-webkit-scrollbar-thumb {
+  background: #1f1f1f;
+  border-radius: 10px;
+}
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #2e2e2e;
+}
