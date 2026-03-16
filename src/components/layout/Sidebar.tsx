@@ -115,8 +115,8 @@ export function Sidebar({ activeTab, setActiveTab, userRole }: SidebarProps) {
                       className={cn(
                         "w-full flex items-center justify-between px-4 py-3 rounded-2xl text-xs font-black transition-all duration-500 group relative overflow-hidden",
                         isActive
-                          ? "chic-white-glow scale-[1.02]" 
-                          : "text-zinc-500 hover:text-white hover:bg-white/5"
+                          ? "chic-white-glow scale-[1.04]" 
+                          : "text-zinc-500 hover:text-white hover:bg-white/5 hover:scale-[1.02]"
                       )}
                     >
                       <div className="flex items-center gap-3">
@@ -151,9 +151,9 @@ export function Sidebar({ activeTab, setActiveTab, userRole }: SidebarProps) {
           </button>
         </nav>
         
-        <div className="mt-6 flex items-center gap-2 px-4 py-3 rounded-2xl bg-white/5 border border-white/5">
-          <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-          <span className="text-[10px] font-black uppercase tracking-widest text-zinc-500">System Nominal</span>
+        <div className="mt-6 flex items-center gap-2 px-4 py-3 rounded-2xl bg-white/5 border border-white/5 group cursor-default">
+          <div className="w-2 h-2 rounded-full bg-mint-500 animate-pulse shadow-[0_0_10px_rgba(124,191,176,0.6)]" />
+          <span className="text-[10px] font-black uppercase tracking-widest text-zinc-500 group-hover:text-mint-500 transition-colors">System Nominal</span>
         </div>
       </div>
     </aside>

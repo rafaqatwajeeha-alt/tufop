@@ -15,10 +15,16 @@ export function Roadmap() {
       animate={{ opacity: 1, y: 0 }}
       className="space-y-8"
     >
-      <div>
-        <h1 className="text-2xl font-bold dark:text-white">Strategic Roadmap</h1>
-        <p className="text-sm text-zinc-500">Long-term planning and goal tracking.</p>
-      </div>
+      <motion.div>
+        <div className="flex items-center gap-3 mb-2">
+          <div className="p-2 bg-mint-500/10 rounded-lg border border-mint-500/20">
+            <Map className="w-5 h-5 text-mint-500" />
+          </div>
+          <span className="chic-sub">Strategic Trajectory</span>
+        </div>
+        <h1 className="text-4xl chic-heading mb-2">Protocol Roadmap</h1>
+        <p className="chic-text-muted">High-fidelity planning and long-term ecosystem goal tracking.</p>
+      </motion.div>
 
       <div className="relative space-y-12 before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-zinc-200 dark:before:via-zinc-800 before:to-transparent">
         {data?.roadmap.map((item, idx) => (
@@ -27,33 +33,37 @@ export function Roadmap() {
             idx % 2 === 0 ? "is-active" : ""
           )}>
             {/* Icon */}
-            <div className="flex items-center justify-center w-10 h-10 rounded-full border border-white dark:border-zinc-950 bg-zinc-100 dark:bg-zinc-900 text-zinc-500 shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2">
-              <Flag className="h-4 w-4 text-blue-500" />
+            <div className="flex items-center justify-center w-12 h-12 rounded-full border border-mint-500/20 bg-zinc-950 text-white shadow-lg shadow-mint-500/10 shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
+              <Flag className="h-5 w-5 text-mint-500" />
             </div>
 
             {/* Content */}
-            <Card className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-4 dark:bg-zinc-900/50">
-              <div className="flex items-center justify-between mb-2">
-                <div className="text-[10px] font-bold uppercase tracking-widest text-blue-500">{item.term}</div>
-                <Badge variant={item.status === 'In Progress' ? 'warning' : 'secondary'} className="text-[8px]">
-                  {item.status}
-                </Badge>
-              </div>
-              <h3 className="font-bold dark:text-white mb-2">{item.goal}</h3>
-              <div className="flex flex-wrap gap-4 mt-4 pt-4 border-t dark:border-zinc-800">
-                <div className="flex items-center gap-1 text-[10px] text-zinc-500">
-                  <Calendar className="h-3 w-3" />
-                  {item.timeline}
+            <Card className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] chic-glass chic-border rounded-[24px] group-hover:scale-[1.02] transition-all duration-500">
+              <CardContent className="p-6">
+                <div className="flex items-center justify-between mb-4">
+                  <div className="chic-label text-mint-500/80">{item.term}</div>
+                  <Badge variant={item.status === 'In Progress' ? 'success' : 'secondary'} className="text-[9px] px-3 py-1 font-black uppercase tracking-widest rounded-full">
+                    {item.status}
+                  </Badge>
                 </div>
-                <div className="flex items-center gap-1 text-[10px] text-zinc-500">
-                  <Flag className="h-3 w-3" />
-                  {item.priority} Priority
+                <h3 className="text-xl font-black text-white tracking-tight mb-4">{item.goal}</h3>
+                <div className="flex flex-wrap gap-6 mt-6 pt-6 border-t border-white/10">
+                  <div className="flex items-center gap-2 text-[10px] font-black text-zinc-400 uppercase tracking-widest">
+                    <Calendar className="h-3.5 w-3.5 text-mint-500" />
+                    {item.timeline}
+                  </div>
+                  <div className="flex items-center gap-2 text-[10px] font-black text-zinc-400 uppercase tracking-widest">
+                    <Flag className="h-3.5 w-3.5 text-mint-500" />
+                    {item.priority} Priority
+                  </div>
+                  <div className="flex items-center gap-2 text-[10px] font-black text-zinc-400 uppercase tracking-widest ml-auto">
+                    <div className="w-5 h-5 rounded-full bg-mint-500/10 flex items-center justify-center border border-mint-500/20">
+                      <span className="text-[8px] text-mint-500">{item.owner[0]}</span>
+                    </div>
+                    {item.owner}
+                  </div>
                 </div>
-                <div className="flex items-center gap-1 text-[10px] text-zinc-500">
-                  <Clock className="h-3 w-3" />
-                  {item.owner}
-                </div>
-              </div>
+              </CardContent>
             </Card>
           </div>
         ))}

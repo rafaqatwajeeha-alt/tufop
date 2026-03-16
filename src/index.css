@@ -4,9 +4,10 @@
   --color-zinc-950: #020617; 
   --color-zinc-900: #0f172a; 
   --color-zinc-800: #1e293b; 
-  --color-emerald-500: #10b981; /* Vibrant Emerald */
-  --color-emerald-400: #34d399; /* Mintier Emerald */
-  --color-emerald-600: #059669; 
+  --color-mint-500: #7CBFB0; /* Mint Seafoam - User Requested */
+  --color-mint-400: #A5D7C9;
+  --color-mint-600: #6FB5A5; 
+  --color-emerald-500: #10b981;
   --color-teal-950: #042f2e;
   --color-teal-900: #134e4a;
 }
@@ -35,12 +36,12 @@ body {
 
 /* Premium Lush Card Styles */
 .dark .chic-glass {
-  @apply bg-emerald-950/60 backdrop-blur-3xl border border-emerald-500/20 shadow-2xl;
-  background-image: radial-gradient(at 0% 0%, rgba(16, 185, 129, 0.15) 0, transparent 50%);
+  @apply bg-zinc-950/40 backdrop-blur-3xl border border-mint-500/20 shadow-2xl;
+  background-image: radial-gradient(at 0% 0%, rgba(124, 191, 176, 0.1) 0, transparent 50%);
 }
 
 .dark .chic-white-glow {
-  @apply bg-white text-zinc-950 shadow-[0_0_40px_rgba(255,255,255,0.7)];
+  @apply bg-white text-zinc-950 shadow-[0_0_35px_rgba(124,191,176,0.5),0_0_10px_rgba(124,191,176,0.3)];
 }
 
 .dark .chic-border {
@@ -53,7 +54,7 @@ body {
   inset: 0;
   border-radius: inherit;
   padding: 1px;
-  background: linear-gradient(130deg, rgba(16, 185, 129, 0.3), transparent, rgba(16, 185, 129, 0.1));
+  background: linear-gradient(130deg, rgba(124, 191, 176, 0.4), transparent, rgba(124, 191, 176, 0.1));
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
@@ -63,13 +64,13 @@ body {
 
 /* Elegant Contrast Typography */
 .chic-heading {
-  @apply font-black tracking-tighter text-white;
-  text-shadow: 0 0 50px rgba(16, 185, 129, 0.6), 0 0 15px rgba(255, 255, 255, 0.2);
+  @apply font-black tracking-tighter text-white uppercase;
+  text-shadow: 0 0 30px rgba(124, 191, 176, 0.4);
 }
 
 .chic-sub {
-  @apply text-[10px] font-black uppercase tracking-[0.4em] text-emerald-300;
-  text-shadow: 0 0 10px rgba(16, 185, 129, 0.3);
+  @apply text-[10px] font-black uppercase tracking-[0.4em] text-mint-500/80;
+  text-shadow: none;
 }
 
 .chic-label {

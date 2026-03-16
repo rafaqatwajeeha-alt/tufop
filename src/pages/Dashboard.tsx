@@ -88,21 +88,21 @@ export function Dashboard() {
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
         <motion.div variants={item}>
           <div className="flex items-center gap-3 mb-2">
-            <div className="p-2 bg-emerald-500/10 rounded-lg border border-emerald-500/20">
-              <Activity className="w-5 h-5 text-emerald-400" />
+            <div className="p-2 bg-mint-500/10 rounded-lg border border-mint-500/20 shadow-lg shadow-mint-500/5">
+              <Activity className="w-5 h-5 text-mint-500" />
             </div>
-            <span className="chic-sub tracking-[0.4em]">Live Intelligence Protocol</span>
+            <span className="chic-sub">Live Intelligence Protocol</span>
           </div>
           <h1 className="text-5xl chic-heading mb-3">Operations Command</h1>
-          <p className="chic-text-muted">Strategic ecosystem oversight & real-time asset tracking.</p>
+          <p className="chic-text-muted">Strategic ecosystem oversight & real-time metric tracking.</p>
         </motion.div>
         
         <motion.div variants={item} className="flex gap-3">
-          <Button variant="outline" className="bg-white/5 border-white/5 hover:bg-white/10 text-white rounded-2xl px-6 h-12">
+          <Button variant="outline" className="chic-glass border-white/5 hover:bg-white/10 text-white rounded-2xl px-6 h-12 transition-all">
             <Download className="h-4 w-4 mr-2" />
             Export Data
           </Button>
-          <Button onClick={() => setIsModalOpen(true)} className="bg-emerald-500 hover:bg-emerald-600 text-black font-bold rounded-2xl px-6 h-12 shadow-xl shadow-emerald-500/20 transition-all hover:scale-105 active:scale-95">
+          <Button onClick={() => setIsModalOpen(true)} className="bg-mint-500 hover:bg-mint-600 text-zinc-950 font-black rounded-2xl px-6 h-12 shadow-xl shadow-mint-500/20 transition-all hover:scale-105 active:scale-95 uppercase tracking-widest text-[10px]">
             <Plus className="h-5 w-5 mr-2" />
             New Initiative
           </Button>
@@ -116,15 +116,15 @@ export function Dashboard() {
             <Card className="shimmer group chic-glass chic-border rounded-[32px] overflow-hidden">
               <CardContent className="p-7">
                 <div className="flex justify-between items-start mb-4">
-                  <div className="p-2.5 bg-emerald-500/5 rounded-2xl border border-white/5 group-hover:bg-emerald-500/10 group-hover:border-emerald-500/20 transition-colors">
-                    {idx === 0 ? <Users className="w-5 h-5 text-zinc-400 group-hover:text-emerald-400" /> :
-                     idx === 1 ? <Calendar className="w-5 h-5 text-zinc-400 group-hover:text-emerald-400" /> :
-                     idx === 2 ? <TrendingUp className="w-5 h-5 text-zinc-400 group-hover:text-emerald-400" /> :
-                     <ShieldCheck className="w-5 h-5 text-zinc-400 group-hover:text-emerald-400" />}
+                  <div className="p-2.5 bg-mint-500/5 rounded-2xl border border-white/5 group-hover:bg-mint-500/10 group-hover:border-mint-500/20 transition-all duration-500">
+                    {idx === 0 ? <Users className="w-5 h-5 text-zinc-400 group-hover:text-mint-500" /> :
+                     idx === 1 ? <Calendar className="w-5 h-5 text-zinc-400 group-hover:text-mint-500" /> :
+                     idx === 2 ? <TrendingUp className="w-5 h-5 text-zinc-400 group-hover:text-mint-500" /> :
+                     <ShieldCheck className="w-5 h-5 text-zinc-400 group-hover:text-mint-500" />}
                   </div>
                   <Badge className={cn(
-                    "rounded-xl border shadow-none px-2.5 py-1 text-[10px] font-black",
-                    kpi.trend === 'up' ? "bg-emerald-500/10 text-emerald-400 border-emerald-500/20" : 
+                    "rounded-xl border shadow-none px-2.5 py-1 text-[10px] font-black uppercase tracking-tighter",
+                    kpi.trend === 'up' ? "bg-mint-500/10 text-mint-500 border-mint-500/20" : 
                     "bg-red-500/10 text-red-400 border-red-500/20"
                   )}>
                     {kpi.change}
@@ -147,13 +147,13 @@ export function Dashboard() {
             <CardHeader className="p-8 pb-0">
               <div className="flex items-center justify-between">
                 <div>
-                  <CardTitle className="text-xl chic-heading">Ecosystem Growth</CardTitle>
-                  <p className="text-xs font-medium text-emerald-500/60 mt-1 uppercase tracking-widest">Real-time attendance & engagement data</p>
+                  <CardTitle className="text-xl chic-heading">Ecosystem Pulse</CardTitle>
+                  <p className="chic-sub mt-1">Real-time engagement matrix</p>
                 </div>
                 <div className="flex gap-2">
-                    <div className="flex items-center gap-1.5 px-3 py-1.5 chic-glass rounded-xl border border-emerald-500/20 shadow-lg shadow-emerald-500/5">
-                    <div className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shadow-[0_0_8px_rgba(52,211,153,0.5)]" />
-                    <span className="text-[10px] font-black text-emerald-400 uppercase tracking-[0.2em]">Operational</span>
+                    <div className="flex items-center gap-2 px-4 py-2 chic-glass rounded-2xl border border-mint-500/20 shadow-lg shadow-mint-500/5">
+                    <div className="w-2 h-2 rounded-full bg-mint-500 animate-pulse shadow-[0_0_10px_rgba(124,191,176,0.6)]" />
+                    <span className="text-[10px] font-black text-mint-500 uppercase tracking-widest">Live Flow</span>
                   </div>
                 </div>
               </div>
@@ -164,33 +164,35 @@ export function Dashboard() {
                   <AreaChart data={data?.content || []}>
                     <defs>
                       <linearGradient id="colorGrowth" x1="0" y1="0" x2="0" y2="1">
-                        <stop offset="5%" stopColor="#0d9488" stopOpacity={0.1}/>
-                        <stop offset="95%" stopColor="#0d9488" stopOpacity={0}/>
+                        <stop offset="5%" stopColor="#7CBFB0" stopOpacity={0.2}/>
+                        <stop offset="95%" stopColor="#7CBFB0" stopOpacity={0}/>
                       </linearGradient>
                     </defs>
-                    <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#ffffff05" />
+                    <CartesianGrid strokeDasharray="4 4" vertical={false} stroke="#ffffff08" />
                     <XAxis 
                       dataKey="date" 
                       axisLine={false} 
                       tickLine={false} 
-                      tick={{ fontSize: 9, fill: '#ffffff', fontWeight: 900, opacity: 0.5 }} 
+                      tick={{ fontSize: 9, fill: '#ffffff', fontWeight: 900, opacity: 0.3 }} 
                     />
                     <YAxis 
                       axisLine={false} 
                       tickLine={false} 
-                      tick={{ fontSize: 9, fill: '#ffffff', fontWeight: 900, opacity: 0.5 }} 
+                      tick={{ fontSize: 9, fill: '#ffffff', fontWeight: 900, opacity: 0.3 }} 
                     />
                     <Tooltip 
-                      contentStyle={{ backgroundColor: '#09090b', border: '1px solid rgba(255,255,255,0.05)', borderRadius: '20px', padding: '12px' }}
-                      itemStyle={{ color: '#fff', fontSize: '12px', fontWeight: 'bold' }}
+                      contentStyle={{ backgroundColor: '#020617', border: '1px solid rgba(124, 191, 176, 0.2)', borderRadius: '24px', padding: '16px' }}
+                      itemStyle={{ color: '#7CBFB0', fontSize: '10px', fontWeight: 'bold', textTransform: 'uppercase' }}
                     />
                     <Area 
                       type="monotone" 
                       dataKey="attendance" 
-                      stroke="#0d9488" 
+                      stroke="#7CBFB0" 
                       fillOpacity={1} 
                       fill="url(#colorGrowth)" 
-                      strokeWidth={3} 
+                      strokeWidth={4} 
+                      dot={{ fill: '#7CBFB0', strokeWidth: 2, r: 4, stroke: '#020617' }}
+                      activeDot={{ r: 6, strokeWidth: 0, fill: '#ffffff' }}
                     />
                   </AreaChart>
                 </ResponsiveContainer>
@@ -207,7 +209,7 @@ export function Dashboard() {
             </CardHeader>
             <CardContent className="p-8 pt-0 space-y-4">
               {(data?.projects || []).map((proj) => (
-                <div key={proj.id} className="group p-5 rounded-[24px] bg-emerald-400/5 border border-emerald-500/10 hover:border-emerald-500/30 transition-all hover:bg-emerald-500/10 relative overflow-hidden">
+                <div key={proj.id} className="group p-5 rounded-[24px] bg-mint-500/5 border border-mint-500/10 hover:border-mint-500/30 transition-all hover:bg-mint-500/10 relative overflow-hidden">
                   <div className="flex items-center justify-between mb-2">
                     <div className="flex items-center gap-3">
                       <div className={cn(
@@ -219,10 +221,10 @@ export function Dashboard() {
                   </div>
                   <div className="flex items-center justify-between mt-4">
                     <div className="flex items-center gap-2">
-                      <div className="w-5 h-5 rounded-full bg-zinc-800 flex items-center justify-center border border-white/5">
-                        <span className="text-[8px] font-bold text-emerald-400 capitalize">{proj.owner[0]}</span>
+                      <div className="w-5 h-5 rounded-full bg-zinc-900 flex items-center justify-center border border-white/10 shadow-lg">
+                        <span className="text-[8px] font-black text-mint-500 uppercase">{proj.owner[0]}</span>
                       </div>
-                      <span className="text-[10px] font-bold text-zinc-500 uppercase tracking-widest">{proj.owner}</span>
+                      <span className="text-[10px] font-black text-zinc-400 uppercase tracking-widest leading-none">{proj.owner}</span>
                     </div>
                     <span className="text-[10px] font-bold text-white/40">Due: {proj.deadline}</span>
                   </div>
@@ -243,7 +245,7 @@ export function Dashboard() {
           <Card className="chic-glass chic-border rounded-[32px] overflow-hidden flex flex-col h-[450px]">
             <CardHeader className="p-8 pb-0">
                <CardTitle className="text-xl chic-heading uppercase tracking-tighter">Strategic Coverage</CardTitle>
-               <p className="chic-sub text-emerald-400 mt-1">Institutional distribution of assets</p>
+               <p className="chic-sub text-mint-500/60 mt-1">Institutional distribution of assets</p>
             </CardHeader>
             <CardContent className="p-8 pt-6 flex-1">
                <div className="h-full w-full">
@@ -258,13 +260,13 @@ export function Dashboard() {
                    }, [data?.ambassadors])}>
                      <XAxis dataKey="name" hide />
                      <Tooltip 
-                       cursor={{ fill: 'rgba(16, 185, 129, 0.05)' }}
-                       contentStyle={{ backgroundColor: '#020617', border: '1px solid rgba(16, 185, 129, 0.1)', borderRadius: '24px', padding: '16px' }}
-                       itemStyle={{ color: '#10b981', fontWeight: 900, textTransform: 'uppercase', fontSize: '10px' }}
+                       cursor={{ fill: 'rgba(124, 191, 176, 0.05)' }}
+                       contentStyle={{ backgroundColor: '#020617', border: '1px solid rgba(124, 191, 176, 0.1)', borderRadius: '24px', padding: '16px' }}
+                       itemStyle={{ color: '#7CBFB0', fontWeight: 900, textTransform: 'uppercase', fontSize: '10px' }}
                      />
                      <Bar dataKey="value" radius={[12, 12, 0, 0]}>
                        {(data?.ambassadors || []).map((_, index) => (
-                         <Cell key={`cell-${index}`} fill={index % 2 === 0 ? "#10b981" : "#0d9488"} />
+                         <Cell key={`cell-${index}`} fill={index % 2 === 0 ? "#7CBFB0" : "#6FB5A5"} />
                        ))}
                      </Bar>
                    </BarChart>
@@ -302,11 +304,11 @@ export function Dashboard() {
                      >
                        <Cell fill="#ef4444" /> {/* High */}
                        <Cell fill="#f59e0b" /> {/* Medium */}
-                       <Cell fill="#10b981" /> {/* Low */}
+                       <Cell fill="#7CBFB0" /> {/* Low */}
                      </Pie>
                      <Tooltip 
-                       contentStyle={{ backgroundColor: '#020617', border: '1px solid rgba(255,255,255,0.05)', borderRadius: '24px', padding: '16px' }}
-                       itemStyle={{ fontSize: '10px', fontWeight: 900, textTransform: 'uppercase' }}
+                       contentStyle={{ backgroundColor: '#020617', border: '1px solid rgba(124, 191, 176, 0.1)', borderRadius: '24px', padding: '16px' }}
+                       itemStyle={{ fontSize: '10px', fontWeight: 900, textTransform: 'uppercase', color: '#7CBFB0' }}
                      />
                    </PieChart>
                  </ResponsiveContainer>
@@ -343,17 +345,17 @@ export function Dashboard() {
             toast("Strategic initiative deployed", "success");
           }}>
             <div className="space-y-2">
-              <label className="text-[10px] font-black uppercase tracking-widest text-zinc-500 ml-1">Initiative Label</label>
-              <Input placeholder="Enter strategic objective..." required className="bg-emerald-500/5 border-white/5 h-14 rounded-2xl focus:ring-emerald-500/20 text-white" />
+              <label className="chic-label text-zinc-500 ml-1">Initiative Label</label>
+              <Input placeholder="Enter strategic objective..." required className="chic-glass border-white/5 h-14 rounded-2xl focus:ring-mint-500/20 text-white" />
             </div>
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-2">
-                <label className="text-[10px] font-black uppercase tracking-widest text-zinc-500 ml-1">Deployment Date</label>
-                <Input type="date" required className="bg-emerald-500/5 border-white/5 h-14 rounded-2xl text-white" />
+                <label className="chic-label text-zinc-500 ml-1">Deployment Date</label>
+                <Input type="date" required className="chic-glass border-white/5 h-14 rounded-2xl text-white" />
               </div>
               <div className="space-y-2">
-                <label className="text-[10px] font-black uppercase tracking-widest text-zinc-500 ml-1">Priority Tier</label>
-                <select className="flex h-14 w-full rounded-2xl border border-white/5 bg-emerald-500/5 px-4 py-2 text-sm text-white focus:outline-none focus:ring-2 focus:ring-emerald-500/20">
+                <label className="chic-label text-zinc-500 ml-1">Priority Tier</label>
+                <select className="flex h-14 w-full rounded-2xl border border-white/5 bg-zinc-950/40 px-4 py-2 text-sm text-white focus:outline-none focus:ring-2 focus:ring-mint-500/20 backdrop-blur-3xl">
                   <option className="bg-zinc-900">Tier A (Critical)</option>
                   <option className="bg-zinc-900">Tier B (Strategic)</option>
                   <option className="bg-zinc-900">Tier C (Operational)</option>
@@ -362,7 +364,7 @@ export function Dashboard() {
             </div>
             <div className="flex justify-end gap-3 pt-4">
               <Button variant="ghost" type="button" onClick={() => setIsModalOpen(false)} className="text-zinc-500 hover:text-white rounded-xl">Cancel</Button>
-              <Button type="submit" className="bg-emerald-500 hover:bg-emerald-600 text-black font-black rounded-xl px-8 shadow-xl shadow-emerald-500/20">Confirm Deployment</Button>
+              <Button type="submit" className="bg-mint-500 hover:bg-mint-600 text-zinc-950 font-black rounded-xl px-8 shadow-xl shadow-mint-500/20">Confirm Deployment</Button>
             </div>
           </form>
         </div>
