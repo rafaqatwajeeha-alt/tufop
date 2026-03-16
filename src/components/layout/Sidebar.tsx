@@ -31,6 +31,7 @@ export type TabId =
   | "accountability" 
   | "content" 
   | "alerts"
+  | "management"
   | "team";
 
 interface NavSection {
@@ -44,6 +45,7 @@ const navSections: NavSection[] = [
     items: [
       { icon: LayoutDashboard, label: "Dashboard", id: "dashboard" },
       { icon: BarChart3, label: "Growth Metrics", id: "growth" },
+      { icon: ShieldCheck, label: "User Management", id: "management" },
     ]
   },
   {
@@ -88,7 +90,7 @@ export function Sidebar({ activeTab, setActiveTab, userRole }: SidebarProps) {
     items: section.items.filter(item => {
       if (userRole === 'admin') return true;
       // Ambassadors can only see these
-      const allowed = ['dashboard', 'growth', 'ambassadors', 'accountability', 'content', 'team'];
+      const allowed = ['ambassadors', 'accountability', 'content'];
       return allowed.includes(item.id);
     })
   })).filter(section => section.items.length > 0);

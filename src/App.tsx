@@ -16,6 +16,7 @@ import { AlertCircle, GraduationCap, Users, BookOpen, Heart } from "lucide-react
 import { Ambassadors } from "./pages/Ambassadors";
 import { Universities } from "./pages/Universities";
 import { Team } from "./pages/Team";
+import { Management } from "./pages/Management";
 import { LoginPage } from "./pages/LoginPage";
 import { ErrorBoundary } from "./components/ErrorBoundary";
 
@@ -58,6 +59,7 @@ function AppContent() {
       case "accountability": return <AmbassadorAccountability />;
       case "universities": return <Universities />;
       case "ambassadors": return <Ambassadors />;
+      case "management": return <Management />;
       case "team": return <Team />;
       case "content":
         return (
