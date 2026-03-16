@@ -111,7 +111,7 @@ export function Dashboard() {
             <Card className="shimmer group bg-zinc-900/40 backdrop-blur-2xl border-white/5 hover:border-emerald-500/30 transition-all duration-500 rounded-[32px] overflow-hidden">
               <CardContent className="p-7">
                 <div className="flex justify-between items-start mb-4">
-                  <div className="p-2.5 bg-white/5 rounded-2xl border border-white/5 group-hover:bg-emerald-500/10 group-hover:border-emerald-500/20 transition-colors">
+                  <div className="p-2.5 bg-emerald-500/5 rounded-2xl border border-white/5 group-hover:bg-emerald-500/10 group-hover:border-emerald-500/20 transition-colors">
                     {idx === 0 ? <Users className="w-5 h-5 text-zinc-400 group-hover:text-emerald-400" /> :
                      idx === 1 ? <Calendar className="w-5 h-5 text-zinc-400 group-hover:text-emerald-400" /> :
                      idx === 2 ? <TrendingUp className="w-5 h-5 text-zinc-400 group-hover:text-emerald-400" /> :
@@ -146,7 +146,7 @@ export function Dashboard() {
                   <p className="text-xs font-medium text-zinc-500 mt-1">Real-time attendance & engagement data</p>
                 </div>
                 <div className="flex gap-2">
-                    <div className="flex items-center gap-1.5 px-3 py-1.5 bg-white/5 rounded-xl border border-white/5">
+                    <div className="flex items-center gap-1.5 px-3 py-1.5 bg-emerald-500/5 rounded-xl border border-emerald-500/10">
                     <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
                     <span className="text-[10px] font-bold text-zinc-400 uppercase tracking-widest">Live</span>
                   </div>
@@ -202,7 +202,7 @@ export function Dashboard() {
             </CardHeader>
             <CardContent className="p-8 pt-0 space-y-4">
               {(data?.projects || []).map((proj) => (
-                <div key={proj.id} className="group p-5 rounded-[24px] bg-white/5 border border-white/5 hover:border-emerald-500/20 transition-all hover:bg-white/[0.07] relative overflow-hidden">
+                <div key={proj.id} className="group p-5 rounded-[24px] bg-emerald-950/10 border border-white/5 hover:border-emerald-500/20 transition-all hover:bg-emerald-500/5 relative overflow-hidden">
                   <div className="flex items-center justify-between mb-2">
                     <div className="flex items-center gap-3">
                       <div className={cn(

@@ -100,19 +100,9 @@ export function Sidebar({ activeTab, setActiveTab, userRole }: SidebarProps) {
       {/* --- OFFICIAL TUFOP LOGO SECTION --- */}
       <div className="p-8 pb-4">
         <div className="flex flex-col gap-4 mb-4">
-          <div className="flex items-center gap-3">
-             <div className="relative group">
-                <div className="absolute inset-0 bg-emerald-500/20 blur-xl rounded-full group-hover:bg-emerald-500/30 transition-all" />
-                <svg viewBox="0 0 40 40" className="w-12 h-12 relative z-10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M20 5V35M5 20H35" stroke="#0d9488" strokeWidth="4" strokeLinecap="round"/>
-                  <circle cx="28" cy="18" r="6" stroke="#0d9488" strokeWidth="2.5"/>
-                  <path d="M12 28C12 28 15 32 20 32C25 32 28 28 28 28" stroke="#0d9488" strokeWidth="2.5" strokeLinecap="round"/>
-                </svg>
-             </div>
-             <div>
-                <h1 className="text-sm font-black text-white tracking-[0.15em] leading-tight">USMLE FORUM</h1>
-                <p className="text-[10px] font-black text-emerald-500 tracking-[0.3em] mt-0.5">PAKISTAN</p>
-             </div>
+          <div className="flex flex-col">
+            <h1 className="text-sm font-black text-white tracking-[0.2em] leading-tight">USMLE FORUM</h1>
+            <p className="text-[10px] font-black text-emerald-500 tracking-[0.4em] mt-1 uppercase">Pakistan</p>
           </div>
           <div className="h-px w-full bg-gradient-to-r from-emerald-500/40 to-transparent opacity-30" />
         </div>

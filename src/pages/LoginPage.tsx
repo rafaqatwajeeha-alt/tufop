@@ -55,20 +55,10 @@ export function LoginPage() {
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.2 }}
-        className="relative z-10 mb-8 flex flex-col items-center gap-4"
+        className="relative z-10 mb-10 text-center"
       >
-        <div className="relative group">
-          <div className="absolute inset-0 bg-emerald-500/20 blur-2xl rounded-full group-hover:bg-emerald-500/30 transition-all scale-150" />
-          <svg viewBox="0 0 40 40" className="w-20 h-20 relative z-10" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M20 5V35M5 20H35" stroke="#0d9488" strokeWidth="4" strokeLinecap="round"/>
-            <circle cx="28" cy="18" r="6" stroke="#0d9488" strokeWidth="2.5"/>
-            <path d="M12 28C12 28 15 32 20 32C25 32 28 28 28 28" stroke="#0d9488" strokeWidth="2.5" strokeLinecap="round"/>
-          </svg>
-        </div>
-        <div className="text-center">
-          <h2 className="text-lg font-black text-white tracking-[0.2em] leading-tight">USMLE FORUM</h2>
-          <p className="text-xs font-black text-emerald-500 tracking-[0.4em] mt-1">PAKISTAN</p>
-        </div>
+        <h2 className="text-xl font-black text-white tracking-[0.3em] leading-tight">USMLE FORUM</h2>
+        <p className="text-sm font-black text-emerald-500 tracking-[0.5em] mt-2">PAKISTAN</p>
       </motion.div>
 
       <motion.div 
