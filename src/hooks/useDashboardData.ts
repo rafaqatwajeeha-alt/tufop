@@ -12,6 +12,7 @@ export interface DashboardData {
   recentActivity: any[];
   content: any[];
   projects: any[];
+  partnerships: any[];
 }
 
 export function useDashboardData(userId?: string) {
@@ -35,7 +36,8 @@ export function useDashboardData(userId?: string) {
         programsRes,
         recentActivityRes,
         contentRes,
-        projectsRes
+        projectsRes,
+        partnershipsRes
       ] = await Promise.all([
         supabase.from('ambassadors').select('*'),
         supabase.from('universities').select('*'),
@@ -49,7 +51,8 @@ export function useDashboardData(userId?: string) {
         supabase.from('programs').select('*'),
         supabase.from('recent_activity').select('*'),
         supabase.from('content_performance').select('*'),
-        supabase.from('projects').select('*')
+        supabase.from('projects').select('*'),
+        supabase.from('partnerships').select('*')
       ]);
 
       const ambassadors = ambassadorsRes.data || [];
@@ -62,6 +65,7 @@ export function useDashboardData(userId?: string) {
       const recentActivity = recentActivityRes.data || [];
       const content = contentRes.data || [];
       const projects = projectsRes.data || [];
+      const partnerships = partnershipsRes.data || [];
 
       // Dynamic counts for KPIs
       const ambassadorCount = ambassadors.length;
@@ -83,7 +87,8 @@ export function useDashboardData(userId?: string) {
         programs,
         recentActivity,
         content,
-        projects
+        projects,
+        partnerships
       };
     },
     enabled: !!userId || userId === undefined,
