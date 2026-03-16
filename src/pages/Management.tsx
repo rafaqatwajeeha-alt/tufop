@@ -101,7 +101,7 @@ export function Management() {
         <Card className="rounded-[32px] overflow-hidden shadow-2xl">
           <CardHeader>
             <CardTitle className="flex items-center gap-3 text-xl font-black text-white uppercase tracking-tighter">
-              <UserPlus className="h-6 w-6 text-white" />
+              <UserPlus className="h-6 w-6 text-[#6DC7B8]" />
               <span className="text-white">Register Strategic Asset</span>
             </CardTitle>
           </CardHeader>

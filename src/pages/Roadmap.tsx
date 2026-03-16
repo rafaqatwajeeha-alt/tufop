@@ -42,7 +42,7 @@ export function Roadmap() {
               <CardContent className="p-6">
                 <div className="flex items-center justify-between mb-4">
                   <div className="chic-label text-white/80">{item.term}</div>
-                  <Badge variant="secondary" className="text-[9px] px-3 py-1 font-black uppercase tracking-widest rounded-full bg-white/20 text-white border-white/30">
+                  <Badge variant="secondary" className="text-[9px] px-3 py-1 font-black uppercase tracking-widest rounded-full bg-[#6DC7B8]/20 text-white border-[#6DC7B8]/30">
                     {item.status}
                   </Badge>
                 </div>
@@ -57,7 +57,7 @@ export function Roadmap() {
                     {item.priority} Priority
                   </div>
                   <div className="flex items-center gap-2 text-[10px] font-black text-white/60 uppercase tracking-widest ml-auto">
-                    <div className="w-5 h-5 rounded-full bg-white/20 flex items-center justify-center border border-white/30">
+                    <div className="w-5 h-5 rounded-full bg-[#6DC7B8]/20 flex items-center justify-center border border-[#6DC7B8]/30">
                       <span className="text-[8px] text-white">{item.owner[0]}</span>
                     </div>
                     {item.owner}
