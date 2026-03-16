@@ -132,21 +132,21 @@ export function Team() {
       <motion.div 
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
-        className="flex justify-center items-center gap-12 py-10 opacity-30 grayscale hover:grayscale-0 transition-all duration-700"
+        className="flex justify-center items-center gap-12 py-12 opacity-80 border-t border-white/5"
       >
-         <div className="flex items-center gap-2">
-            <Command className="w-5 h-5" />
-            <span className="text-[10px] font-black uppercase tracking-widest">Protocol V2.0</span>
+         <div className="flex items-center gap-3">
+            <Command className="w-5 h-5 text-emerald-400" />
+            <span className="chic-label text-white">Protocol V2.0</span>
          </div>
-         <div className="w-1.5 h-1.5 rounded-full bg-zinc-800" />
-         <div className="flex items-center gap-2">
-            <Globe className="w-5 h-5" />
-            <span className="text-[10px] font-black uppercase tracking-widest">Global Ops</span>
+         <div className="w-1.5 h-1.5 rounded-full bg-emerald-500/20" />
+         <div className="flex items-center gap-3">
+            <Globe className="w-5 h-5 text-blue-400" />
+            <span className="chic-label text-white">Global Ops</span>
          </div>
-         <div className="w-1.5 h-1.5 rounded-full bg-zinc-800" />
-         <div className="flex items-center gap-2 text-emerald-500">
-            <Heart className="w-5 h-5 fill-emerald-500" />
-            <span className="text-[10px] font-black uppercase tracking-widest text-white">TUFOP Core</span>
+         <div className="w-1.5 h-1.5 rounded-full bg-emerald-500/20" />
+         <div className="flex items-center gap-3">
+            <Heart className="w-5 h-5 text-red-400 fill-red-400/20" />
+            <span className="chic-label text-white">TUFOP Core</span>
          </div>
       </motion.div>
     </div>

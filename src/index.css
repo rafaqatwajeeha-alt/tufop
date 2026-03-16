@@ -35,12 +35,12 @@ body {
 
 /* Premium Lush Card Styles */
 .dark .chic-glass {
-  @apply bg-emerald-950/40 backdrop-blur-3xl border border-emerald-500/10 shadow-2xl;
-  background-image: radial-gradient(at 0% 0%, rgba(16, 185, 129, 0.1) 0, transparent 50%);
+  @apply bg-emerald-950/60 backdrop-blur-3xl border border-emerald-500/20 shadow-2xl;
+  background-image: radial-gradient(at 0% 0%, rgba(16, 185, 129, 0.15) 0, transparent 50%);
 }
 
-.dark .chic-emerald-glow {
-  @apply bg-emerald-500 text-zinc-950 shadow-[0_0_30px_rgba(16,185,129,0.4)];
+.dark .chic-white-glow {
+  @apply bg-white text-zinc-950 shadow-[0_0_40px_rgba(255,255,255,0.7)];
 }
 
 .dark .chic-border {
@@ -64,11 +64,28 @@ body {
 /* Elegant Contrast Typography */
 .chic-heading {
   @apply font-black tracking-tighter text-white;
-  text-shadow: 0 0 30px rgba(16, 185, 129, 0.3);
+  text-shadow: 0 0 50px rgba(16, 185, 129, 0.6), 0 0 15px rgba(255, 255, 255, 0.2);
 }
 
 .chic-sub {
-  @apply text-[10px] font-black uppercase tracking-[0.3em] text-emerald-400;
+  @apply text-[10px] font-black uppercase tracking-[0.4em] text-emerald-300;
+  text-shadow: 0 0 10px rgba(16, 185, 129, 0.3);
+}
+
+.chic-label {
+  @apply text-[10px] font-black uppercase tracking-[0.2em] text-zinc-300;
+}
+
+.chic-text-muted {
+  @apply text-sm font-medium text-zinc-400;
+}
+
+.chic-text-bright {
+  @apply text-white font-black;
+}
+
+.chic-table-head {
+  @apply text-[10px] font-black uppercase tracking-[0.2em] text-white/90;
 }
 
 /* Custom Scrollbar */

@@ -51,9 +51,10 @@ export function Ambassadors() {
       className="space-y-8"
     >
       <div className="flex items-end justify-between">
-        <div>
-          <h1 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-white">Ambassador Network</h1>
-          <p className="text-zinc-500 dark:text-zinc-400 mt-1">Manage and connect with your student representative network.</p>
+        <div className="flex flex-col">
+          <span className="chic-sub mb-1 block">Institutional Hub Control</span>
+          <h1 className="text-4xl chic-heading mb-2">Asset Grid</h1>
+          <p className="chic-text-muted">Strategic management and real-time connectivity with your global student representative network.</p>
         </div>
         <div className="flex gap-2">
           <div className="flex bg-emerald-500/5 dark:bg-emerald-950/20 p-1 rounded-2xl border border-white/5">
@@ -110,29 +111,29 @@ export function Ambassadors() {
                     </div>
                   )}
                 </div>
-                <div>
-                  <h3 className="font-bold dark:text-white group-hover:text-blue-500 transition-colors">{amb.name}</h3>
-                  <p className="text-xs text-zinc-500">{amb.university}</p>
+                <div className="flex-1">
+                  <h3 className="text-xl font-black text-white group-hover:text-emerald-400 transition-colors tracking-tighter leading-none">{amb.name}</h3>
+                  <p className="text-[10px] font-black text-emerald-500/60 uppercase tracking-widest mt-2">{amb.university}</p>
                 </div>
                 <Badge className="ml-auto" variant={amb.status === 'Active' ? 'success' : 'warning'}>
                   {amb.status}
                 </Badge>
               </div>
               
-              <div className="space-y-2 mt-6 border-t dark:border-zinc-800 pt-4">
-                <div className="flex items-center gap-2 text-xs text-zinc-500 font-bold uppercase tracking-widest">
-                  <MapPin className="h-3.5 w-3.5 text-emerald-500" />
-                   Institutional Hub
+              <div className="space-y-4 mt-8 border-t border-white/10 pt-6">
+                <div className="flex items-center gap-2 text-[10px] text-zinc-300 font-black uppercase tracking-widest">
+                  <MapPin className="h-4 w-4 text-emerald-500" />
+                   Strategic Hub Operations
                 </div>
-                <div className="w-full bg-white/5 h-2 rounded-full mt-4 overflow-hidden">
+                <div className="w-full bg-white/5 h-3 rounded-full overflow-hidden border border-white/10">
                   <div 
-                    className="bg-gradient-to-r from-emerald-600 to-emerald-400 h-full rounded-full transition-all duration-1000" 
+                    className="bg-gradient-to-r from-emerald-600 to-emerald-400 h-full rounded-full shadow-[0_0_20px_rgba(16,185,129,0.3)]" 
                     style={{ width: `${amb.taskCompletion}%` }} 
                   />
                 </div>
-                <div className="flex justify-between text-[10px] font-medium uppercase tracking-wider text-zinc-400">
-                  <span>Engagement</span>
-                  <span>{amb.taskCompletion}%</span>
+                <div className="flex justify-between text-[11px] font-black uppercase tracking-widest text-emerald-500/80">
+                  <span>Elite Engagement Matrix</span>
+                  <span className="text-white">{amb.taskCompletion}%</span>
                 </div>
               </div>
             </CardContent>

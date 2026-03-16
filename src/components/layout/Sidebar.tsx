@@ -115,18 +115,18 @@ export function Sidebar({ activeTab, setActiveTab, userRole }: SidebarProps) {
                       className={cn(
                         "w-full flex items-center justify-between px-4 py-3 rounded-2xl text-xs font-black transition-all duration-500 group relative overflow-hidden",
                         isActive
-                          ? "chic-emerald-glow scale-[1.02]" 
+                          ? "chic-white-glow scale-[1.02]" 
                           : "text-zinc-500 hover:text-white hover:bg-white/5"
                       )}
                     >
                       <div className="flex items-center gap-3">
                         <item.icon className={cn(
                           "h-5 w-5 transition-colors",
-                          isActive ? "text-emerald-600" : "text-zinc-600 group-hover:text-zinc-400"
+                          isActive ? "text-zinc-950 scale-110" : "text-zinc-600 group-hover:text-zinc-400"
                         )} />
                         <span className="tracking-tight">{item.label}</span>
                       </div>
-                      {isActive && <ChevronRight className="h-4 w-4 text-zinc-400" />}
+                      {isActive && <ChevronRight className="h-4 w-4 text-zinc-950" />}
                     </button>
                   );
                 })}

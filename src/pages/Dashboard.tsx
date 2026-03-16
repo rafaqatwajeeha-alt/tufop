@@ -86,10 +86,10 @@ export function Dashboard() {
             <div className="p-2 bg-emerald-500/10 rounded-lg border border-emerald-500/20">
               <Activity className="w-5 h-5 text-emerald-400" />
             </div>
-            <span className="text-[10px] font-black uppercase tracking-[0.3em] text-emerald-500/60">Live Intelligence</span>
+            <span className="chic-sub tracking-[0.4em]">Live Intelligence Protocol</span>
           </div>
-          <h1 className="text-4xl chic-heading mb-2">Operations Command</h1>
-          <p className="text-zinc-500 font-medium mt-1">Strategic oversight of the TUFOP ecosystem.</p>
+          <h1 className="text-5xl chic-heading mb-3">Operations Command</h1>
+          <p className="chic-text-muted">Strategic ecosystem oversight & real-time asset tracking.</p>
         </motion.div>
         
         <motion.div variants={item} className="flex gap-3">
@@ -126,8 +126,8 @@ export function Dashboard() {
                   </Badge>
                 </div>
                 <div>
-                  <p className="text-[10px] font-black uppercase tracking-[0.2em] text-zinc-500 mb-1">{kpi.label}</p>
-                  <h3 className="text-3xl font-black text-white tracking-tighter">{kpi.value}</h3>
+                  <p className="chic-label mb-1 opacity-80">{kpi.label}</p>
+                  <h3 className="text-4xl font-black text-white tracking-tighter">{kpi.value}</h3>
                 </div>
               </CardContent>
             </Card>
@@ -168,12 +168,12 @@ export function Dashboard() {
                       dataKey="date" 
                       axisLine={false} 
                       tickLine={false} 
-                      tick={{ fontSize: 10, fill: '#52525b', fontWeight: 700 }} 
+                      tick={{ fontSize: 9, fill: '#ffffff', fontWeight: 900, opacity: 0.5 }} 
                     />
                     <YAxis 
                       axisLine={false} 
                       tickLine={false} 
-                      tick={{ fontSize: 10, fill: '#52525b', fontWeight: 700 }} 
+                      tick={{ fontSize: 9, fill: '#ffffff', fontWeight: 900, opacity: 0.5 }} 
                     />
                     <Tooltip 
                       contentStyle={{ backgroundColor: '#09090b', border: '1px solid rgba(255,255,255,0.05)', borderRadius: '20px', padding: '12px' }}

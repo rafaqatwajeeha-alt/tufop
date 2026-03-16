@@ -19,8 +19,9 @@ export function Programs() {
     >
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold dark:text-white">Programs & Initiatives</h1>
-          <p className="text-sm text-zinc-500">Manage mentorship cohorts, podcasts, and workshops.</p>
+          <span className="chic-sub mb-1 block">Operational Protocol</span>
+          <h1 className="text-4xl chic-heading mb-2">Programs & Initiatives</h1>
+          <p className="chic-text-muted">Strategic management of TUFOP mentorship cohorts and archives.</p>
         </div>
         <Button size="sm" className="bg-emerald-500 hover:bg-emerald-600 text-black font-bold h-10 px-6 rounded-xl">
           <Plus className="h-4 w-4 mr-2" />
@@ -42,35 +43,35 @@ export function Programs() {
       <Card className="dark:bg-zinc-900/50">
         <Table>
           <TableHeader>
-            <TableRow className="dark:border-zinc-800">
-              <TableHead>Program Name</TableHead>
-              <TableHead>Category</TableHead>
-              <TableHead>Lead</TableHead>
-              <TableHead>Timeline</TableHead>
-              <TableHead>Participants</TableHead>
-              <TableHead>Status</TableHead>
-              <TableHead className="text-right">Actions</TableHead>
+            <TableRow className="border-white/10">
+              <TableHead className="chic-table-head">Program Name</TableHead>
+              <TableHead className="chic-table-head">Category</TableHead>
+              <TableHead className="chic-table-head">Lead</TableHead>
+              <TableHead className="chic-table-head">Timeline</TableHead>
+              <TableHead className="chic-table-head">Participants</TableHead>
+              <TableHead className="chic-table-head">Status</TableHead>
+              <TableHead className="text-right chic-table-head">Actions</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
             {data?.programs.map((prog) => (
-              <TableRow key={prog.id} className="dark:border-zinc-800">
-                <TableCell className="font-medium dark:text-zinc-200">{prog.name}</TableCell>
+              <TableRow key={prog.id} className="border-white/5 hover:bg-white/5 transition-colors">
+                <TableCell className="font-extrabold text-white tracking-tight">{prog.name}</TableCell>
                 <TableCell>
-                  <Badge variant="secondary" className="text-[10px]">{prog.category}</Badge>
+                  <Badge variant="secondary" className="bg-emerald-500/10 text-emerald-300 border-none px-3 py-1 text-[9px] font-black uppercase tracking-widest">{prog.category}</Badge>
                 </TableCell>
-                <TableCell className="dark:text-zinc-400">{prog.lead}</TableCell>
-                <TableCell className="text-xs dark:text-zinc-500">
+                <TableCell className="text-zinc-300 font-medium">{prog.lead}</TableCell>
+                <TableCell className="text-[10px] font-black uppercase tracking-widest text-zinc-500">
                   {prog.start} - {prog.end}
                 </TableCell>
-                <TableCell className="dark:text-zinc-400">{prog.participants}</TableCell>
+                <TableCell className="text-white font-black">{prog.participants}</TableCell>
                 <TableCell>
-                  <Badge variant={prog.status === 'active' ? 'success' : prog.status === 'planned' ? 'warning' : 'secondary'}>
+                  <Badge variant={prog.status === 'active' ? 'success' : prog.status === 'planned' ? 'warning' : 'secondary'} className="px-3 py-1 font-black uppercase tracking-widest text-[9px]">
                     {prog.status}
                   </Badge>
                 </TableCell>
                 <TableCell className="text-right">
-                  <Button variant="ghost" size="icon" className="h-8 w-8"><MoreVertical className="h-4 w-4" /></Button>
+                  <Button variant="ghost" size="icon" className="h-10 w-10 text-zinc-400 hover:text-white hover:bg-emerald-500/20 rounded-xl transition-all"><MoreVertical className="h-5 w-5" /></Button>
                 </TableCell>
               </TableRow>
             ))}

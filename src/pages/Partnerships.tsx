@@ -54,10 +54,10 @@ export function Partnerships() {
             <div className="p-2 bg-blue-500/10 rounded-lg border border-blue-500/20 shadow-lg shadow-blue-500/10">
               <Handshake className="w-5 h-5 text-blue-400" />
             </div>
-            <span className="text-[10px] font-black uppercase tracking-[0.3em] text-blue-500/60">Collaborative Network</span>
+            <span className="chic-sub text-blue-300 tracking-[0.4em]">Collaborative Network</span>
           </div>
-          <h1 className="text-4xl chic-heading mb-2">Partnerships</h1>
-          <p className="text-zinc-500 font-medium mt-1 uppercase tracking-widest text-[10px]">Strategic Alliances & Institutional Ecosystems</p>
+          <h1 className="text-5xl chic-heading mb-3">Global Alliances</h1>
+          <p className="chic-text-muted">Strategic Institutional Alignments & Global Medical Ecosystems.</p>
         </motion.div>
         
         <motion.div variants={itemAnim} className="flex gap-3">
@@ -108,11 +108,11 @@ export function Partnerships() {
                   
                   <div className="space-y-6">
                     <div>
-                         <span className="text-[10px] font-black uppercase tracking-[0.2em] text-blue-500/60 block mb-2">{item.sector}</span>
-                         <h3 className="text-2xl font-black text-white tracking-tighter leading-tight group-hover:text-blue-400 transition-colors duration-300">
+                         <span className="chic-label text-blue-400/80 block mb-2">{item.sector}</span>
+                         <h3 className="text-3xl font-black text-white tracking-tighter leading-tight group-hover:text-blue-400 transition-colors duration-300">
                            {item.name}
                          </h3>
-                         <p className="text-[10px] font-bold text-zinc-500 uppercase tracking-widest mt-1">{item.organization}</p>
+                         <p className="text-[11px] font-black text-zinc-400 uppercase tracking-widest mt-2">{item.organization}</p>
                     </div>
 
                     <div className="p-4 bg-white/5 rounded-2xl border border-white/5">
@@ -125,16 +125,16 @@ export function Partnerships() {
                         </p>
                     </div>
 
-                    <div className="pt-6 border-t border-white/5 flex items-center justify-between">
+                    <div className="pt-6 border-t border-white/10 flex items-center justify-between">
                       <div className="flex items-center gap-4">
-                        <div className="flex items-center gap-1.5 hover:text-blue-400 transition-colors">
-                           <Mail className="h-3 w-3 text-zinc-600" />
-                           <span className="text-[9px] font-black text-zinc-600 uppercase tracking-widest truncate max-w-[80px]">{item.contact}</span>
+                        <div className="flex items-center gap-2 hover:text-blue-400 transition-colors">
+                           <Mail className="h-4 w-4 text-zinc-400" />
+                           <span className="text-[10px] font-black text-zinc-300 uppercase tracking-widest truncate max-w-[100px]">{item.contact}</span>
                         </div>
-                        <Badge variant="secondary" className="bg-white/5 text-zinc-500 text-[8px] uppercase tracking-widest border-none px-2 py-0.5">{item.type}</Badge>
+                        <Badge variant="secondary" className="bg-blue-500/10 text-blue-300 text-[9px] font-black uppercase tracking-widest border-none px-3 py-1">{item.type}</Badge>
                       </div>
-                      <Button variant="ghost" size="icon" className="h-10 w-10 rounded-xl bg-white/5 opacity-0 group-hover:opacity-100 transition-all hover:bg-white/10 text-white">
-                        <ArrowUpRight className="h-4 w-4" />
+                      <Button variant="ghost" size="icon" className="h-12 w-12 rounded-2xl bg-white/5 opacity-0 group-hover:opacity-100 transition-all hover:bg-blue-500/20 text-white border border-white/5">
+                        <ArrowUpRight className="h-5 w-5" />
                       </Button>
                     </div>
                   </div>

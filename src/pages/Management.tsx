@@ -86,9 +86,10 @@ export function Management() {
   return (
     <div className="space-y-8 max-w-5xl mx-auto">
       <div className="flex items-end justify-between">
-        <div>
-          <h1 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-white">User Management</h1>
-          <p className="text-zinc-500 dark:text-zinc-400 mt-1">Register co-founders and auto-generate ambassador credentials.</p>
+        <div className="flex flex-col">
+          <span className="chic-sub mb-1 block">Security & Access Protocol</span>
+          <h1 className="text-4xl chic-heading mb-2">Identity Hub</h1>
+          <p className="chic-text-muted">Register co-founders and auto-generate strategic ambassador credentials.</p>
         </div>
       </div>
 
@@ -97,8 +98,8 @@ export function Management() {
         <Card className="bg-emerald-950/20 backdrop-blur-2xl border-white/5 rounded-[32px] overflow-hidden shadow-2xl">
           <CardHeader>
             <CardTitle className="flex items-center gap-3 text-xl font-black text-white uppercase tracking-tighter">
-              <UserPlus className="h-6 w-6 text-emerald-400" />
-              Register Strategic Asset
+              <UserPlus className="h-6 w-6 text-white" />
+              <span className="text-white">Register Strategic Asset</span>
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-6">
@@ -109,7 +110,7 @@ export function Management() {
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 onBlur={generateCredentials}
-                className="dark:bg-zinc-900 dark:border-zinc-800 dark:text-white h-11"
+                className="chic-glass chic-border border-white/5 text-white h-14 rounded-2xl placeholder:text-zinc-700"
               />
             </div>
             <div className="space-y-2">
@@ -118,7 +119,7 @@ export function Management() {
                 placeholder="e.g. NUST" 
                 value={university}
                 onChange={(e) => setUniversity(e.target.value)}
-                className="dark:bg-zinc-900 dark:border-zinc-800 dark:text-white h-11"
+                className="chic-glass chic-border border-white/5 text-white h-14 rounded-2xl placeholder:text-zinc-700"
               />
             </div>
 
