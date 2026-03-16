@@ -50,16 +50,7 @@ export function LoginPage() {
         />
       </div>
 
-      {/* Logo Section */}
-      <motion.div 
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.2 }}
-        className="relative z-10 mb-10 text-center"
-      >
-        <h2 className="text-xl font-black text-white tracking-[0.3em] leading-tight">USMLE FORUM</h2>
-        <p className="text-sm font-black text-emerald-500 tracking-[0.5em] mt-2">PAKISTAN</p>
-      </motion.div>
+
 
       <motion.div 
         initial={{ opacity: 0, scale: 0.95 }}

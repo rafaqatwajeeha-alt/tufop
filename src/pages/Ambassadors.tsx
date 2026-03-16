@@ -41,7 +41,7 @@ export function Ambassadors() {
           <p className="text-zinc-500 dark:text-zinc-400 mt-1">Manage and connect with your student representative network.</p>
         </div>
         <div className="flex gap-2">
-          <div className="flex bg-zinc-100 dark:bg-zinc-900 p-1 rounded-lg">
+          <div className="flex bg-emerald-500/5 dark:bg-emerald-950/20 p-1 rounded-2xl border border-white/5">
             <Button 
               variant={viewType === 'grid' ? 'secondary' : 'ghost'} 
               size="sm" 
@@ -74,8 +74,8 @@ export function Ambassadors() {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {filtered.map((amb, index) => (
           <Card key={amb.id} className={cn(
-            "hover:border-zinc-300 dark:hover:border-zinc-700 transition-all cursor-pointer group relative overflow-hidden",
-            index === 0 && viewType === 'leaderboard' ? "border-amber-500/50 bg-amber-50/10" : ""
+            "group relative overflow-hidden bg-zinc-900/40 backdrop-blur-2xl border-white/5 hover:border-emerald-500/30 transition-all duration-500 rounded-[32px]",
+            index === 0 && viewType === 'leaderboard' ? "border-emerald-500/50 bg-emerald-500/10" : ""
           )}>
             {index === 0 && viewType === 'leaderboard' && (
               <div className="absolute top-0 right-0 p-2 bg-amber-500 text-white text-[10px] font-bold uppercase tracking-widest rounded-bl-lg flex items-center gap-1 shadow-lg">
@@ -86,7 +86,7 @@ export function Ambassadors() {
             <CardContent className="pt-6">
               <div className="flex items-center gap-4 mb-4">
                 <div className="relative">
-                  <div className="h-12 w-12 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-blue-600 dark:text-blue-400 font-bold text-lg">
+                  <div className="h-14 w-14 rounded-2xl bg-emerald-500/10 flex items-center justify-center text-emerald-500 font-black text-xl border border-emerald-500/20">
                     {(amb.name || "A").split(' ').map((n: string) => n[0]).join('')}
                   </div>
                   {viewType === 'leaderboard' && (
@@ -105,13 +105,13 @@ export function Ambassadors() {
               </div>
               
               <div className="space-y-2 mt-6 border-t dark:border-zinc-800 pt-4">
-                <div className="flex items-center gap-2 text-xs text-zinc-500">
-                  <MapPin className="h-3 w-3" />
-                   Main Campus
+                <div className="flex items-center gap-2 text-xs text-zinc-500 font-bold uppercase tracking-widest">
+                  <MapPin className="h-3.5 w-3.5 text-emerald-500" />
+                   Institutional Hub
                 </div>
-                <div className="w-full bg-zinc-100 dark:bg-zinc-800 h-1.5 rounded-full mt-4 overflow-hidden">
+                <div className="w-full bg-white/5 h-2 rounded-full mt-4 overflow-hidden">
                   <div 
-                    className="bg-blue-600 h-full rounded-full transition-all duration-1000" 
+                    className="bg-gradient-to-r from-emerald-600 to-emerald-400 h-full rounded-full transition-all duration-1000" 
                     style={{ width: `${amb.taskCompletion}%` }} 
                   />
                 </div>
@@ -126,9 +126,9 @@ export function Ambassadors() {
       </div>
 
       {filtered.length === 0 && (
-        <div className="text-center py-20 bg-zinc-50 dark:bg-zinc-900/30 rounded-2xl border-2 border-dashed dark:border-zinc-800">
-          <Users className="h-12 w-12 mx-auto text-zinc-300 mb-4" />
-          <p className="text-zinc-500">No ambassadors found matching your search.</p>
+        <div className="text-center py-20 bg-emerald-500/5 rounded-[40px] border-2 border-dashed border-emerald-500/10">
+          <Users className="h-16 w-16 mx-auto text-emerald-500/20 mb-4" />
+          <p className="text-zinc-500 font-black uppercase tracking-[0.2em] text-sm">No Strategic Assets Found</p>
         </div>
       )}
     </motion.div>
