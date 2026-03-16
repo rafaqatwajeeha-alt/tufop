@@ -14,11 +14,16 @@ export interface DashboardData {
   projects: any[];
 }
 
-export function useDashboardData() {
+export function useDashboardData(userId?: string) {
   const { data, isLoading: loading, refetch } = useQuery<DashboardData>({
-    queryKey: ['dashboard-data'],
+    queryKey: ['dashboard-data', userId],
     queryFn: async () => {
-      const { data: { user } } = await supabase.auth.getUser();
+      // Use provided userId or fallback to current session
+      const effectiveUserId = userId || (await supabase.auth.getSession()).data.session?.user.id;
+      
+      if (!effectiveUserId && userId !== undefined) {
+         throw new Error("No user ID available for dashboard fetch");
+      }
 
       const [
         ambassadorsRes,
@@ -39,7 +44,7 @@ export function useDashboardData() {
         supabase.from('knowledge').select('*'),
         supabase.from('notifications')
           .select('*')
-          .eq('user_id', user?.id || '')
+          .eq('user_id', effectiveUserId || '')
           .order('created_at', { ascending: false }),
         supabase.from('programs').select('*'),
         supabase.from('recent_activity').select('*'),
@@ -81,11 +86,9 @@ export function useDashboardData() {
         projects
       };
     },
-    staleTime: 1000 * 60 * 5, // 5 minutes
+    enabled: !!userId || userId === undefined,
+    staleTime: 1000 * 60 * 5, // 5 minutes cache
   });
 
-  // Setup one global listener if we haven't already
-  // Note: In a real app, you'd do this in a provider or a more global location
-  // to avoid multiple subscriptions, but QueryClient handles the deduplication of the fetch itself.
   return { data, loading, refetch };
 }

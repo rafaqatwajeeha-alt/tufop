@@ -26,13 +26,7 @@ export function DashboardLayout({ children, activeTab, setActiveTab, isDark, tog
       <div className="flex-1 flex flex-col min-w-0 relative z-10">
         <TopBar isDark={isDark} toggleTheme={toggleTheme} />
         <main className="p-8 lg:p-10">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.98 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5, ease: "easeOut" }}
-          >
-            {children}
-          </motion.div>
+          {children}
         </main>
       </div>
     </div>

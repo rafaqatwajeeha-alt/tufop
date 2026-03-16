@@ -24,30 +24,8 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const [profile, setProfile] = React.useState<any | null>(null);
   const [loading, setLoading] = React.useState(true);
 
-  React.useEffect(() => {
-    // 1. Check current session
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      setSession(session);
-      setUser(session?.user ?? null);
-      if (session?.user) fetchProfile(session.user.id);
-      else setLoading(false);
-    });
-
-    // 2. Listen for auth changes
-    const { data: { subscription } } = supabase.auth.onAuthStateChange(async (_event, session) => {
-      setSession(session);
-      setUser(session?.user ?? null);
-      if (session?.user) fetchProfile(session.user.id);
-      else {
-        setProfile(null);
-        setLoading(false);
-      }
-    });
-
-    return () => subscription.unsubscribe();
-  }, []);
-
-  const fetchProfile = async (userId: string) => {
+  // Memoized profile fetcher to prevent redundant calls
+  const fetchProfile = React.useCallback(async (userId: string) => {
     try {
       const { data, error } = await supabase
         .from('profiles')
@@ -62,14 +40,54 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     } finally {
       setLoading(false);
     }
-  };
+  }, []);
 
-  const signOut = async () => {
+  React.useEffect(() => {
+    // 1. Check current session
+    supabase.auth.getSession().then(({ data: { session: currentSession } }) => {
+      if (currentSession) {
+        setSession(currentSession);
+        setUser(currentSession.user);
+        fetchProfile(currentSession.user.id);
+      } else {
+        setLoading(false);
+      }
+    });
+
+    // 2. Listen for auth changes
+    const { data: { subscription } } = supabase.auth.onAuthStateChange(async (event, currentSession) => {
+      // Only update state if the session or user actually changed to avoid render loops
+      if (currentSession?.user?.id !== user?.id || event === 'SIGNED_OUT') {
+        setSession(currentSession);
+        setUser(currentSession?.user ?? null);
+        
+        if (currentSession?.user) {
+          fetchProfile(currentSession.user.id);
+        } else {
+          setProfile(null);
+          setLoading(false);
+        }
+      }
+    });
+
+    return () => subscription.unsubscribe();
+  }, [fetchProfile, user?.id]);
+
+  const signOut = React.useCallback(async () => {
     await supabase.auth.signOut();
-  };
+  }, []);
+
+  // CRITICAL: Memoize the context value to prevent cascading re-renders
+  const contextValue = React.useMemo(() => ({
+    session,
+    user,
+    profile,
+    loading,
+    signOut,
+  }), [session, user, profile, loading, signOut]);
 
   return (
-    <AuthContext.Provider value={{ session, user, profile, loading, signOut }}>
+    <AuthContext.Provider value={contextValue}>
       {children}
     </AuthContext.Provider>
   );

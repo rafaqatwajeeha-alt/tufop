@@ -10,9 +10,11 @@ import {
   Info,
   Calendar,
   Users,
-  Activity
+  Activity,
+  ShieldCheck
 } from "lucide-react";
 import { useDashboardData } from "../hooks/useDashboardData";
+import { useAuth } from "../lib/AuthContext";
 import { Card, CardContent, CardHeader, CardTitle } from "../components/ui/Card";
 import { Badge } from "../components/ui/Badge";
 import { Button } from "../components/ui/Button";
@@ -33,7 +35,8 @@ import { useToast, ToastContainer } from "../components/ui/Toast";
 import { motion, AnimatePresence } from "motion/react";
 
 export function Dashboard() {
-  const { data, loading } = useDashboardData();
+  const { profile } = useAuth();
+  const { data, loading } = useDashboardData(profile?.id);
   const [isModalOpen, setIsModalOpen] = React.useState(false);
   const { toasts, toast } = useToast();
 

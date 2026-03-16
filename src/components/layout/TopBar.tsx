@@ -15,7 +15,7 @@ interface TopBarProps {
 
 export function TopBar({ isDark, toggleTheme }: TopBarProps) {
   const { profile, signOut } = useAuth();
-  const { data } = useDashboardData();
+  const { data } = useDashboardData(profile?.id);
   const [showNotifications, setShowNotifications] = React.useState(false);
   const [showProfileMenu, setShowProfileMenu] = React.useState(false);
   
