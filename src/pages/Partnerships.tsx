@@ -1,84 +1,156 @@
 import * as React from "react";
-import { Plus, Handshake, Mail, Globe, MoreVertical, Search } from "lucide-react";
-import { Card, CardContent, CardHeader, CardTitle } from "../components/ui/Card";
+import { Handshake, Globe, ExternalLink, ArrowUpRight, Plus, Search, Filter, Cpu, Target, Share2, Mail } from "lucide-react";
+import { Card, CardContent } from "../components/ui/Card";
 import { Badge } from "../components/ui/Badge";
 import { Button } from "../components/ui/Button";
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "../components/ui/Table";
 import { Input } from "../components/ui/Input";
 import { useDashboardData } from "../hooks/useDashboardData";
-import { motion } from "motion/react";
+import { motion, AnimatePresence } from "motion/react";
 
 export function Partnerships() {
-  const { data } = useDashboardData();
+  const { data, loading } = useDashboardData();
+  const [searchQuery, setSearchQuery] = React.useState("");
+
+  if (loading || !data) {
+    return (
+      <div className="flex items-center justify-center min-h-[400px]">
+        <div className="flex flex-col items-center gap-4">
+          <div className="w-12 h-12 border-4 border-emerald-500/20 border-t-emerald-500 rounded-full animate-spin" />
+          <p className="text-[10px] font-black uppercase tracking-[0.3em] text-emerald-500/60">Synchronizing Global Grid...</p>
+        </div>
+      </div>
+    );
+  }
+
+  const filteredPartners = (data?.partnerships || []).filter(p => 
+    p.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    p.sector.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
+  const container = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: { staggerChildren: 0.1 }
+    }
+  };
+
+  const itemAnim = {
+    hidden: { opacity: 0, y: 20 },
+    show: { opacity: 1, y: 0 }
+  };
 
   return (
     <motion.div 
-      initial={{ opacity: 0, x: 20 }}
-      animate={{ opacity: 1, x: 0 }}
-      className="space-y-6"
+      variants={container}
+      initial="hidden"
+      animate="show"
+      className="space-y-10 max-w-7xl mx-auto"
     >
-      <div className="flex items-center justify-between">
-        <div>
-          <h1 className="text-2xl font-bold dark:text-white">Partnerships & Collaborators</h1>
-          <p className="text-sm text-zinc-500">Track guest speakers, mentors, and partner organizations.</p>
+      {/* HEADER SECTION */}
+      <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
+        <motion.div variants={itemAnim}>
+          <div className="flex items-center gap-3 mb-2">
+            <div className="p-2 bg-blue-500/10 rounded-lg border border-blue-500/20 shadow-lg shadow-blue-500/10">
+              <Handshake className="w-5 h-5 text-blue-400" />
+            </div>
+            <span className="text-[10px] font-black uppercase tracking-[0.3em] text-blue-500/60">Collaborative Network</span>
+          </div>
+          <h1 className="text-4xl chic-heading mb-2">Partnerships</h1>
+          <p className="text-zinc-500 font-medium mt-1 uppercase tracking-widest text-[10px]">Strategic Alliances & Institutional Ecosystems</p>
+        </motion.div>
+        
+        <motion.div variants={itemAnim} className="flex gap-3">
+          <Button className="bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-2xl px-6 h-12 shadow-xl shadow-blue-500/20 transition-all hover:scale-105 active:scale-95">
+            <Plus className="h-5 w-5 mr-2" />
+            New Alliance
+          </Button>
+        </motion.div>
+      </div>
+
+      <motion.div variants={itemAnim} className="flex flex-col md:flex-row gap-4">
+        <div className="relative flex-1 group">
+          <Search className="absolute left-5 top-1/2 -translate-y-1/2 h-5 w-5 text-zinc-500 group-focus-within:text-blue-400 transition-colors" />
+          <Input 
+            className="pl-14 h-16 chic-glass chic-border rounded-[24px] text-white placeholder:text-zinc-700 focus:ring-blue-500/20 text-lg tracking-tight border-white/5" 
+            placeholder="Search alliance database..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+          />
         </div>
-        <Button size="sm" className="bg-emerald-500 hover:bg-emerald-600 text-black font-bold h-10 px-6 rounded-xl">
-          <Plus className="h-4 w-4 mr-2" />
-          Add Partner
+        <Button variant="outline" className="h-16 px-8 rounded-[24px] chic-glass chic-border text-zinc-400 hover:text-white hover:bg-white/5 border-white/5 font-black uppercase tracking-widest text-[10px]">
+          <Share2 className="h-4 w-4 mr-2" />
+          Broadcast Interest
         </Button>
-      </div>
+      </motion.div>
 
-      <div className="relative">
-        <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-zinc-400" />
-        <Input className="pl-10 bg-emerald-500/5 border-white/5 text-white placeholder:text-zinc-600 focus:border-emerald-500/50 focus:ring-emerald-500/20 rounded-xl" placeholder="Search partners by name, role or organization..." />
-      </div>
-
-      <Card className="bg-zinc-900/40 backdrop-blur-2xl border-white/5 rounded-[32px] overflow-hidden">
-        <Table>
-          <TableHeader>
-            <TableRow className="dark:border-zinc-800">
-              <TableHead>Partner</TableHead>
-              <TableHead>Role / Specialty</TableHead>
-              <TableHead>Organization</TableHead>
-              <TableHead>Contact</TableHead>
-              <TableHead>Collab Type</TableHead>
-              <TableHead>Status</TableHead>
-              <TableHead className="text-right">Actions</TableHead>
-            </TableRow>
-          </TableHeader>
-          <TableBody>
-            {data?.partnerships.map((partner) => (
-              <TableRow key={partner.id} className="dark:border-zinc-800">
-                <TableCell>
-                  <div className="font-medium dark:text-zinc-200">{partner.name}</div>
-                </TableCell>
-                <TableCell>
-                  <div className="text-sm dark:text-zinc-400">{partner.role}</div>
-                  <div className="text-[10px] text-zinc-500">{partner.specialty}</div>
-                </TableCell>
-                <TableCell className="dark:text-zinc-400">{partner.organization}</TableCell>
-                <TableCell>
-                  <div className="flex items-center gap-1 text-xs text-blue-500 hover:underline cursor-pointer">
-                    <Mail className="h-3 w-3" />
-                    {partner.contact}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <AnimatePresence mode="popLayout">
+          {filteredPartners.map((item) => (
+            <motion.div 
+              layout
+              key={item.id} 
+              variants={itemAnim}
+              initial="hidden"
+              animate="show"
+              exit={{ opacity: 0, scale: 0.9 }}
+            >
+              <Card className="group chic-glass chic-border rounded-[32px] overflow-hidden hover:scale-[1.02] transition-all duration-500 cursor-pointer h-full border-white/5 relative">
+                <CardContent className="p-8">
+                  <div className="flex justify-between items-start mb-6">
+                    <div className="p-4 bg-blue-500/5 rounded-2xl border border-white/5 group-hover:bg-blue-500/10 group-hover:border-blue-500/20 transition-all duration-500">
+                      <Globe className="w-6 h-6 text-zinc-400 group-hover:text-blue-400" />
+                    </div>
+                    <Badge variant={item.status === 'Active' || item.status === 'Confirmed' ? 'success' : 'secondary'} className="px-3 py-1 text-[8px] font-black uppercase tracking-widest rounded-full border-none">
+                      {item.status}
+                    </Badge>
                   </div>
-                </TableCell>
-                <TableCell>
-                  <Badge variant="secondary" className="text-[10px]">{partner.type}</Badge>
-                </TableCell>
-                <TableCell>
-                  <Badge variant={partner.status === 'Active' || partner.status === 'Confirmed' ? 'success' : 'warning'}>
-                    {partner.status}
-                  </Badge>
-                </TableCell>
-                <TableCell className="text-right">
-                  <Button variant="ghost" size="icon" className="h-8 w-8"><MoreVertical className="h-4 w-4" /></Button>
-                </TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </Card>
+                  
+                  <div className="space-y-6">
+                    <div>
+                         <span className="text-[10px] font-black uppercase tracking-[0.2em] text-blue-500/60 block mb-2">{item.sector}</span>
+                         <h3 className="text-2xl font-black text-white tracking-tighter leading-tight group-hover:text-blue-400 transition-colors duration-300">
+                           {item.name}
+                         </h3>
+                         <p className="text-[10px] font-bold text-zinc-500 uppercase tracking-widest mt-1">{item.organization}</p>
+                    </div>
+
+                    <div className="p-4 bg-white/5 rounded-2xl border border-white/5">
+                        <div className="flex items-center gap-2 mb-2">
+                           <Target className="w-3 h-3 text-zinc-500" />
+                           <span className="text-[9px] font-black text-zinc-500 uppercase tracking-widest">Protocol</span>
+                        </div>
+                        <p className="text-white font-bold text-xs tracking-tight line-clamp-2 leading-relaxed">
+                           Strategic institutional alignment for medical excellence and pathway optimization.
+                        </p>
+                    </div>
+
+                    <div className="pt-6 border-t border-white/5 flex items-center justify-between">
+                      <div className="flex items-center gap-4">
+                        <div className="flex items-center gap-1.5 hover:text-blue-400 transition-colors">
+                           <Mail className="h-3 w-3 text-zinc-600" />
+                           <span className="text-[9px] font-black text-zinc-600 uppercase tracking-widest truncate max-w-[80px]">{item.contact}</span>
+                        </div>
+                        <Badge variant="secondary" className="bg-white/5 text-zinc-500 text-[8px] uppercase tracking-widest border-none px-2 py-0.5">{item.type}</Badge>
+                      </div>
+                      <Button variant="ghost" size="icon" className="h-10 w-10 rounded-xl bg-white/5 opacity-0 group-hover:opacity-100 transition-all hover:bg-white/10 text-white">
+                        <ArrowUpRight className="h-4 w-4" />
+                      </Button>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </motion.div>
+          ))}
+        </AnimatePresence>
+      </div>
+
+      {filteredPartners.length === 0 && (
+        <div className="text-center py-20 chic-glass rounded-[40px] border-2 border-dashed border-white/5">
+          <Handshake className="h-16 w-16 mx-auto text-blue-500/10 mb-4" />
+          <p className="text-zinc-600 font-black uppercase tracking-[0.3em] text-xs">No strategic alliances found</p>
+        </div>
+      )}
     </motion.div>
   );
 }

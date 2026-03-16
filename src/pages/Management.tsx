@@ -42,23 +42,35 @@ export function Management() {
   };
 
   const handleCreate = async () => {
+    if (!name || !university) return;
     setIsLoading(true);
     try {
-      // 1. Add to ambassadors table
+      // 1. Generate credentials if not already done
+      if (!generatedId) generateCredentials();
+
+      // 2. Add to ambassadors table
       const { data: ambData, error: ambError } = await supabase
         .from('ambassadors')
-        .insert([{ name, university, status: 'Active', taskCompletion: 0 }])
+        .insert([{ 
+          name, 
+          university, 
+          status: 'Active', 
+          taskCompletion: 0,
+          // We can store the generated ID in a metadata field if it exists
+        }])
         .select()
         .single();
 
       if (ambError) throw ambError;
 
-      // 2. Note: Supabase doesn't allow front-end user creation without service role.
-      // We will show the "Card" for the admin to use in the Supabase Auth UI.
-      // Or provide the SQL in a handy box.
+      // 3. Automation Note: Direct Auth creation requires Service Role.
+      // We will trigger a 'success' toast and copy the credentials.
+      copyToClipboard();
+      alert(`Success! ${name} has been staged in the system. Credentials copied to clipboard. \n\nPlease finalise in Supabase Auth.`);
       
-    } catch (err) {
+    } catch (err: any) {
       console.error(err);
+      alert("Registration Error: " + err.message);
     } finally {
       setIsLoading(false);
     }
@@ -82,7 +94,7 @@ export function Management() {
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         {/* Registration Form */}
-        <Card className="bg-zinc-900/40 backdrop-blur-2xl border-white/5 rounded-[32px] overflow-hidden shadow-2xl">
+        <Card className="bg-emerald-950/20 backdrop-blur-2xl border-white/5 rounded-[32px] overflow-hidden shadow-2xl">
           <CardHeader>
             <CardTitle className="flex items-center gap-3 text-xl font-black text-white uppercase tracking-tighter">
               <UserPlus className="h-6 w-6 text-emerald-400" />

@@ -60,6 +60,30 @@ export function LoginPage() {
       >
         {/* BRANDING HEADER */}
         <div className="text-center mb-10">
+          <motion.h1 
+            initial={{ y: -20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.3 }}
+            className="text-4xl md:text-5xl font-black text-white tracking-tighter leading-none mb-4"
+          >
+            THE USMLE FORUM <br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-blue-500">
+              OF PAKISTAN
+            </span>
+          </motion.h1>
+          
+          <motion.div 
+            initial={{ y: -10, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.5 }}
+            className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-[10px] uppercase tracking-[0.2em] font-bold"
+          >
+            <Stethoscope className="w-3 h-3" />
+            Official Member Portal
+          </motion.div>
+        </div>
+        {/* BRANDING HEADER */}
+        <div className="text-center mb-10">
           <motion.div 
             initial={{ y: -20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}

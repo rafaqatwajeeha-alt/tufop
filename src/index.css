@@ -39,24 +39,53 @@ body {
                     radial-gradient(at 100% 100%, rgba(99, 102, 241, 0.05) 0, transparent 50%);
 }
 
-/* Premium Card Transitions */
-.dark .card {
-  @apply bg-zinc-900/40 backdrop-blur-md border border-white/5;
+/* Premium Card Styles */
+.dark .chic-glass {
+  @apply bg-emerald-950/20 backdrop-blur-3xl border border-white/5 shadow-2xl;
+  background-image: radial-gradient(at 0% 0%, rgba(16, 185, 129, 0.05) 0, transparent 50%);
 }
 
-/* Custom Scrollbar for Dark Mode */
+.dark .chic-border {
+  @apply relative;
+}
+
+.dark .chic-border::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(130deg, rgba(255,255,255,0.1), transparent, rgba(16, 185, 129, 0.1));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+/* Elegant Contrast Typography */
+.chic-heading {
+  @apply font-black tracking-tighter text-white;
+  text-shadow: 0 0 40px rgba(16, 185, 129, 0.2);
+}
+
+.chic-sub {
+  @apply text-[10px] font-black uppercase tracking-[0.3em] text-emerald-500/80;
+}
+
+/* Custom Scrollbar */
 .dark ::-webkit-scrollbar {
   width: 6px;
 }
 .dark ::-webkit-scrollbar-track {
-  background: #020617;
+  background: transparent;
 }
 .dark ::-webkit-scrollbar-thumb {
-  background: #1e293b;
+  background: rgba(16, 185, 129, 0.2);
   border-radius: 10px;
 }
 .dark ::-webkit-scrollbar-thumb:hover {
-  background: #334155;
+  background: rgba(16, 185, 129, 0.4);
 }
 
 
@@ -104,4 +133,18 @@ body {
 @keyframes shimmer {
   0% { transform: translateX(-100%) rotate(45deg); }
   100% { transform: translateX(100%) rotate(45deg); }
+}
+
+.chic-blue-glass {
+  background: rgba(30, 58, 138, 0.1);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+}
+
+.chic-blue-border {
+  border: 1px solid rgba(59, 130, 246, 0.1);
+}
+
+.chic-blue-glow {
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.1);
 }

@@ -39,7 +39,7 @@ export function GrowthMetrics() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {metrics.map((m) => (
-          <Card key={m.label} className="dark:bg-zinc-900/50">
+          <Card key={m.label} className="bg-emerald-950/20 backdrop-blur-2xl border-white/5">
             <CardContent className="pt-6">
               <div className="flex justify-between items-start">
                 <div className={m.color}>

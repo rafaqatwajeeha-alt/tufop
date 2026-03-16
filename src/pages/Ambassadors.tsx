@@ -23,9 +23,24 @@ export function Ambassadors() {
     .sort((a, b) => (b.taskCompletion || 0) - (a.taskCompletion || 0));
 
   const getRankBadge = (index: number) => {
-    if (index === 0) return <Trophy className="h-5 w-5 text-amber-500 fill-amber-500/10" />;
-    if (index === 1) return <Medal className="h-5 w-5 text-zinc-400 fill-zinc-400/10" />;
-    if (index === 2) return <Medal className="h-5 w-5 text-amber-700 fill-amber-700/10" />;
+    if (index === 0) return (
+      <div className="flex items-center gap-2">
+        <Trophy className="h-5 w-5 text-amber-500 fill-amber-500/10" />
+        <span className="text-[10px] font-black uppercase tracking-widest text-amber-500">Top Performer</span>
+      </div>
+    );
+    if (index === 1) return (
+      <div className="flex items-center gap-2">
+        <Medal className="h-5 w-5 text-zinc-400 fill-zinc-400/10" />
+        <span className="text-[10px] font-black uppercase tracking-widest text-zinc-400">Silver Rank</span>
+      </div>
+    );
+    if (index === 2) return (
+      <div className="flex items-center gap-2">
+        <Medal className="h-5 w-5 text-amber-700 fill-amber-700/10" />
+        <span className="text-[10px] font-black uppercase tracking-widest text-amber-700">Bronze Rank</span>
+      </div>
+    );
     return <span className="text-xs font-bold text-zinc-400">#{index + 1}</span>;
   };
 
@@ -74,7 +89,7 @@ export function Ambassadors() {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {filtered.map((amb, index) => (
           <Card key={amb.id} className={cn(
-            "group relative overflow-hidden bg-zinc-900/40 backdrop-blur-2xl border-white/5 hover:border-emerald-500/30 transition-all duration-500 rounded-[32px]",
+            "group relative overflow-hidden bg-emerald-950/20 backdrop-blur-2xl border-white/5 hover:border-emerald-500/50 transition-all duration-500 rounded-[32px]",
             index === 0 && viewType === 'leaderboard' ? "border-emerald-500/50 bg-emerald-500/10" : ""
           )}>
             {index === 0 && viewType === 'leaderboard' && (

@@ -88,7 +88,7 @@ export function Dashboard() {
             </div>
             <span className="text-[10px] font-black uppercase tracking-[0.3em] text-emerald-500/60">Live Intelligence</span>
           </div>
-          <h1 className="text-4xl font-black tracking-tighter text-white">Operations Command</h1>
+          <h1 className="text-4xl chic-heading mb-2">Operations Command</h1>
           <p className="text-zinc-500 font-medium mt-1">Strategic oversight of the TUFOP ecosystem.</p>
         </motion.div>
         
@@ -108,7 +108,7 @@ export function Dashboard() {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {(data?.kpis || []).map((kpi, idx) => (
           <motion.div key={kpi.label} variants={item}>
-            <Card className="shimmer group bg-zinc-900/40 backdrop-blur-2xl border-white/5 hover:border-emerald-500/30 transition-all duration-500 rounded-[32px] overflow-hidden">
+            <Card className="shimmer group chic-glass chic-border rounded-[32px] overflow-hidden">
               <CardContent className="p-7">
                 <div className="flex justify-between items-start mb-4">
                   <div className="p-2.5 bg-emerald-500/5 rounded-2xl border border-white/5 group-hover:bg-emerald-500/10 group-hover:border-emerald-500/20 transition-colors">
@@ -138,17 +138,17 @@ export function Dashboard() {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         {/* Main Growth Graph */}
         <motion.div variants={item} className="lg:col-span-2">
-          <Card className="bg-zinc-900/40 backdrop-blur-2xl border-white/5 rounded-[32px] overflow-hidden flex flex-col h-full">
+          <Card className="chic-glass chic-border rounded-[32px] overflow-hidden flex flex-col h-full">
             <CardHeader className="p-8 pb-0">
               <div className="flex items-center justify-between">
                 <div>
-                  <CardTitle className="text-xl font-black text-white tracking-tight">Ecosystem Growth</CardTitle>
-                  <p className="text-xs font-medium text-zinc-500 mt-1">Real-time attendance & engagement data</p>
+                  <CardTitle className="text-xl chic-heading">Ecosystem Growth</CardTitle>
+                  <p className="text-xs font-medium text-emerald-500/60 mt-1 uppercase tracking-widest">Real-time attendance & engagement data</p>
                 </div>
                 <div className="flex gap-2">
-                    <div className="flex items-center gap-1.5 px-3 py-1.5 bg-emerald-500/5 rounded-xl border border-emerald-500/10">
-                    <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-                    <span className="text-[10px] font-bold text-zinc-400 uppercase tracking-widest">Live</span>
+                    <div className="flex items-center gap-1.5 px-3 py-1.5 chic-glass rounded-xl border border-emerald-500/20 shadow-lg shadow-emerald-500/5">
+                    <div className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shadow-[0_0_8px_rgba(52,211,153,0.5)]" />
+                    <span className="text-[10px] font-black text-emerald-400 uppercase tracking-[0.2em]">Operational</span>
                   </div>
                 </div>
               </div>
@@ -196,7 +196,7 @@ export function Dashboard() {
 
         {/* Action Priority List */}
         <motion.div variants={item}>
-          <Card className="bg-zinc-900/40 backdrop-blur-2xl border-white/5 rounded-[32px] overflow-hidden flex flex-col h-full">
+          <Card className="chic-glass chic-border rounded-[32px] overflow-hidden flex flex-col h-full">
             <CardHeader className="p-8 pb-4">
               <CardTitle className="text-xl font-black text-white tracking-tight">Active Focus</CardTitle>
             </CardHeader>

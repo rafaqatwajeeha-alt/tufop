@@ -144,17 +144,23 @@ export function TopBar({ isDark, toggleTheme }: TopBarProps) {
           >
             <div className="text-right hidden sm:block">
               <p className={cn(
-                "text-sm font-black tracking-tight leading-none transition-colors",
+                "text-sm font-black tracking-tighter leading-none transition-colors uppercase mb-1",
                 showProfileMenu ? "text-zinc-950" : "text-white"
               )}>
                 {profile?.full_name || 'TUFOP Member'}
               </p>
-              <p className={cn(
-                "text-[9px] font-black uppercase tracking-widest mt-1 opacity-60",
-                showProfileMenu ? "text-emerald-700" : "text-emerald-400"
-              )}>
-                {profile?.designation || 'Operational Tier'}
-              </p>
+              <div className="flex items-center justify-end gap-1.5">
+                <div className={cn(
+                  "w-1 h-1 rounded-full animate-pulse",
+                  showProfileMenu ? "bg-emerald-600" : "bg-emerald-500"
+                )} />
+                <p className={cn(
+                  "text-[9px] font-black uppercase tracking-widest leading-none",
+                  showProfileMenu ? "text-emerald-700" : "text-emerald-400"
+                )}>
+                  {profile?.designation || 'Operational Tier'}
+                </p>
+              </div>
             </div>
             
             <div className={cn(
