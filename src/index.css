@@ -58,6 +58,7 @@ body {
 }
 
 
+/* Floating Aura Animation
 /* Floating Aura Animation */
 @keyframes float {
   0% { transform: translate(0, 0) scale(1); }
