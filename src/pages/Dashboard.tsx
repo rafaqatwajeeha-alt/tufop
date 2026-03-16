@@ -45,6 +45,24 @@ export function Dashboard() {
   const [isModalOpen, setIsModalOpen] = React.useState(false);
   const { toasts, toast } = useToast();
 
+  const universityData = React.useMemo(() => {
+    const counts: Record<string, number> = {};
+    (data?.ambassadors || []).forEach(a => {
+      const uni = a.university || "Other";
+      counts[uni] = (counts[uni] || 0) + 1;
+    });
+    return Object.entries(counts).map(([name, value]) => ({ name, value }));
+  }, [data?.ambassadors]);
+
+  const priorityData = React.useMemo(() => {
+    const counts: Record<string, number> = { "High": 0, "Medium": 0, "Low": 0 };
+    (data?.projects || []).forEach(p => {
+      const priority = p.priority || "Medium";
+      counts[priority] = (counts[priority] || 0) + 1;
+    });
+    return Object.entries(counts).map(([name, value]) => ({ name, value }));
+  }, [data?.projects]);
+
   if (loading) {
     return (
       <div className="space-y-8 animate-pulse p-4">
@@ -250,14 +268,7 @@ export function Dashboard() {
             <CardContent className="p-8 pt-6 flex-1">
                <div className="h-full w-full">
                  <ResponsiveContainer width="100%" height="100%">
-                   <BarChart data={React.useMemo(() => {
-                     const counts: Record<string, number> = {};
-                     (data?.ambassadors || []).forEach(a => {
-                       const uni = a.university || "Other";
-                       counts[uni] = (counts[uni] || 0) + 1;
-                     });
-                     return Object.entries(counts).map(([name, value]) => ({ name, value }));
-                   }, [data?.ambassadors])}>
+                   <BarChart data={universityData}>
                      <XAxis dataKey="name" hide />
                      <Tooltip 
                        cursor={{ fill: 'rgba(124, 191, 176, 0.05)' }}
@@ -288,14 +299,7 @@ export function Dashboard() {
                  <ResponsiveContainer width="100%" height="100%">
                    <PieChart>
                      <Pie
-                       data={React.useMemo(() => {
-                         const counts: Record<string, number> = { "High": 0, "Medium": 0, "Low": 0 };
-                         (data?.projects || []).forEach(p => {
-                           const priority = p.priority || "Medium";
-                           counts[priority] = (counts[priority] || 0) + 1;
-                         });
-                         return Object.entries(counts).map(([name, value]) => ({ name, value }));
-                       }, [data?.projects])}
+                       data={priorityData}
                        innerRadius={70}
                        outerRadius={90}
                        paddingAngle={10}
