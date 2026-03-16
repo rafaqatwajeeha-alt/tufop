@@ -1,20 +1,14 @@
 @import "tailwindcss";
 
 @theme {
-  --color-zinc-950: #020617; /* Deep Navy Black */
-  --color-zinc-900: #0f172a; /* Slate 900 */
-  --color-zinc-800: #1e293b; /* Slate 800 */
-  --color-zinc-700: #334155; 
-  --color-zinc-600: #475569;
-  --color-zinc-500: #64748b;
-  --color-zinc-400: #94a3b8;
-  --color-zinc-300: #cbd5e1;
-  --color-zinc-200: #e2e8f0;
-  --color-zinc-100: #f1f5f9;
-  --color-zinc-50: #f8fafc;
-  --color-emerald-500: #0d9488; /* Professional Teal/Emerald from Logo */
-  --color-emerald-400: #14b8a6;
-  --color-emerald-600: #0f766e;
+  --color-zinc-950: #020617; 
+  --color-zinc-900: #0f172a; 
+  --color-zinc-800: #1e293b; 
+  --color-emerald-500: #10b981; /* Vibrant Emerald */
+  --color-emerald-400: #34d399; /* Mintier Emerald */
+  --color-emerald-600: #059669; 
+  --color-teal-950: #042f2e;
+  --color-teal-900: #134e4a;
 }
 
 @layer base {
@@ -24,25 +18,29 @@
   }
 
   .dark {
-    --background: 222 47% 4%; /* Near black navy */
+    --background: 222 47% 4%; 
     --foreground: 210 40% 98%;
   }
 }
 
 body {
-  @apply bg-zinc-50 text-zinc-950 antialiased transition-colors duration-500 selection:bg-blue-500/20;
+  @apply bg-zinc-50 text-zinc-950 antialiased transition-colors duration-500 selection:bg-emerald-500/20;
 }
 
 .dark body {
-  @apply bg-zinc-950 text-zinc-50;
-  background-image: radial-gradient(at 0% 0%, rgba(59, 130, 246, 0.05) 0, transparent 50%),
-                    radial-gradient(at 100% 100%, rgba(99, 102, 241, 0.05) 0, transparent 50%);
+  @apply bg-[#020617] text-zinc-50;
+  background-image: radial-gradient(at 0% 0%, rgba(16, 185, 129, 0.08) 0, transparent 50%),
+                    radial-gradient(at 100% 100%, rgba(20, 184, 166, 0.08) 0, transparent 50%);
 }
 
-/* Premium Card Styles */
+/* Premium Lush Card Styles */
 .dark .chic-glass {
-  @apply bg-emerald-950/20 backdrop-blur-3xl border border-white/5 shadow-2xl;
-  background-image: radial-gradient(at 0% 0%, rgba(16, 185, 129, 0.05) 0, transparent 50%);
+  @apply bg-emerald-950/40 backdrop-blur-3xl border border-emerald-500/10 shadow-2xl;
+  background-image: radial-gradient(at 0% 0%, rgba(16, 185, 129, 0.1) 0, transparent 50%);
+}
+
+.dark .chic-emerald-glow {
+  @apply bg-emerald-500 text-zinc-950 shadow-[0_0_30px_rgba(16,185,129,0.4)];
 }
 
 .dark .chic-border {
@@ -55,7 +53,7 @@ body {
   inset: 0;
   border-radius: inherit;
   padding: 1px;
-  background: linear-gradient(130deg, rgba(255,255,255,0.1), transparent, rgba(16, 185, 129, 0.1));
+  background: linear-gradient(130deg, rgba(16, 185, 129, 0.3), transparent, rgba(16, 185, 129, 0.1));
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
@@ -66,11 +64,11 @@ body {
 /* Elegant Contrast Typography */
 .chic-heading {
   @apply font-black tracking-tighter text-white;
-  text-shadow: 0 0 40px rgba(16, 185, 129, 0.2);
+  text-shadow: 0 0 30px rgba(16, 185, 129, 0.3);
 }
 
 .chic-sub {
-  @apply text-[10px] font-black uppercase tracking-[0.3em] text-emerald-500/80;
+  @apply text-[10px] font-black uppercase tracking-[0.3em] text-emerald-400;
 }
 
 /* Custom Scrollbar */

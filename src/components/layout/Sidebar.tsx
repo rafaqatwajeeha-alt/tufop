@@ -113,9 +113,9 @@ export function Sidebar({ activeTab, setActiveTab, userRole }: SidebarProps) {
                       key={item.id}
                       onClick={() => setActiveTab(item.id)}
                       className={cn(
-                        "w-full flex items-center justify-between px-4 py-3 rounded-2xl text-xs font-bold transition-all duration-300 group",
+                        "w-full flex items-center justify-between px-4 py-3 rounded-2xl text-xs font-black transition-all duration-500 group relative overflow-hidden",
                         isActive
-                          ? "bg-white text-zinc-950 shadow-xl shadow-white/5" 
+                          ? "chic-emerald-glow scale-[1.02]" 
                           : "text-zinc-500 hover:text-white hover:bg-white/5"
                       )}
                     >
