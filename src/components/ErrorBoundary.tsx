@@ -10,10 +10,13 @@ interface State {
 }
 
 export class ErrorBoundary extends Component<Props, State> {
-  public state: State = {
-    hasError: false,
-    error: null
-  };
+  constructor(props: Props) {
+    super(props);
+    this.state = {
+      hasError: false,
+      error: null
+    };
+  }
 
   public static getDerivedStateFromError(error: Error): State {
     return { hasError: true, error };
@@ -26,15 +29,20 @@ export class ErrorBoundary extends Component<Props, State> {
   public render() {
     if (this.state.hasError) {
       return (
-        <div className="min-h-screen flex items-center justify-center bg-red-50 p-4 text-center">
-          <div className="max-w-md bg-white p-8 rounded-2xl shadow-xl border border-red-100">
-            <h1 className="text-xl font-bold text-red-600 mb-2">Something went wrong</h1>
-            <p className="text-zinc-600 mb-4">{this.state.error?.message}</p>
+        <div className="min-h-screen flex items-center justify-center bg-[#020617] p-8 text-center text-white">
+          <div className="max-w-xl chic-glass chic-border p-12 rounded-[40px] shadow-2xl">
+            <h1 className="text-3xl chic-heading mb-4">System Anomaly Detected</h1>
+            <p className="chic-text-muted mb-8 text-lg">{this.state.error?.message || "An unexpected runtime error has occurred in the protocol."}</p>
+            <div className="p-4 bg-red-500/10 border border-red-500/20 rounded-2xl mb-8 text-left overflow-auto max-h-40">
+              <code className="text-xs text-red-400 font-mono italic">
+                {this.state.error?.stack}
+              </code>
+            </div>
             <button 
               onClick={() => window.location.reload()}
-              className="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors"
+              className="bg-white text-zinc-950 font-black px-10 py-4 rounded-2xl hover:scale-105 transition-all shadow-xl shadow-white/5 active:scale-95 uppercase tracking-widest text-xs"
             >
-              Reload Page
+              Restart Protocol
             </button>
           </div>
         </div>

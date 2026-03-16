@@ -4,7 +4,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "../components/ui/Card"
 import { Badge } from "../components/ui/Badge";
 import { useDashboardData } from "../hooks/useDashboardData";
 import { motion } from "motion/react";
-import { cn } from "@/src/lib/utils";
+import { cn } from "../lib/utils";
 
 export function Roadmap() {
   const { data } = useDashboardData();
