@@ -38,11 +38,11 @@ import { useToast, ToastContainer } from "../components/ui/Toast";
 import { motion } from "motion/react";
 
 export function Dashboard() {
-  const { data, isLoading, error } = useDashboardData();
+  const { data, loading } = useDashboardData();
   const [isModalOpen, setIsModalOpen] = React.useState(false);
   const { toasts, toast } = useToast();
 
-  if (isLoading) {
+  if (loading) {
     return (
       <div className="space-y-8 animate-pulse">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -55,16 +55,7 @@ export function Dashboard() {
     );
   }
 
-  if (error) {
-    return (
-      <div className="flex flex-col items-center justify-center h-96 text-center">
-        <AlertTriangle className="h-12 w-12 text-red-500 mb-4" />
-        <h2 className="text-xl font-semibold dark:text-white">Failed to load dashboard</h2>
-        <p className="text-zinc-500 dark:text-zinc-400 mt-2">Please check your connection and try again.</p>
-        <Button className="mt-4" onClick={() => window.location.reload()}>Retry</Button>
-      </div>
-    );
-  }
+
 
   return (
     <motion.div 
@@ -93,7 +84,7 @@ export function Dashboard() {
 
       {/* KPI Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        {data?.kpis.map((kpi, idx) => (
+        {(data?.kpis || []).map((kpi, idx) => (
           <motion.div
             key={kpi.label}
             initial={{ opacity: 0, y: 20 }}
@@ -133,7 +124,7 @@ export function Dashboard() {
           </CardHeader>
           <CardContent>
             <div className="space-y-6">
-              {data?.programs.slice(0, 3).map((prog) => (
+              {(data?.programs || []).slice(0, 3).map((prog) => (
                 <div key={prog.id} className="space-y-2">
                   <div className="flex justify-between text-sm">
                     <span className="font-medium dark:text-zinc-200">{prog.name}</span>
@@ -158,7 +149,7 @@ export function Dashboard() {
           </CardHeader>
           <CardContent>
             <div className="space-y-4">
-              {data?.recentActivity.map((act) => (
+              {(data?.recentActivity || []).map((act) => (
                 <div key={act.id} className="flex gap-3 text-sm">
                   <div className="h-8 w-8 rounded-full bg-zinc-100 dark:bg-zinc-800 flex items-center justify-center shrink-0">
                     <Clock className="h-4 w-4 text-zinc-400" />
@@ -184,7 +175,7 @@ export function Dashboard() {
           </CardHeader>
           <CardContent className="h-64">
             <ResponsiveContainer width="100%" height="100%">
-              <AreaChart data={data?.content}>
+              <AreaChart data={data?.content || []}>
                 <defs>
                   <linearGradient id="colorGrowth" x1="0" y1="0" x2="0" y2="1">
                     <stop offset="5%" stopColor="#3b82f6" stopOpacity={0.3}/>
@@ -210,7 +201,7 @@ export function Dashboard() {
           </CardHeader>
           <CardContent>
             <div className="space-y-4">
-              {data?.projects.map((proj) => (
+              {(data?.projects || []).map((proj) => (
                 <div key={proj.id} className="flex items-center justify-between p-3 rounded-lg bg-zinc-50 dark:bg-zinc-900 border dark:border-zinc-800">
                   <div className="flex items-center gap-3">
                     <div className={cn(

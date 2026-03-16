@@ -17,6 +17,7 @@ import { Ambassadors } from "./pages/Ambassadors";
 import { Universities } from "./pages/Universities";
 import { Team } from "./pages/Team";
 import { LoginPage } from "./pages/LoginPage";
+import { ErrorBoundary } from "./components/ErrorBoundary";
 
 function AppContent() {
   const { session, profile, loading } = useAuth();

@@ -15,8 +15,8 @@ import {
   Library,
   Heart
 } from "lucide-react";
-import { cn } from "@/src/lib/utils";
-import { useAuth } from "@/src/lib/AuthContext";
+import { cn } from "../../lib/utils";
+import { useAuth } from "../../lib/AuthContext";
 
 export type TabId = 
   | "dashboard" 
@@ -88,7 +88,7 @@ export function Sidebar({ activeTab, setActiveTab, userRole }: SidebarProps) {
     items: section.items.filter(item => {
       if (userRole === 'admin') return true;
       // Ambassadors can only see these
-      const allowed = ['growth', 'ambassadors', 'accountability', 'content'];
+      const allowed = ['dashboard', 'growth', 'ambassadors', 'accountability', 'content', 'team'];
       return allowed.includes(item.id);
     })
   })).filter(section => section.items.length > 0);

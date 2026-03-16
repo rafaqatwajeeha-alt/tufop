@@ -8,6 +8,10 @@ export interface DashboardData {
   roadmap: any[];
   knowledge: any[];
   notifications: any[];
+  programs: any[];
+  recentActivity: any[];
+  content: any[];
+  projects: any[];
 }
 
 export function useDashboardData() {
@@ -19,12 +23,16 @@ export function useDashboardData() {
       const { data: { user } } = await supabase.auth.getUser();
 
       const [
-        { data: ambassadors },
-        { data: universities },
-        { data: kpis },
-        { data: roadmap },
-        { data: knowledge },
-        { data: notifications }
+        ambassadorsRes,
+        universitiesRes,
+        kpisRes,
+        roadmapRes,
+        knowledgeRes,
+        notificationsRes,
+        programsRes,
+        recentActivityRes,
+        contentRes,
+        projectsRes
       ] = await Promise.all([
         supabase.from('ambassadors').select('*'),
         supabase.from('universities').select('*'),
@@ -34,26 +42,45 @@ export function useDashboardData() {
         supabase.from('notifications')
           .select('*')
           .eq('user_id', user?.id || '')
-          .order('created_at', { ascending: false })
+          .order('created_at', { ascending: false }),
+        supabase.from('programs').select('*'),
+        supabase.from('recent_activity').select('*'),
+        supabase.from('content_performance').select('*'),
+        supabase.from('projects').select('*')
       ]);
 
+      const ambassadors = ambassadorsRes.data || [];
+      const universities = universitiesRes.data || [];
+      const kpis = kpisRes.data || [];
+      const roadmap = roadmapRes.data || [];
+      const knowledge = knowledgeRes.data || [];
+      const notifications = notificationsRes.data || [];
+      const programs = programsRes.data || [];
+      const recentActivity = recentActivityRes.data || [];
+      const content = contentRes.data || [];
+      const projects = projectsRes.data || [];
+
       // Dynamic counts for KPIs
-      const ambassadorCount = ambassadors?.length || 0;
-      const universityCount = universities?.length || 0;
+      const ambassadorCount = ambassadors.length;
+      const universityCount = universities.length;
       
-      const mappedKpis = (kpis || []).map(kpi => {
+      const mappedKpis = kpis.map(kpi => {
         if (kpi.label === 'Total Ambassadors') return { ...kpi, value: ambassadorCount.toString() };
         if (kpi.label === 'Universities Covered') return { ...kpi, value: universityCount.toString() };
         return kpi;
       });
 
       setData({
-        ambassadors: ambassadors || [],
-        universities: universities || [],
+        ambassadors,
+        universities,
         kpis: mappedKpis,
-        roadmap: roadmap || [],
-        knowledge: knowledge || [],
-        notifications: notifications || []
+        roadmap,
+        knowledge,
+        notifications,
+        programs,
+        recentActivity,
+        content,
+        projects
       });
     } catch (error) {
       console.error("Error fetching dashboard data:", error);
@@ -80,6 +107,16 @@ export function useDashboardData() {
         .on(
           'postgres_changes',
           { event: '*', schema: 'public', table: 'universities' },
+          () => fetchData()
+        )
+        .on(
+          'postgres_changes',
+          { event: '*', schema: 'public', table: 'programs' },
+          () => fetchData()
+        )
+        .on(
+          'postgres_changes',
+          { event: '*', schema: 'public', table: 'projects' },
           () => fetchData()
         );
 

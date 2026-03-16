@@ -18,7 +18,7 @@ export function TopBar({ isDark, toggleTheme }: TopBarProps) {
   const [showNotifications, setShowNotifications] = React.useState(false);
   
   const userInitial = profile?.full_name ? profile.full_name[0] : null;
-  const unreadCount = data?.notifications.filter(n => !n.is_read).length || 0;
+  const unreadCount = (data?.notifications || []).filter(n => !n.is_read).length || 0;
 
   const markAllAsRead = async () => {
     if (!profile?.id) return;

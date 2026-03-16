@@ -14,11 +14,13 @@ export function Ambassadors() {
   const [viewType, setViewType] = React.useState<'grid' | 'leaderboard'>('leaderboard');
 
   const filtered = [...(data?.ambassadors || [])]
-    .filter(a => 
-      a.name.toLowerCase().includes(search.toLowerCase()) || 
-      a.university.toLowerCase().includes(search.toLowerCase())
-    )
-    .sort((a, b) => b.taskCompletion - a.taskCompletion);
+    .filter(a => {
+      const name = a.name || "";
+      const uni = a.university || "";
+      return name.toLowerCase().includes(search.toLowerCase()) || 
+             uni.toLowerCase().includes(search.toLowerCase());
+    })
+    .sort((a, b) => (b.taskCompletion || 0) - (a.taskCompletion || 0));
 
   const getRankBadge = (index: number) => {
     if (index === 0) return <Trophy className="h-5 w-5 text-amber-500 fill-amber-500/10" />;
@@ -85,7 +87,7 @@ export function Ambassadors() {
               <div className="flex items-center gap-4 mb-4">
                 <div className="relative">
                   <div className="h-12 w-12 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-blue-600 dark:text-blue-400 font-bold text-lg">
-                    {amb.name.split(' ').map((n: string) => n[0]).join('')}
+                    {(amb.name || "A").split(' ').map((n: string) => n[0]).join('')}
                   </div>
                   {viewType === 'leaderboard' && (
                     <div className="absolute -top-1 -right-1 bg-white dark:bg-zinc-900 rounded-full p-0.5 shadow-sm border dark:border-zinc-800">
