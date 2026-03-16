@@ -20,10 +20,10 @@ export function GrowthMetrics() {
   const { data } = useDashboardData();
 
   const metrics = [
-    { label: "Total Ambassadors", value: data?.ambassadors?.length || 0, change: "New", icon: Users, color: "text-blue-500" },
-    { label: "Universities", value: data?.universities?.length || 0, change: "New", icon: GraduationCap, color: "text-emerald-500" },
-    { label: "Content Pieces", value: data?.content?.length || 0, change: "New", icon: BookOpen, color: "text-amber-500" },
-    { label: "Student Reach", value: (data?.programs?.reduce((acc, curr) => acc + (curr.participants || 0), 0) || 0).toLocaleString(), change: "New", icon: MousePointer2, color: "text-purple-500" },
+    { label: "Total Ambassadors", value: data?.ambassadors?.length || 0, change: "Active", icon: Users, color: "text-emerald-500" },
+    { label: "Universities", value: data?.universities?.length || 0, change: "Hubs", icon: GraduationCap, color: "text-teal-500" },
+    { label: "Content Pieces", value: data?.content?.length || 0, change: "Strategic", icon: BookOpen, color: "text-emerald-400" },
+    { label: "Student Reach", value: (data?.programs?.reduce((acc, curr) => acc + (curr.participants || 0), 0) || 0).toLocaleString(), change: "Global", icon: MousePointer2, color: "text-teal-400" },
   ];
 
   return (
@@ -68,8 +68,8 @@ export function GrowthMetrics() {
               <AreaChart data={data?.content}>
                 <defs>
                   <linearGradient id="colorEngage" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="5%" stopColor="#3b82f6" stopOpacity={0.3}/>
-                    <stop offset="95%" stopColor="#3b82f6" stopOpacity={0}/>
+                    <stop offset="5%" stopColor="#0d9488" stopOpacity={0.3}/>
+                    <stop offset="95%" stopColor="#0d9488" stopOpacity={0}/>
                   </linearGradient>
                 </defs>
                 <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#1f1f1f" />
@@ -78,7 +78,7 @@ export function GrowthMetrics() {
                 <Tooltip 
                   contentStyle={{ backgroundColor: '#0a0a0a', border: '1px solid #1f1f1f', borderRadius: '8px', fontSize: '12px' }}
                 />
-                <Area type="monotone" dataKey="attendance" stroke="#3b82f6" fillOpacity={1} fill="url(#colorEngage)" strokeWidth={2} />
+                <Area type="monotone" dataKey="attendance" stroke="#0d9488" fillOpacity={1} fill="url(#colorEngage)" strokeWidth={2} />
               </AreaChart>
             </ResponsiveContainer>
           </CardContent>
@@ -97,7 +97,7 @@ export function GrowthMetrics() {
                 <Tooltip 
                   contentStyle={{ backgroundColor: '#0a0a0a', border: '1px solid #1f1f1f', borderRadius: '8px', fontSize: '12px' }}
                 />
-                <Bar dataKey="participants" fill="#3b82f6" radius={[4, 4, 0, 0]} />
+                <Bar dataKey="participants" fill="#14b8a6" radius={[4, 4, 0, 0]} />
               </ReBarChart>
             </ResponsiveContainer>
           </CardContent>

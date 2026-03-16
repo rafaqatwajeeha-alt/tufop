@@ -183,6 +183,7 @@ export function Management() {
 
       {/* SQL Migration Box */}
       {generatedId && (
+        <Card className="bg-emerald-500/5 border-emerald-500/20 backdrop-blur-2xl rounded-[32px] overflow-hidden">
           <CardContent className="p-8">
             <div className="flex items-start gap-4">
               <div className="p-3 bg-emerald-500/10 rounded-2xl border border-emerald-500/20">

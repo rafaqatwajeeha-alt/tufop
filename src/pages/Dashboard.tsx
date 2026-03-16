@@ -243,6 +243,24 @@ export function Dashboard() {
             setIsModalOpen(false);
             toast("Strategic initiative deployed", "success");
           }}>
+            <div className="space-y-2">
+              <label className="text-[10px] font-black uppercase tracking-widest text-zinc-500 ml-1">Initiative Label</label>
+              <Input placeholder="Enter strategic objective..." required className="bg-emerald-500/5 border-white/5 h-14 rounded-2xl focus:ring-emerald-500/20 text-white" />
+            </div>
+            <div className="grid grid-cols-2 gap-4">
+              <div className="space-y-2">
+                <label className="text-[10px] font-black uppercase tracking-widest text-zinc-500 ml-1">Deployment Date</label>
+                <Input type="date" required className="bg-emerald-500/5 border-white/5 h-14 rounded-2xl text-white" />
+              </div>
+              <div className="space-y-2">
+                <label className="text-[10px] font-black uppercase tracking-widest text-zinc-500 ml-1">Priority Tier</label>
+                <select className="flex h-14 w-full rounded-2xl border border-white/5 bg-emerald-500/5 px-4 py-2 text-sm text-white focus:outline-none focus:ring-2 focus:ring-emerald-500/20">
+                  <option className="bg-zinc-900">Tier A (Critical)</option>
+                  <option className="bg-zinc-900">Tier B (Strategic)</option>
+                  <option className="bg-zinc-900">Tier C (Operational)</option>
+                </select>
+              </div>
+            </div>
             <div className="flex justify-end gap-3 pt-4">
               <Button variant="ghost" type="button" onClick={() => setIsModalOpen(false)} className="text-zinc-500 hover:text-white rounded-xl">Cancel</Button>
               <Button type="submit" className="bg-emerald-500 hover:bg-emerald-600 text-black font-black rounded-xl px-8 shadow-xl shadow-emerald-500/20">Confirm Deployment</Button>

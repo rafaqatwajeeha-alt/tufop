@@ -193,10 +193,10 @@ export function LoginPage() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.9 }}
-          className="mt-10 text-center text-[10px] text-zinc-600 uppercase tracking-[0.3em] font-semibold"
+          className="mt-10 text-center text-[10px] text-zinc-600 uppercase tracking-[0.3em] font-black"
         >
-          Protected by TUFOP Encryption Standards <br />
-          <span className="text-zinc-800 mt-1 block">© 2026 THE USMLE FORUM OF PAKISTAN</span>
+          Secure Operations Portal <br />
+          <span className="text-emerald-500/40 mt-1 block">R-22 TUFOP CORE ACCESS</span>
         </motion.p>
       </motion.div>
     </div>

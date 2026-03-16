@@ -22,7 +22,7 @@ export function Programs() {
           <h1 className="text-2xl font-bold dark:text-white">Programs & Initiatives</h1>
           <p className="text-sm text-zinc-500">Manage mentorship cohorts, podcasts, and workshops.</p>
         </div>
-        <Button size="sm">
+        <Button size="sm" className="bg-emerald-500 hover:bg-emerald-600 text-black font-bold h-10 px-6 rounded-xl">
           <Plus className="h-4 w-4 mr-2" />
           Create Program
         </Button>
@@ -31,9 +31,9 @@ export function Programs() {
       <div className="flex gap-4">
         <div className="relative flex-1">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-zinc-400" />
-          <Input className="pl-10 dark:bg-zinc-900 dark:border-zinc-800" placeholder="Search programs..." />
+          <Input className="pl-10 bg-emerald-500/5 border-white/5 text-white placeholder:text-zinc-600 focus:border-emerald-500/50 focus:ring-emerald-500/20 rounded-xl" placeholder="Search programs..." />
         </div>
-        <Button variant="outline" size="sm" className="dark:border-zinc-800">
+        <Button variant="outline" size="sm" className="bg-white/5 border-white/5 hover:bg-white/10 text-white rounded-xl h-10 px-4">
           <Filter className="h-4 w-4 mr-2" />
           Filter
         </Button>
