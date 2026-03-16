@@ -20,10 +20,10 @@ export function GrowthMetrics() {
   const { data } = useDashboardData();
 
   const metrics = [
-    { label: "Total Ambassadors", value: "124", change: "+12%", icon: Users, color: "text-blue-500" },
-    { label: "Universities", value: "42", change: "+8%", icon: GraduationCap, color: "text-emerald-500" },
-    { label: "Content Pieces", value: "856", change: "+24%", icon: BookOpen, color: "text-amber-500" },
-    { label: "Student Reach", value: "15.2k", change: "+18%", icon: MousePointer2, color: "text-purple-500" },
+    { label: "Total Ambassadors", value: data?.ambassadors?.length || 0, change: "New", icon: Users, color: "text-blue-500" },
+    { label: "Universities", value: data?.universities?.length || 0, change: "New", icon: GraduationCap, color: "text-emerald-500" },
+    { label: "Content Pieces", value: data?.content?.length || 0, change: "New", icon: BookOpen, color: "text-amber-500" },
+    { label: "Student Reach", value: (data?.programs?.reduce((acc, curr) => acc + (curr.participants || 0), 0) || 0).toLocaleString(), change: "New", icon: MousePointer2, color: "text-purple-500" },
   ];
 
   return (

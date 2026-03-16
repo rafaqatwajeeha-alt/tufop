@@ -11,9 +11,15 @@ import { Partnerships } from "./pages/Partnerships";
 import { GrowthMetrics } from "./pages/GrowthMetrics";
 import { Roadmap } from "./pages/Roadmap";
 import { KnowledgeBase } from "./pages/KnowledgeBase";
-import { AlertCircle, GraduationCap, Users, BookOpen } from "lucide-react";
+import { AuthProvider, useAuth } from "./lib/AuthContext";
+import { AlertCircle, GraduationCap, Users, BookOpen, Heart } from "lucide-react";
+import { Ambassadors } from "./pages/Ambassadors";
+import { Universities } from "./pages/Universities";
+import { Team } from "./pages/Team";
+import { LoginPage } from "./pages/LoginPage";
 
-export default function App() {
+function AppContent() {
+  const { session, profile, loading } = useAuth();
   const [activeTab, setActiveTab] = React.useState<TabId>("dashboard");
   const [isDark, setIsDark] = React.useState(false);
 
@@ -27,6 +33,18 @@ export default function App() {
 
   const toggleTheme = () => setIsDark(!isDark);
 
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-zinc-50 dark:bg-zinc-950">
+        <div className="h-8 w-8 border-4 border-blue-500 border-t-transparent rounded-full animate-spin" />
+      </div>
+    );
+  }
+
+  if (!session) {
+    return <LoginPage />;
+  }
+
   const renderContent = () => {
     switch (activeTab) {
       case "dashboard": return <Dashboard />;
@@ -37,22 +55,9 @@ export default function App() {
       case "roadmap": return <Roadmap />;
       case "knowledge": return <KnowledgeBase />;
       case "accountability": return <AmbassadorAccountability />;
-      case "universities":
-        return (
-          <div className="flex flex-col items-center justify-center h-96 text-zinc-500 animate-in fade-in duration-500">
-            <GraduationCap className="h-12 w-12 mb-4 opacity-20" />
-            <h2 className="text-xl font-semibold dark:text-zinc-300">University Directory</h2>
-            <p>Detailed university profiles and coverage metrics are being populated.</p>
-          </div>
-        );
-      case "ambassadors":
-        return (
-          <div className="flex flex-col items-center justify-center h-96 text-zinc-500 animate-in fade-in duration-500">
-            <Users className="h-12 w-12 mb-4 opacity-20" />
-            <h2 className="text-xl font-semibold dark:text-zinc-300">Ambassador Network</h2>
-            <p>Manage your global network of student ambassadors.</p>
-          </div>
-        );
+      case "universities": return <Universities />;
+      case "ambassadors": return <Ambassadors />;
+      case "team": return <Team />;
       case "content":
         return (
           <div className="flex flex-col items-center justify-center h-96 text-zinc-500 animate-in fade-in duration-500">
@@ -75,15 +80,25 @@ export default function App() {
   };
 
   return (
+    <DashboardLayout 
+      activeTab={activeTab} 
+      setActiveTab={setActiveTab}
+      isDark={isDark}
+      toggleTheme={toggleTheme}
+      userRole={profile?.role}
+    >
+      {renderContent()}
+    </DashboardLayout>
+  );
+}
+
+export default function App() {
+  return (
     <QueryClientProvider client={queryClient}>
-      <DashboardLayout 
-        activeTab={activeTab} 
-        setActiveTab={setActiveTab}
-        isDark={isDark}
-        toggleTheme={toggleTheme}
-      >
-        {renderContent()}
-      </DashboardLayout>
+      <AuthProvider>
+        <AppContent />
+      </AuthProvider>
     </QueryClientProvider>
   );
 }
+

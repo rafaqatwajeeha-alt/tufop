@@ -12,9 +12,11 @@ import {
   Handshake,
   BarChart3,
   Map,
-  Library
+  Library,
+  Heart
 } from "lucide-react";
 import { cn } from "@/src/lib/utils";
+import { useAuth } from "@/src/lib/AuthContext";
 
 export type TabId = 
   | "dashboard" 
@@ -28,7 +30,8 @@ export type TabId =
   | "knowledge"
   | "accountability" 
   | "content" 
-  | "alerts";
+  | "alerts"
+  | "team";
 
 interface NavSection {
   title: string;
@@ -61,15 +64,35 @@ const navSections: NavSection[] = [
       { icon: ShieldCheck, label: "Accountability", id: "accountability" },
       { icon: BookOpen, label: "Content", id: "content" },
     ]
+  },
+  {
+    title: "Community",
+    items: [
+      { icon: Heart, label: "Meet the Team", id: "team" },
+    ]
   }
 ];
 
 interface SidebarProps {
   activeTab: TabId;
   setActiveTab: (id: TabId) => void;
+  userRole?: string;
 }
 
-export function Sidebar({ activeTab, setActiveTab }: SidebarProps) {
+export function Sidebar({ activeTab, setActiveTab, userRole }: SidebarProps) {
+  const { signOut } = useAuth();
+
+  // Filter sections based on role
+  const filteredSections = navSections.map(section => ({
+    ...section,
+    items: section.items.filter(item => {
+      if (userRole === 'admin') return true;
+      // Ambassadors can only see these
+      const allowed = ['growth', 'ambassadors', 'accountability', 'content'];
+      return allowed.includes(item.id);
+    })
+  })).filter(section => section.items.length > 0);
+
   return (
     <aside className="w-64 border-r border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 flex flex-col h-screen sticky top-0 transition-colors overflow-y-auto">
       <div className="p-6">
@@ -81,7 +104,7 @@ export function Sidebar({ activeTab, setActiveTab }: SidebarProps) {
         </div>
 
         <div className="space-y-6">
-          {navSections.map((section) => (
+          {filteredSections.map((section) => (
             <div key={section.title}>
               <h3 className="px-3 text-[10px] font-bold uppercase tracking-widest text-zinc-400 dark:text-zinc-600 mb-2">
                 {section.title}
@@ -114,7 +137,10 @@ export function Sidebar({ activeTab, setActiveTab }: SidebarProps) {
             <Settings className="h-4 w-4" />
             Settings
           </button>
-          <button className="w-full flex items-center gap-3 px-3 py-2 rounded-md text-sm font-medium text-red-500 hover:bg-red-50 dark:hover:bg-red-950/30">
+          <button 
+            onClick={() => signOut()}
+            className="w-full flex items-center gap-3 px-3 py-2 rounded-md text-sm font-medium text-red-500 hover:bg-red-50 dark:hover:bg-red-950/30"
+          >
             <LogOut className="h-4 w-4" />
             Logout
           </button>
@@ -123,3 +149,4 @@ export function Sidebar({ activeTab, setActiveTab }: SidebarProps) {
     </aside>
   );
 }
+

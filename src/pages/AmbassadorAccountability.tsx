@@ -13,6 +13,7 @@ import {
 import { Card, CardContent, CardHeader, CardTitle } from "../components/ui/Card";
 import { Badge } from "../components/ui/Badge";
 import { Button } from "../components/ui/Button";
+import { useAuth } from "../lib/AuthContext";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "../components/ui/Table";
 import { 
   ResponsiveContainer, 
@@ -37,7 +38,27 @@ const PERFORMANCE_DATA = [
 
 export function AmbassadorAccountability() {
   const { data } = useDashboardData();
-  const [selectedAmbassador, setSelectedAmbassador] = React.useState(data?.ambassadors[0]);
+  const { profile } = useAuth();
+  const [selectedAmbassador, setSelectedAmbassador] = React.useState<any>(null);
+
+  // Filter ambassadors based on role
+  const availableAmbassadors = React.useMemo(() => {
+    if (!data?.ambassadors) return [];
+    if (profile?.role === 'admin') return data.ambassadors;
+
+    // For ambassadors, only show their own record
+    // We match by the 'ambassador_id' links in the profiles table
+    return data.ambassadors.filter(a => a.id === profile?.ambassador_id);
+  }, [data?.ambassadors, profile]);
+
+  // Auto-select first available ambassador when data loads
+  React.useEffect(() => {
+    if (availableAmbassadors.length > 0 && !selectedAmbassador) {
+      setSelectedAmbassador(availableAmbassadors[0]);
+    }
+  }, [availableAmbassadors, selectedAmbassador]);
+
+  const isAdmin = profile?.role === 'admin';
 
   return (
     <div className="space-y-8 animate-in fade-in duration-500">
@@ -59,34 +80,50 @@ export function AmbassadorAccountability() {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
-        {/* Sidebar List */}
-        <Card className="lg:col-span-1 dark:bg-zinc-900/50 dark:border-zinc-800">
-          <CardHeader>
-            <CardTitle className="text-sm font-semibold uppercase tracking-wider text-zinc-500">Ambassadors</CardTitle>
-          </CardHeader>
-          <CardContent className="p-0">
-            <div className="divide-y divide-zinc-100 dark:divide-zinc-800">
-              {data?.ambassadors.map((amb) => (
-                <button
-                  key={amb.id}
-                  onClick={() => setSelectedAmbassador(amb)}
-                  className={cn(
-                    "w-full flex items-center gap-3 p-4 text-left transition-colors hover:bg-zinc-50 dark:hover:bg-zinc-800/50",
-                    selectedAmbassador?.id === amb.id ? "bg-zinc-50 dark:bg-zinc-800 border-r-2 border-zinc-900 dark:border-white" : ""
-                  )}
-                >
-                  <div className="h-10 w-10 rounded-full bg-zinc-100 dark:bg-zinc-800 flex items-center justify-center font-bold text-zinc-600 dark:text-zinc-300">
-                    {amb.name.split(' ').map(n => n[0]).join('')}
-                  </div>
-                  <div>
-                    <div className="text-sm font-medium dark:text-white">{amb.name}</div>
-                    <div className="text-xs text-zinc-500">{amb.university}</div>
-                  </div>
-                </button>
-              ))}
-            </div>
-          </CardContent>
-        </Card>
+        {/* Sidebar List - Only for Admins */}
+        {isAdmin ? (
+          <Card className="lg:col-span-1 dark:bg-zinc-900/50 dark:border-zinc-800">
+            <CardHeader>
+              <CardTitle className="text-sm font-semibold uppercase tracking-wider text-zinc-500">Ambassadors</CardTitle>
+            </CardHeader>
+            <CardContent className="p-0">
+              <div className="divide-y divide-zinc-100 dark:divide-zinc-800">
+                {availableAmbassadors.map((amb: any) => (
+                  <button
+                    key={amb.id}
+                    onClick={() => setSelectedAmbassador(amb)}
+                    className={cn(
+                      "w-full flex items-center gap-3 p-4 text-left transition-colors hover:bg-zinc-50 dark:hover:bg-zinc-800/50",
+                      selectedAmbassador?.id === amb.id ? "bg-zinc-50 dark:bg-zinc-800 border-r-2 border-zinc-900 dark:border-white" : ""
+                    )}
+                  >
+                    <div className="h-10 w-10 rounded-full bg-zinc-100 dark:bg-zinc-800 flex items-center justify-center font-bold text-zinc-600 dark:text-zinc-300">
+                      {amb.name.split(' ').map((n: string) => n[0]).join('')}
+                    </div>
+                    <div>
+                      <div className="text-sm font-medium dark:text-white">{amb.name}</div>
+                      <div className="text-xs text-zinc-500">{amb.university}</div>
+                    </div>
+                  </button>
+                ))}
+              </div>
+            </CardContent>
+          </Card>
+        ) : (
+          <div className="lg:col-span-1 space-y-4">
+             <Card className="dark:bg-blue-900/10 dark:border-blue-900/30 border-blue-100 bg-blue-50">
+               <CardContent className="p-4">
+                 <div className="flex items-center gap-3 text-blue-600 dark:text-blue-400">
+                   <Users className="h-5 w-5" />
+                   <p className="text-xs font-bold uppercase tracking-wider">Personal Dashboard</p>
+                 </div>
+                 <p className="text-xs text-blue-500/80 mt-2 leading-relaxed">
+                   Welcome back, {selectedAmbassador?.name}. You are currently viewing your own performance and task metrics.
+                 </p>
+               </CardContent>
+             </Card>
+          </div>
+        )}
 
         {/* Accountability Details */}
         <div className="lg:col-span-3 space-y-8">
@@ -185,24 +222,16 @@ export function AmbassadorAccountability() {
                       </TableRow>
                     </TableHeader>
                     <TableBody>
-                      <TableRow className="dark:border-zinc-800">
-                        <TableCell className="font-medium dark:text-zinc-200">University Outreach</TableCell>
-                        <TableCell><Badge variant="success">Completed</Badge></TableCell>
-                        <TableCell className="text-zinc-500">Mar 14, 2026</TableCell>
-                        <TableCell className="text-right font-bold dark:text-white">9.5</TableCell>
-                      </TableRow>
-                      <TableRow className="dark:border-zinc-800">
-                        <TableCell className="font-medium dark:text-zinc-200">Content Distribution</TableCell>
-                        <TableCell><Badge variant="success">Completed</Badge></TableCell>
-                        <TableCell className="text-zinc-500">Mar 12, 2026</TableCell>
-                        <TableCell className="text-right font-bold dark:text-white">8.8</TableCell>
-                      </TableRow>
-                      <TableRow className="dark:border-zinc-800">
-                        <TableCell className="font-medium dark:text-zinc-200">Student Feedback Collection</TableCell>
-                        <TableCell><Badge variant="warning">Pending</Badge></TableCell>
-                        <TableCell className="text-zinc-500">--</TableCell>
-                        <TableCell className="text-right font-bold dark:text-white">--</TableCell>
-                      </TableRow>
+                      {data?.recentActivity?.slice(0, 3).map((r, i) => (
+                        <TableRow key={i} className="dark:border-zinc-800">
+                          <TableCell className="font-medium dark:text-zinc-200">{r.target}</TableCell>
+                          <TableCell>
+                            <Badge variant={i === 0 ? "success" : "warning"}>{r.action}</Badge>
+                          </TableCell>
+                          <TableCell className="text-zinc-500">{r.time}</TableCell>
+                          <TableCell className="text-right font-bold dark:text-white">--</TableCell>
+                        </TableRow>
+                      ))}
                     </TableBody>
                   </Table>
                 </CardContent>
