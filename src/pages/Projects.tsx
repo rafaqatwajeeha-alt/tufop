@@ -48,7 +48,7 @@ export function Projects() {
                 </div>
                 <div className="w-full bg-white/10 h-2.5 rounded-full overflow-hidden border border-white/10">
                   <div 
-                    className="bg-white h-full rounded-full transition-all duration-500 shadow-[0_0_10px_rgba(255,255,255,0.3)]" 
+                    className="bg-[#6DC7B8] h-full rounded-full transition-all duration-500 shadow-[0_0_15px_rgba(109,199,184,0.4)]" 
                     style={{ width: `${project.progress}%` }}
                   />
                 </div>

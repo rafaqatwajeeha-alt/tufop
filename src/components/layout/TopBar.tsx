@@ -105,7 +105,7 @@ export function TopBar({ isDark, toggleTheme }: TopBarProps) {
                           <div className="flex gap-4">
                             <div className={cn(
                               "h-10 w-10 rounded-xl flex items-center justify-center shrink-0 border border-white/5",
-                               notif.type === 'success' ? "bg-white/10 text-white" :
+                               notif.type === 'success' ? "bg-[#6DC7B8]/10 text-[#6DC7B8]" :
                                notif.type === 'error' ? "bg-red-500/10 text-red-500" :
                                "bg-white/10 text-white"
                             )}>
@@ -156,7 +156,7 @@ export function TopBar({ isDark, toggleTheme }: TopBarProps) {
                 )} />
                 <p className={cn(
                   "text-[9px] font-black uppercase tracking-widest leading-none",
-                  showProfileMenu ? "text-white/60" : "text-[#6DC7B8]"
+                  showProfileMenu ? "text-zinc-500" : "text-[#6DC7B8]"
                 )}>
                   {profile?.designation || 'Operational Tier'}
                 </p>

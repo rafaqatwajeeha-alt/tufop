@@ -24,13 +24,13 @@
 }
 
 body {
-  @apply bg-zinc-50 text-zinc-950 antialiased transition-colors duration-500 selection:bg-white/10;
+  @apply bg-zinc-50 text-zinc-950 antialiased transition-colors duration-500 selection:bg-[#6DC7B8]/20;
 }
 
 .dark body {
   @apply bg-[#020617] text-zinc-50;
-  background-image: radial-gradient(at 0% 0%, rgba(16, 185, 129, 0.08) 0, transparent 50%),
-                    radial-gradient(at 100% 100%, rgba(20, 184, 166, 0.08) 0, transparent 50%);
+  background-image: radial-gradient(at 0% 0%, rgba(109, 199, 184, 0.15) 0, transparent 50%),
+                    radial-gradient(at 100% 100%, rgba(109, 199, 184, 0.1) 0, transparent 50%);
 }
 
 /* Premium Lush Card Styles */

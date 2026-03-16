@@ -58,7 +58,7 @@ export function Programs() {
               <TableRow key={prog.id} className="border-white/5 hover:bg-white/5 transition-colors">
                 <TableCell className="font-extrabold text-white tracking-tight">{prog.name}</TableCell>
                 <TableCell>
-                  <Badge variant="secondary" className="bg-white/20 text-white border-none px-3 py-1 text-[9px] font-black uppercase tracking-widest">{prog.category}</Badge>
+                  <Badge variant="secondary" className="bg-[#6DC7B8]/20 text-white border-none px-3 py-1 text-[9px] font-black uppercase tracking-widest">{prog.category}</Badge>
                 </TableCell>
                 <TableCell className="text-white/90 font-medium">{prog.lead}</TableCell>
                 <TableCell className="text-[10px] font-black uppercase tracking-widest text-white/60">
@@ -66,7 +66,7 @@ export function Programs() {
                 </TableCell>
                 <TableCell className="text-white font-black">{prog.participants}</TableCell>
                 <TableCell>
-                  <Badge variant="secondary" className="px-3 py-1 font-black uppercase tracking-widest text-[9px] bg-white/20 text-white">
+                  <Badge variant="secondary" className="px-3 py-1 font-black uppercase tracking-widest text-[9px] bg-[#6DC7B8]/20 text-white">
                     {prog.status}
                   </Badge>
                 </TableCell>

@@ -76,25 +76,15 @@ export function LoginPage() {
             initial={{ y: -10, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.5 }}
-            className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/20 text-white text-[10px] uppercase tracking-[0.2em] font-black"
+            className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#6DC7B8]/10 border border-[#6DC7B8]/20 text-white text-[10px] uppercase tracking-[0.2em] font-black"
           >
-            <Stethoscope className="w-3 h-3" />
+            <Stethoscope className="w-3 h-3 text-[#6DC7B8]" />
             Official Member Portal
           </motion.div>
         </div>
-        {/* BRANDING HEADER */}
-        <div className="text-center mb-10">
-          <motion.div 
-            initial={{ y: -20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.2 }}
-            className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/20 text-white text-[10px] uppercase tracking-[0.2em] font-black mb-6"
-          >
-            <Stethoscope className="w-3 h-3" />
-            Official Member Portal
-          </motion.div>
           
 
+          
           
           <motion.p 
             initial={{ opacity: 0 }}
@@ -104,7 +94,6 @@ export function LoginPage() {
           >
             Advancing Medical Excellence Across Borders
           </motion.p>
-        </div>
 
         {/* LOGIN CARD */}
         <Card className="shimmer border-white/5 bg-zinc-900/40 backdrop-blur-2xl shadow-2xl rounded-3xl overflow-hidden">
@@ -205,7 +194,7 @@ export function LoginPage() {
             >
               <div className="flex items-center justify-between text-[11px] font-black text-white/40 uppercase tracking-widest">
                 <span>Access: Restricted</span>
-                <span className="w-2 h-2 rounded-full bg-white animate-pulse" />
+                <span className="w-2 h-2 rounded-full bg-[#6DC7B8] animate-pulse shadow-[0_0_10px_rgba(109,199,184,0.5)]" />
                 <span>Tier: Operations Lead</span>
               </div>
             </motion.div>

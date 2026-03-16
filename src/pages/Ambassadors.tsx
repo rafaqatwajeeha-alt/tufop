@@ -127,7 +127,7 @@ export function Ambassadors() {
                 </div>
                 <div className="w-full bg-white/10 h-3 rounded-full overflow-hidden border border-white/20">
                   <div 
-                    className="bg-white h-full rounded-full shadow-[0_0_20px_rgba(255,255,255,0.3)]" 
+                    className="bg-[#6DC7B8] h-full rounded-full shadow-[0_0_8px_rgba(109,199,184,0.5)]" 
                     style={{ width: `${amb.taskCompletion}%` }} 
                   />
                 </div>

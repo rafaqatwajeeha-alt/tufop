@@ -42,10 +42,10 @@ export function Universities() {
           <Card key={uni.id} className="chic-glass chic-border rounded-[32px] overflow-hidden group hover:scale-[1.02] transition-all duration-500">
             <CardContent className="pt-6">
               <div className="flex justify-between items-start mb-4">
-                <div className="p-2.5 bg-white/20 rounded-xl border border-white/30">
-                  <Building2 className="h-6 w-6 text-white" />
+                <div className="p-2.5 bg-[#6DC7B8]/10 rounded-xl border border-[#6DC7B8]/20">
+                  <Building2 className="h-6 w-6 text-[#6DC7B8]" />
                 </div>
-                <Badge variant="secondary" className="bg-white/20 text-white border-none px-3 py-1 text-[9px] font-black uppercase tracking-widest">
+                <Badge variant="secondary" className="bg-[#6DC7B8]/20 text-white border-none px-3 py-1 text-[9px] font-black uppercase tracking-widest">
                   {uni.status}
                 </Badge>
               </div>
@@ -61,10 +61,10 @@ export function Universities() {
                   <span className="text-white/60">Platform Coverage</span>
                   <span className="text-white">{uni.coverage}%</span>
                 </div>
-                <div className="w-full bg-white/10 h-3 rounded-full overflow-hidden border border-white/10">
+                <div className="w-full bg-white/10 h-2.5 rounded-full overflow-hidden border border-white/10">
                   <div 
-                    className="bg-white h-full rounded-full transition-all duration-1000 shadow-[0_0_15px_rgba(255,255,255,0.3)]" 
-                    style={{ width: `${uni.coverage}%` }} 
+                    className="bg-[#6DC7B8] h-full rounded-full transition-all duration-500 shadow-[0_0_15px_rgba(109,199,184,0.4)]" 
+                    style={{ width: `${uni.progress}%` }} 
                   />
                 </div>
               </div>

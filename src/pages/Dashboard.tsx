@@ -304,9 +304,9 @@ export function Dashboard() {
                        dataKey="value"
                        stroke="none"
                      >
-                       <Cell fill="#ffffff" fillOpacity={1} /> {/* High */}
-                       <Cell fill="#ffffff" fillOpacity={0.7} /> {/* Medium */}
-                       <Cell fill="#ffffff" fillOpacity={0.4} /> {/* Low */}
+                        <Cell fill="#6DC7B8" /> {/* High */}
+                        <Cell fill="#8ED8C9" /> {/* Medium */}
+                        <Cell fill="#B2E6DC" /> {/* Low */}
                      </Pie>
                      <Tooltip 
                        contentStyle={{ backgroundColor: '#ffffff', border: 'none', borderRadius: '24px', padding: '16px' }}
@@ -317,7 +317,7 @@ export function Dashboard() {
                </div>
                <div className="grid grid-cols-3 gap-6 mt-8 w-full">
                   <div className="text-center">
-                    <div className="w-2 h-2 rounded-full bg-white mx-auto mb-2 shadow-[0_0_10px_rgba(255,255,255,0.5)]"/> 
+                     <div className="w-2 h-2 rounded-full bg-[#6DC7B8] mx-auto mb-2 shadow-[0_0_15px_rgba(109,199,184,0.6)]"/> 
                     <span className="chic-label">Tier A</span>
                   </div>
                   <div className="text-center">
@@ -325,7 +325,7 @@ export function Dashboard() {
                     <span className="chic-label">Tier B</span>
                   </div>
                   <div className="text-center">
-                    <div className="w-2.5 h-2.5 rounded-full bg-white mx-auto mb-2 shadow-[0_0_15px_rgba(255,255,255,0.4)]"/> 
+                     <div className="w-2.5 h-2.5 rounded-full bg-[#6DC7B8] mx-auto mb-2 shadow-[0_0_20px_rgba(109,199,184,0.8)]"/> 
                     <span className="chic-label">Tier C</span>
                   </div>
                </div>
