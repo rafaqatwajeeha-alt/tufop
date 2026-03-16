@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+Disallow: /dashboard
+Disallow: /management
+Disallow: /ambassadors
+Disallow: /knowledge
+
+Sitemap: https://tufop-dashboard.vercel.app/sitemap.xml
