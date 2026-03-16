@@ -5,7 +5,6 @@ import {
   BookOpen, 
   Settings, 
   LogOut, 
-  Bell, 
   ShieldCheck,
   Briefcase,
   Target,
@@ -13,10 +12,13 @@ import {
   BarChart3,
   Map,
   Library,
-  Heart
+  Heart,
+  Activity,
+  ChevronRight
 } from "lucide-react";
 import { cn } from "../../lib/utils";
 import { useAuth } from "../../lib/AuthContext";
+import * as React from "react";
 
 export type TabId = 
   | "dashboard" 
@@ -41,9 +43,9 @@ interface NavSection {
 
 const navSections: NavSection[] = [
   {
-    title: "Overview",
+    title: "Intelligence",
     items: [
-      { icon: LayoutDashboard, label: "Dashboard", id: "dashboard" },
+      { icon: LayoutDashboard, label: "Command Center", id: "dashboard" },
       { icon: BarChart3, label: "Growth Metrics", id: "growth" },
       { icon: ShieldCheck, label: "User Management", id: "management" },
     ]
@@ -59,18 +61,18 @@ const navSections: NavSection[] = [
     ]
   },
   {
-    title: "Strategy & Resources",
+    title: "Strategy & Assets",
     items: [
       { icon: Map, label: "Roadmap", id: "roadmap" },
       { icon: Library, label: "Knowledge Base", id: "knowledge" },
       { icon: ShieldCheck, label: "Accountability", id: "accountability" },
-      { icon: BookOpen, label: "Content", id: "content" },
+      { icon: BookOpen, label: "Content Library", id: "content" },
     ]
   },
   {
-    title: "Community",
+    title: "Network",
     items: [
-      { icon: Heart, label: "Meet the Team", id: "team" },
+      { icon: Heart, label: "Official Team", id: "team" },
     ]
   }
 ];
@@ -84,71 +86,94 @@ interface SidebarProps {
 export function Sidebar({ activeTab, setActiveTab, userRole }: SidebarProps) {
   const { signOut } = useAuth();
 
-  // Filter sections based on role
   const filteredSections = navSections.map(section => ({
     ...section,
     items: section.items.filter(item => {
       if (userRole === 'admin') return true;
-      // Ambassadors can only see these
       const allowed = ['ambassadors', 'accountability', 'content'];
       return allowed.includes(item.id);
     })
   })).filter(section => section.items.length > 0);
 
   return (
-    <aside className="w-64 border-r border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 flex flex-col h-screen sticky top-0 transition-colors overflow-y-auto">
-      <div className="p-6">
-        <div className="flex items-center gap-2 mb-8">
-          <div className="w-8 h-8 bg-zinc-900 dark:bg-blue-600 rounded-lg flex items-center justify-center">
-            <span className="text-white font-bold text-lg">T</span>
+    <aside className="w-72 border-r border-white/5 bg-zinc-950/40 backdrop-blur-3xl flex flex-col h-screen sticky top-0 transition-all overflow-y-auto custom-scrollbar z-50">
+      {/* --- OFFICIAL TUFOP LOGO SECTION --- */}
+      <div className="p-8 pb-4">
+        <div className="flex flex-col gap-4 mb-4">
+          <div className="flex items-center gap-3">
+             <div className="relative group">
+                <div className="absolute inset-0 bg-emerald-500/20 blur-xl rounded-full group-hover:bg-emerald-500/30 transition-all" />
+                <svg viewBox="0 0 40 40" className="w-12 h-12 relative z-10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M20 5V35M5 20H35" stroke="#0d9488" strokeWidth="4" strokeLinecap="round"/>
+                  <circle cx="28" cy="18" r="6" stroke="#0d9488" strokeWidth="2.5"/>
+                  <path d="M12 28C12 28 15 32 20 32C25 32 28 28 28 28" stroke="#0d9488" strokeWidth="2.5" strokeLinecap="round"/>
+                </svg>
+             </div>
+             <div>
+                <h1 className="text-sm font-black text-white tracking-[0.15em] leading-tight">USMLE FORUM</h1>
+                <p className="text-[10px] font-black text-emerald-500 tracking-[0.3em] mt-0.5">PAKISTAN</p>
+             </div>
           </div>
-          <span className="font-bold text-xl tracking-tight dark:text-white">TUFOp</span>
+          <div className="h-px w-full bg-gradient-to-r from-emerald-500/40 to-transparent opacity-30" />
         </div>
 
-        <div className="space-y-6">
+        <div className="space-y-8 mt-8">
           {filteredSections.map((section) => (
             <div key={section.title}>
-              <h3 className="px-3 text-[10px] font-bold uppercase tracking-widest text-zinc-400 dark:text-zinc-600 mb-2">
+              <h3 className="px-4 text-[9px] font-black uppercase tracking-[0.25em] text-zinc-500/60 mb-3 ml-1">
                 {section.title}
               </h3>
-              <nav className="space-y-1">
-                {section.items.map((item) => (
-                  <button
-                    key={item.id}
-                    onClick={() => setActiveTab(item.id)}
-                    className={cn(
-                      "w-full flex items-center gap-3 px-3 py-2 rounded-md text-sm font-medium transition-all duration-200",
-                      activeTab === item.id
-                        ? "bg-zinc-100 dark:bg-zinc-900 text-zinc-900 dark:text-white shadow-sm border dark:border-zinc-800" 
-                        : "text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-300 hover:bg-zinc-50 dark:hover:bg-zinc-900"
-                    )}
-                  >
-                    <item.icon className={cn("h-4 w-4", activeTab === item.id ? "text-zinc-900 dark:text-blue-500" : "text-zinc-400")} />
-                    {item.label}
-                  </button>
-                ))}
+              <nav className="space-y-1.5">
+                {section.items.map((item) => {
+                  const isActive = activeTab === item.id;
+                  return (
+                    <button
+                      key={item.id}
+                      onClick={() => setActiveTab(item.id)}
+                      className={cn(
+                        "w-full flex items-center justify-between px-4 py-3 rounded-2xl text-xs font-bold transition-all duration-300 group",
+                        isActive
+                          ? "bg-white text-zinc-950 shadow-xl shadow-white/5" 
+                          : "text-zinc-500 hover:text-white hover:bg-white/5"
+                      )}
+                    >
+                      <div className="flex items-center gap-3">
+                        <item.icon className={cn(
+                          "h-5 w-5 transition-colors",
+                          isActive ? "text-emerald-600" : "text-zinc-600 group-hover:text-zinc-400"
+                        )} />
+                        <span className="tracking-tight">{item.label}</span>
+                      </div>
+                      {isActive && <ChevronRight className="h-4 w-4 text-zinc-400" />}
+                    </button>
+                  );
+                })}
               </nav>
             </div>
           ))}
         </div>
       </div>
 
-      <div className="mt-auto p-6 border-t border-zinc-100 dark:border-zinc-900">
-        <nav className="space-y-1">
-          <button className="w-full flex items-center gap-3 px-3 py-2 rounded-md text-sm font-medium text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-300 hover:bg-zinc-50 dark:hover:bg-zinc-900">
-            <Settings className="h-4 w-4" />
-            Settings
+      <div className="mt-auto p-8 border-t border-white/5 bg-zinc-950/20">
+        <nav className="space-y-2">
+          <button className="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-xs font-bold text-zinc-500 hover:text-white hover:bg-white/5 transition-colors">
+            <Settings className="h-5 w-5" />
+            System Control
           </button>
           <button 
             onClick={() => signOut()}
-            className="w-full flex items-center gap-3 px-3 py-2 rounded-md text-sm font-medium text-red-500 hover:bg-red-50 dark:hover:bg-red-950/30"
+            className="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-xs font-bold text-red-400 hover:bg-red-500/10 transition-all border border-transparent hover:border-red-500/20"
           >
-            <LogOut className="h-4 w-4" />
-            Logout
+            <LogOut className="h-5 w-5" />
+            Terminate Session
           </button>
         </nav>
+        
+        <div className="mt-6 flex items-center gap-2 px-4 py-3 rounded-2xl bg-white/5 border border-white/5">
+          <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+          <span className="text-[10px] font-black uppercase tracking-widest text-zinc-500">System Nominal</span>
+        </div>
       </div>
     </aside>
   );
 }
-

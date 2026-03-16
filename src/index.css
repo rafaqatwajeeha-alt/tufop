@@ -12,7 +12,9 @@
   --color-zinc-200: #e2e8f0;
   --color-zinc-100: #f1f5f9;
   --color-zinc-50: #f8fafc;
-  --color-accent: #3b82f6;
+  --color-emerald-500: #0d9488; /* Professional Teal/Emerald from Logo */
+  --color-emerald-400: #14b8a6;
+  --color-emerald-600: #0f766e;
 }
 
 @layer base {

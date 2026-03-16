@@ -146,8 +146,8 @@ export function Dashboard() {
                   <p className="text-xs font-medium text-zinc-500 mt-1">Real-time attendance & engagement data</p>
                 </div>
                 <div className="flex gap-2">
-                  <div className="flex items-center gap-1.5 px-3 py-1.5 bg-white/5 rounded-xl border border-white/5">
-                    <div className="w-2 h-2 rounded-full bg-blue-500 animate-pulse" />
+                    <div className="flex items-center gap-1.5 px-3 py-1.5 bg-white/5 rounded-xl border border-white/5">
+                    <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
                     <span className="text-[10px] font-bold text-zinc-400 uppercase tracking-widest">Live</span>
                   </div>
                 </div>
@@ -159,8 +159,8 @@ export function Dashboard() {
                   <AreaChart data={data?.content || []}>
                     <defs>
                       <linearGradient id="colorGrowth" x1="0" y1="0" x2="0" y2="1">
-                        <stop offset="5%" stopColor="#10b981" stopOpacity={0.1}/>
-                        <stop offset="95%" stopColor="#10b981" stopOpacity={0}/>
+                        <stop offset="5%" stopColor="#0d9488" stopOpacity={0.1}/>
+                        <stop offset="95%" stopColor="#0d9488" stopOpacity={0}/>
                       </linearGradient>
                     </defs>
                     <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#ffffff05" />
@@ -182,7 +182,7 @@ export function Dashboard() {
                     <Area 
                       type="monotone" 
                       dataKey="attendance" 
-                      stroke="#10b981" 
+                      stroke="#0d9488" 
                       fillOpacity={1} 
                       fill="url(#colorGrowth)" 
                       strokeWidth={3} 
