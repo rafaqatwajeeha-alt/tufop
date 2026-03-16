@@ -22,7 +22,7 @@ export function Universities() {
     >
       <div className="flex items-end justify-between">
         <div>
-          <span className="text-[10px] font-black uppercase tracking-[0.3em] text-emerald-500/60 mb-1">Institutional Network</span>
+          <span className="text-[10px] font-black uppercase tracking-[0.3em] text-white/60 mb-1">Institutional Network</span>
           <h1 className="text-4xl chic-heading mb-2">University Hubs</h1>
           <p className="text-zinc-500 font-medium">Coverage and status of participating medical institutions.</p>
         </div>
@@ -30,7 +30,7 @@ export function Universities() {
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-zinc-400" />
           <Input 
             placeholder="Filter by name..." 
-            className="pl-14 h-14 chic-glass chic-border rounded-[20px] text-white placeholder:text-zinc-700 focus:ring-emerald-500/20"
+            className="pl-14 h-14 chic-glass chic-border rounded-[20px] text-white placeholder:text-white/40 focus:ring-white/10"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
           />
@@ -42,28 +42,28 @@ export function Universities() {
           <Card key={uni.id} className="chic-glass chic-border rounded-[32px] overflow-hidden group hover:scale-[1.02] transition-all duration-500">
             <CardContent className="pt-6">
               <div className="flex justify-between items-start mb-4">
-                <div className="p-2.5 bg-emerald-500/10 rounded-xl border border-emerald-500/20">
-                  <Building2 className="h-6 w-6 text-emerald-400" />
+                <div className="p-2.5 bg-white/20 rounded-xl border border-white/30">
+                  <Building2 className="h-6 w-6 text-white" />
                 </div>
-                <Badge variant={uni.status === 'active' ? 'success' : 'warning'}>
+                <Badge variant="secondary" className="bg-white/20 text-white border-none px-3 py-1 text-[9px] font-black uppercase tracking-widest">
                   {uni.status}
                 </Badge>
               </div>
               
-              <h3 className="text-lg font-bold dark:text-white mb-1">{uni.name}</h3>
+              <h3 className="text-xl font-black text-white tracking-tight mb-1">{uni.name}</h3>
               <div className="flex items-center gap-2 text-xs text-zinc-500 mb-6">
                 <MapPin className="h-3 w-3" />
                 Pakistan Operations
               </div>
 
               <div className="space-y-3">
-                <div className="flex justify-between text-xs">
-                  <span className="text-zinc-500 font-medium">Platform Coverage</span>
-                  <span className="dark:text-white font-bold">{uni.coverage}%</span>
+                <div className="flex justify-between text-[10px] font-black uppercase tracking-widest leading-none mb-1">
+                  <span className="text-white/60">Platform Coverage</span>
+                  <span className="text-white">{uni.coverage}%</span>
                 </div>
-                <div className="w-full bg-white/5 h-2 rounded-full overflow-hidden border border-white/5">
+                <div className="w-full bg-white/10 h-3 rounded-full overflow-hidden border border-white/10">
                   <div 
-                    className="bg-gradient-to-r from-emerald-600 to-emerald-400 h-full rounded-full transition-all duration-1000" 
+                    className="bg-white h-full rounded-full transition-all duration-1000 shadow-[0_0_15px_rgba(255,255,255,0.3)]" 
                     style={{ width: `${uni.coverage}%` }} 
                   />
                 </div>

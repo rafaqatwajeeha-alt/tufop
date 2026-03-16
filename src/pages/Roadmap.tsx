@@ -38,27 +38,27 @@ export function Roadmap() {
             </div>
 
             {/* Content */}
-            <Card className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] chic-glass chic-border rounded-[24px] group-hover:scale-[1.02] transition-all duration-500">
+            <Card className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] group-hover:scale-[1.02] transition-all duration-500">
               <CardContent className="p-6">
                 <div className="flex items-center justify-between mb-4">
-                  <div className="chic-label text-mint-500/80">{item.term}</div>
-                  <Badge variant={item.status === 'In Progress' ? 'success' : 'secondary'} className="text-[9px] px-3 py-1 font-black uppercase tracking-widest rounded-full">
+                  <div className="chic-label text-white/80">{item.term}</div>
+                  <Badge variant="secondary" className="text-[9px] px-3 py-1 font-black uppercase tracking-widest rounded-full bg-white/20 text-white border-white/30">
                     {item.status}
                   </Badge>
                 </div>
                 <h3 className="text-xl font-black text-white tracking-tight mb-4">{item.goal}</h3>
-                <div className="flex flex-wrap gap-6 mt-6 pt-6 border-t border-white/10">
-                  <div className="flex items-center gap-2 text-[10px] font-black text-zinc-400 uppercase tracking-widest">
-                    <Calendar className="h-3.5 w-3.5 text-mint-500" />
+                <div className="flex flex-wrap gap-6 mt-6 pt-6 border-t border-white/20">
+                  <div className="flex items-center gap-2 text-[10px] font-black text-white/60 uppercase tracking-widest">
+                    <Calendar className="h-3.5 w-3.5 text-white" />
                     {item.timeline}
                   </div>
-                  <div className="flex items-center gap-2 text-[10px] font-black text-zinc-400 uppercase tracking-widest">
-                    <Flag className="h-3.5 w-3.5 text-mint-500" />
+                  <div className="flex items-center gap-2 text-[10px] font-black text-white/60 uppercase tracking-widest">
+                    <Flag className="h-3.5 w-3.5 text-white" />
                     {item.priority} Priority
                   </div>
-                  <div className="flex items-center gap-2 text-[10px] font-black text-zinc-400 uppercase tracking-widest ml-auto">
-                    <div className="w-5 h-5 rounded-full bg-mint-500/10 flex items-center justify-center border border-mint-500/20">
-                      <span className="text-[8px] text-mint-500">{item.owner[0]}</span>
+                  <div className="flex items-center gap-2 text-[10px] font-black text-white/60 uppercase tracking-widest ml-auto">
+                    <div className="w-5 h-5 rounded-full bg-white/20 flex items-center justify-center border border-white/30">
+                      <span className="text-[8px] text-white">{item.owner[0]}</span>
                     </div>
                     {item.owner}
                   </div>

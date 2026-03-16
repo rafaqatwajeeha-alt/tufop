@@ -57,7 +57,7 @@ export function Ambassadors() {
           <p className="chic-text-muted">Strategic management and real-time connectivity with your global student representative network.</p>
         </div>
         <div className="flex gap-2">
-          <div className="flex bg-emerald-500/5 dark:bg-emerald-950/20 p-1 rounded-2xl border border-white/5">
+          <div className="flex bg-white/10 dark:bg-white/5 p-1 rounded-2xl border border-white/10">
             <Button 
               variant={viewType === 'grid' ? 'secondary' : 'ghost'} 
               size="sm" 
@@ -90,8 +90,8 @@ export function Ambassadors() {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {filtered.map((amb, index) => (
           <Card key={amb.id} className={cn(
-            "group relative overflow-hidden bg-emerald-950/20 backdrop-blur-2xl border-white/5 hover:border-emerald-500/50 transition-all duration-500 rounded-[32px]",
-            index === 0 && viewType === 'leaderboard' ? "border-emerald-500/50 bg-emerald-500/10" : ""
+            "group relative overflow-hidden transition-all duration-500",
+            index === 0 && viewType === 'leaderboard' ? " ring-4 ring-white/30" : ""
           )}>
             {index === 0 && viewType === 'leaderboard' && (
               <div className="absolute top-0 right-0 p-2 bg-amber-500 text-white text-[10px] font-bold uppercase tracking-widest rounded-bl-lg flex items-center gap-1 shadow-lg">
@@ -102,36 +102,36 @@ export function Ambassadors() {
             <CardContent className="pt-6">
               <div className="flex items-center gap-4 mb-4">
                 <div className="relative">
-                  <div className="h-14 w-14 rounded-2xl bg-emerald-500/10 flex items-center justify-center text-emerald-500 font-black text-xl border border-emerald-500/20">
+                  <div className="h-14 w-14 rounded-2xl bg-white/20 flex items-center justify-center text-white font-black text-xl border border-white/30">
                     {(amb.name || "A").split(' ').map((n: string) => n[0]).join('')}
                   </div>
                   {viewType === 'leaderboard' && (
-                    <div className="absolute -top-1 -right-1 bg-white dark:bg-zinc-900 rounded-full p-0.5 shadow-sm border dark:border-zinc-800">
+                    <div className="absolute -top-1 -right-1 bg-white rounded-full p-0.5 shadow-sm border border-white/30">
                       {getRankBadge(index)}
                     </div>
                   )}
                 </div>
                 <div className="flex-1">
-                  <h3 className="text-xl font-black text-white group-hover:text-emerald-400 transition-colors tracking-tighter leading-none">{amb.name}</h3>
-                  <p className="text-[10px] font-black text-emerald-500/60 uppercase tracking-widest mt-2">{amb.university}</p>
+                  <h3 className="text-xl font-black text-white transition-colors tracking-tighter leading-none">{amb.name}</h3>
+                  <p className="text-[10px] font-black text-white/60 uppercase tracking-widest mt-2">{amb.university}</p>
                 </div>
-                <Badge className="ml-auto" variant={amb.status === 'Active' ? 'success' : 'warning'}>
+                <Badge className="ml-auto bg-white/20 text-white border-white/30" variant="secondary">
                   {amb.status}
                 </Badge>
               </div>
               
-              <div className="space-y-4 mt-8 border-t border-white/10 pt-6">
-                <div className="flex items-center gap-2 text-[10px] text-zinc-300 font-black uppercase tracking-widest">
-                  <MapPin className="h-4 w-4 text-emerald-500" />
+              <div className="space-y-4 mt-8 border-t border-white/20 pt-6">
+                <div className="flex items-center gap-2 text-[10px] text-white/80 font-black uppercase tracking-widest">
+                  <MapPin className="h-4 w-4 text-white" />
                    Strategic Hub Operations
                 </div>
-                <div className="w-full bg-white/5 h-3 rounded-full overflow-hidden border border-white/10">
+                <div className="w-full bg-white/10 h-3 rounded-full overflow-hidden border border-white/20">
                   <div 
-                    className="bg-gradient-to-r from-emerald-600 to-emerald-400 h-full rounded-full shadow-[0_0_20px_rgba(16,185,129,0.3)]" 
+                    className="bg-white h-full rounded-full shadow-[0_0_20px_rgba(255,255,255,0.3)]" 
                     style={{ width: `${amb.taskCompletion}%` }} 
                   />
                 </div>
-                <div className="flex justify-between text-[11px] font-black uppercase tracking-widest text-emerald-500/80">
+                <div className="flex justify-between text-[11px] font-black uppercase tracking-widest text-white/80">
                   <span>Elite Engagement Matrix</span>
                   <span className="text-white">{amb.taskCompletion}%</span>
                 </div>
@@ -142,8 +142,9 @@ export function Ambassadors() {
       </div>
 
       {filtered.length === 0 && (
-        <div className="text-center py-20 bg-emerald-500/5 rounded-[40px] border-2 border-dashed border-emerald-500/10">
-          <Users className="h-16 w-16 mx-auto text-emerald-500/20 mb-4" />
+        <div className="text-center py-20 bg-white/5 rounded-[40px] border-2 border-dashed border-white/10">
+          <Users className="h-16 w-16 mx-auto text-white/10 mb-4" />
+          <h3 className="text-xl font-black text-white mb-2">No Ambassadors Found</h3>
           <p className="text-zinc-500 font-black uppercase tracking-[0.2em] text-sm">No Strategic Assets Found</p>
         </div>
       )}

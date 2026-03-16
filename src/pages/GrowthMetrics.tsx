@@ -20,10 +20,10 @@ export function GrowthMetrics() {
   const { data } = useDashboardData();
 
   const metrics = [
-    { label: "Total Ambassadors", value: data?.ambassadors?.length || 0, change: "Active", icon: Users, color: "text-emerald-500" },
-    { label: "Universities", value: data?.universities?.length || 0, change: "Hubs", icon: GraduationCap, color: "text-teal-500" },
-    { label: "Content Pieces", value: data?.content?.length || 0, change: "Strategic", icon: BookOpen, color: "text-emerald-400" },
-    { label: "Student Reach", value: (data?.programs?.reduce((acc, curr) => acc + (curr.participants || 0), 0) || 0).toLocaleString(), change: "Global", icon: MousePointer2, color: "text-teal-400" },
+    { label: "Total Ambassadors", value: data?.ambassadors?.length || 0, change: "Active", icon: Users, color: "text-white" },
+    { label: "Universities", value: data?.universities?.length || 0, change: "Hubs", icon: GraduationCap, color: "text-white" },
+    { label: "Content Pieces", value: data?.content?.length || 0, change: "Strategic", icon: BookOpen, color: "text-white" },
+    { label: "Student Reach", value: (data?.programs?.reduce((acc, curr) => acc + (curr.participants || 0), 0) || 0).toLocaleString(), change: "Global", icon: MousePointer2, color: "text-white" },
   ];
 
   return (
@@ -45,13 +45,13 @@ export function GrowthMetrics() {
                 <div className={m.color}>
                   <m.icon className="h-5 w-5" />
                 </div>
-                <div className="text-[10px] font-bold text-emerald-500 bg-emerald-500/10 px-1.5 py-0.5 rounded">
+                <div className="text-[10px] font-black uppercase tracking-widest text-white bg-white/20 px-2 py-1 rounded-lg">
                   {m.change}
                 </div>
               </div>
               <div className="mt-4">
-                <div className="text-2xl font-bold dark:text-white">{m.value}</div>
-                <div className="text-xs text-zinc-500">{m.label}</div>
+                <div className="text-2xl font-black text-white tracking-tight">{m.value}</div>
+                <div className="text-[10px] font-black uppercase tracking-widest text-white/50 mt-1">{m.label}</div>
               </div>
             </CardContent>
           </Card>
@@ -68,17 +68,18 @@ export function GrowthMetrics() {
               <AreaChart data={data?.content}>
                 <defs>
                   <linearGradient id="colorEngage" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="5%" stopColor="#0d9488" stopOpacity={0.3}/>
-                    <stop offset="95%" stopColor="#0d9488" stopOpacity={0}/>
+                    <stop offset="5%" stopColor="#ffffff" stopOpacity={0.4}/>
+                    <stop offset="95%" stopColor="#ffffff" stopOpacity={0}/>
                   </linearGradient>
                 </defs>
                 <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#1f1f1f" />
                 <XAxis dataKey="date" axisLine={false} tickLine={false} tick={{ fontSize: 10, fill: '#71717a' }} />
                 <YAxis axisLine={false} tickLine={false} tick={{ fontSize: 10, fill: '#71717a' }} />
                 <Tooltip 
-                  contentStyle={{ backgroundColor: '#0a0a0a', border: '1px solid #1f1f1f', borderRadius: '8px', fontSize: '12px' }}
+                  contentStyle={{ backgroundColor: '#6DC7B8', border: '1px solid rgba(255,255,255,0.4)', borderRadius: '24px', fontSize: '10px', color: '#fff', fontWeight: 900 }}
+                  itemStyle={{ color: '#fff' }}
                 />
-                <Area type="monotone" dataKey="attendance" stroke="#0d9488" fillOpacity={1} fill="url(#colorEngage)" strokeWidth={2} />
+                <Area type="monotone" dataKey="attendance" stroke="#ffffff" fillOpacity={1} fill="url(#colorEngage)" strokeWidth={4} />
               </AreaChart>
             </ResponsiveContainer>
           </CardContent>
@@ -95,9 +96,10 @@ export function GrowthMetrics() {
                 <XAxis dataKey="name" axisLine={false} tickLine={false} tick={{ fontSize: 8, fill: '#71717a' }} />
                 <YAxis axisLine={false} tickLine={false} tick={{ fontSize: 10, fill: '#71717a' }} />
                 <Tooltip 
-                  contentStyle={{ backgroundColor: '#0a0a0a', border: '1px solid #1f1f1f', borderRadius: '8px', fontSize: '12px' }}
+                  contentStyle={{ backgroundColor: '#6DC7B8', border: '1px solid rgba(255,255,255,0.4)', borderRadius: '24px', fontSize: '10px', color: '#fff', fontWeight: 900 }}
+                  itemStyle={{ color: '#fff' }}
                 />
-                <Bar dataKey="participants" fill="#14b8a6" radius={[4, 4, 0, 0]} />
+                <Bar dataKey="participants" fill="#ffffff" radius={[8, 8, 0, 0]} />
               </ReBarChart>
             </ResponsiveContainer>
           </CardContent>

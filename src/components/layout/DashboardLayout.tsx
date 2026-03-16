@@ -14,11 +14,11 @@ interface DashboardLayoutProps {
 
 export function DashboardLayout({ children, activeTab, setActiveTab, isDark, toggleTheme, userRole }: DashboardLayoutProps) {
   return (
-    <div className="flex min-h-screen bg-[#020617] relative overflow-hidden transition-colors selection:bg-emerald-500/20">
+    <div className="flex min-h-screen bg-[#020617] relative overflow-hidden transition-colors selection:bg-white/10">
       {/* --- DASHBOARD BACKGROUND (Extra Cool) --- */}
       <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
-        <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-emerald-500/5 blur-[120px] rounded-full animate-float opacity-50" />
-        <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-blue-600/5 blur-[120px] rounded-full animate-float-delayed opacity-50" />
+        <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-white/5 blur-[120px] rounded-full animate-float opacity-50" />
+        <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-white/5 blur-[120px] rounded-full animate-float-delayed opacity-50" />
       </div>
 
       <Sidebar activeTab={activeTab} setActiveTab={setActiveTab} userRole={userRole} />

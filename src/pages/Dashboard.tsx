@@ -131,25 +131,23 @@ export function Dashboard() {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {(data?.kpis || []).map((kpi, idx) => (
           <motion.div key={kpi.label} variants={item}>
-            <Card className="shimmer group chic-glass chic-border rounded-[32px] overflow-hidden">
+            <Card className="shimmer group">
               <CardContent className="p-7">
                 <div className="flex justify-between items-start mb-4">
-                  <div className="p-2.5 bg-mint-500/5 rounded-2xl border border-white/5 group-hover:bg-mint-500/10 group-hover:border-mint-500/20 transition-all duration-500">
-                    {idx === 0 ? <Users className="w-5 h-5 text-zinc-400 group-hover:text-mint-500" /> :
-                     idx === 1 ? <Calendar className="w-5 h-5 text-zinc-400 group-hover:text-mint-500" /> :
-                     idx === 2 ? <TrendingUp className="w-5 h-5 text-zinc-400 group-hover:text-mint-500" /> :
-                     <ShieldCheck className="w-5 h-5 text-zinc-400 group-hover:text-mint-500" />}
+                  <div className="p-2.5 bg-white/10 rounded-2xl border border-white/20 group-hover:bg-white/20 transition-all duration-500">
+                    {idx === 0 ? <Users className="w-5 h-5 text-white" /> :
+                     idx === 1 ? <Calendar className="w-5 h-5 text-white" /> :
+                     idx === 2 ? <TrendingUp className="w-5 h-5 text-white" /> :
+                     <ShieldCheck className="w-5 h-5 text-white" />}
                   </div>
                   <Badge className={cn(
-                    "rounded-xl border shadow-none px-2.5 py-1 text-[10px] font-black uppercase tracking-tighter",
-                    kpi.trend === 'up' ? "bg-mint-500/10 text-mint-500 border-mint-500/20" : 
-                    "bg-red-500/10 text-red-400 border-red-500/20"
+                    "rounded-xl border shadow-none px-2.5 py-1 text-[10px] font-black uppercase tracking-tighter bg-white/10 text-white border-white/20"
                   )}>
                     {kpi.change}
                   </Badge>
                 </div>
                 <div>
-                  <p className="chic-label mb-1 opacity-80">{kpi.label}</p>
+                  <p className="chic-label mb-1 text-white/70">{kpi.label}</p>
                   <h3 className="text-4xl font-black text-white tracking-tighter">{kpi.value}</h3>
                 </div>
               </CardContent>
@@ -169,9 +167,9 @@ export function Dashboard() {
                   <p className="chic-sub mt-1">Real-time engagement matrix</p>
                 </div>
                 <div className="flex gap-2">
-                    <div className="flex items-center gap-2 px-4 py-2 chic-glass rounded-2xl border border-mint-500/20 shadow-lg shadow-mint-500/5">
-                    <div className="w-2 h-2 rounded-full bg-mint-500 animate-pulse shadow-[0_0_10px_rgba(124,191,176,0.6)]" />
-                    <span className="text-[10px] font-black text-mint-500 uppercase tracking-widest">Live Flow</span>
+                    <div className="flex items-center gap-2 px-4 py-2 bg-white/10 rounded-2xl border border-white/20">
+                    <div className="w-2 h-2 rounded-full bg-white animate-pulse" />
+                    <span className="text-[10px] font-black text-white uppercase tracking-widest">Live Flow</span>
                   </div>
                 </div>
               </div>
@@ -182,34 +180,34 @@ export function Dashboard() {
                   <AreaChart data={data?.content || []}>
                     <defs>
                       <linearGradient id="colorGrowth" x1="0" y1="0" x2="0" y2="1">
-                        <stop offset="5%" stopColor="#7CBFB0" stopOpacity={0.2}/>
-                        <stop offset="95%" stopColor="#7CBFB0" stopOpacity={0}/>
+                        <stop offset="5%" stopColor="#ffffff" stopOpacity={0.4}/>
+                        <stop offset="95%" stopColor="#ffffff" stopOpacity={0}/>
                       </linearGradient>
                     </defs>
-                    <CartesianGrid strokeDasharray="4 4" vertical={false} stroke="#ffffff08" />
+                    <CartesianGrid strokeDasharray="4 4" vertical={false} stroke="#ffffff20" />
                     <XAxis 
                       dataKey="date" 
                       axisLine={false} 
                       tickLine={false} 
-                      tick={{ fontSize: 9, fill: '#ffffff', fontWeight: 900, opacity: 0.3 }} 
+                      tick={{ fontSize: 9, fill: '#ffffff', fontWeight: 900, opacity: 0.6 }} 
                     />
                     <YAxis 
                       axisLine={false} 
                       tickLine={false} 
-                      tick={{ fontSize: 9, fill: '#ffffff', fontWeight: 900, opacity: 0.3 }} 
+                      tick={{ fontSize: 9, fill: '#ffffff', fontWeight: 900, opacity: 0.6 }} 
                     />
                     <Tooltip 
-                      contentStyle={{ backgroundColor: '#020617', border: '1px solid rgba(124, 191, 176, 0.2)', borderRadius: '24px', padding: '16px' }}
-                      itemStyle={{ color: '#7CBFB0', fontSize: '10px', fontWeight: 'bold', textTransform: 'uppercase' }}
+                      contentStyle={{ backgroundColor: '#ffffff', border: 'none', borderRadius: '24px', padding: '16px' }}
+                      itemStyle={{ color: '#6DC7B8', fontSize: '10px', fontWeight: 'bold', textTransform: 'uppercase' }}
                     />
                     <Area 
                       type="monotone" 
                       dataKey="attendance" 
-                      stroke="#7CBFB0" 
+                      stroke="#ffffff" 
                       fillOpacity={1} 
                       fill="url(#colorGrowth)" 
                       strokeWidth={4} 
-                      dot={{ fill: '#7CBFB0', strokeWidth: 2, r: 4, stroke: '#020617' }}
+                      dot={{ fill: '#ffffff', r: 4 }}
                       activeDot={{ r: 6, strokeWidth: 0, fill: '#ffffff' }}
                     />
                   </AreaChart>
@@ -227,24 +225,24 @@ export function Dashboard() {
             </CardHeader>
             <CardContent className="p-8 pt-0 space-y-4">
               {(data?.projects || []).map((proj) => (
-                <div key={proj.id} className="group p-5 rounded-[24px] bg-mint-500/5 border border-mint-500/10 hover:border-mint-500/30 transition-all hover:bg-mint-500/10 relative overflow-hidden">
+                <div key={proj.id} className="group p-5 rounded-[24px] bg-white/10 border border-white/20 hover:bg-white/20 transition-all relative overflow-hidden">
                   <div className="flex items-center justify-between mb-2">
                     <div className="flex items-center gap-3">
                       <div className={cn(
                         "w-2.5 h-2.5 rounded-full shadow-lg",
-                        proj.priority === 'High' ? "bg-red-500 shadow-red-500/20" : "bg-amber-500 shadow-amber-500/20"
+                        proj.priority === 'High' ? "bg-red-400" : "bg-white"
                       )} />
                       <span className="text-sm font-black text-white tracking-tight">{proj.name}</span>
                     </div>
                   </div>
                   <div className="flex items-center justify-between mt-4">
                     <div className="flex items-center gap-2">
-                      <div className="w-5 h-5 rounded-full bg-zinc-900 flex items-center justify-center border border-white/10 shadow-lg">
-                        <span className="text-[8px] font-black text-mint-500 uppercase">{proj.owner[0]}</span>
+                      <div className="w-5 h-5 rounded-full bg-white/20 flex items-center justify-center border border-white/30 shadow-lg">
+                        <span className="text-[8px] font-black text-white uppercase">{proj.owner[0]}</span>
                       </div>
-                      <span className="text-[10px] font-black text-zinc-400 uppercase tracking-widest leading-none">{proj.owner}</span>
+                      <span className="text-[10px] font-black text-white/80 uppercase tracking-widest leading-none">{proj.owner}</span>
                     </div>
-                    <span className="text-[10px] font-bold text-white/40">Due: {proj.deadline}</span>
+                    <span className="text-[10px] font-bold text-white/60">Due: {proj.deadline}</span>
                   </div>
                 </div>
               ))}
@@ -271,13 +269,13 @@ export function Dashboard() {
                    <BarChart data={universityData}>
                      <XAxis dataKey="name" hide />
                      <Tooltip 
-                       cursor={{ fill: 'rgba(124, 191, 176, 0.05)' }}
-                       contentStyle={{ backgroundColor: '#020617', border: '1px solid rgba(124, 191, 176, 0.1)', borderRadius: '24px', padding: '16px' }}
-                       itemStyle={{ color: '#7CBFB0', fontWeight: 900, textTransform: 'uppercase', fontSize: '10px' }}
+                       cursor={{ fill: 'rgba(255, 255, 255, 0.1)' }}
+                       contentStyle={{ backgroundColor: '#ffffff', border: 'none', borderRadius: '24px', padding: '16px' }}
+                       itemStyle={{ color: '#6DC7B8', fontWeight: 900, textTransform: 'uppercase', fontSize: '10px' }}
                      />
                      <Bar dataKey="value" radius={[12, 12, 0, 0]}>
-                       {(data?.ambassadors || []).map((_, index) => (
-                         <Cell key={`cell-${index}`} fill={index % 2 === 0 ? "#7CBFB0" : "#6FB5A5"} />
+                       {(universityData || []).map((_, index) => (
+                         <Cell key={`cell-${index}`} fill="#ffffff" fillOpacity={index % 2 === 0 ? 0.9 : 0.6} />
                        ))}
                      </Bar>
                    </BarChart>
@@ -306,20 +304,20 @@ export function Dashboard() {
                        dataKey="value"
                        stroke="none"
                      >
-                       <Cell fill="#ef4444" /> {/* High */}
-                       <Cell fill="#f59e0b" /> {/* Medium */}
-                       <Cell fill="#7CBFB0" /> {/* Low */}
+                       <Cell fill="#ffffff" fillOpacity={1} /> {/* High */}
+                       <Cell fill="#ffffff" fillOpacity={0.7} /> {/* Medium */}
+                       <Cell fill="#ffffff" fillOpacity={0.4} /> {/* Low */}
                      </Pie>
                      <Tooltip 
-                       contentStyle={{ backgroundColor: '#020617', border: '1px solid rgba(124, 191, 176, 0.1)', borderRadius: '24px', padding: '16px' }}
-                       itemStyle={{ fontSize: '10px', fontWeight: 900, textTransform: 'uppercase', color: '#7CBFB0' }}
+                       contentStyle={{ backgroundColor: '#ffffff', border: 'none', borderRadius: '24px', padding: '16px' }}
+                       itemStyle={{ fontSize: '10px', fontWeight: 900, textTransform: 'uppercase', color: '#6DC7B8' }}
                      />
                    </PieChart>
                  </ResponsiveContainer>
                </div>
                <div className="grid grid-cols-3 gap-6 mt-8 w-full">
                   <div className="text-center">
-                    <div className="w-2 h-2 rounded-full bg-red-500 mx-auto mb-2 shadow-[0_0_10px_rgba(239,68,68,0.5)]"/> 
+                    <div className="w-2 h-2 rounded-full bg-white mx-auto mb-2 shadow-[0_0_10px_rgba(255,255,255,0.5)]"/> 
                     <span className="chic-label">Tier A</span>
                   </div>
                   <div className="text-center">
@@ -327,7 +325,7 @@ export function Dashboard() {
                     <span className="chic-label">Tier B</span>
                   </div>
                   <div className="text-center">
-                    <div className="w-2 h-2 rounded-full bg-emerald-500 mx-auto mb-2 shadow-[0_0_10px_rgba(16,185,129,0.5)]"/> 
+                    <div className="w-2.5 h-2.5 rounded-full bg-white mx-auto mb-2 shadow-[0_0_15px_rgba(255,255,255,0.4)]"/> 
                     <span className="chic-label">Tier C</span>
                   </div>
                </div>
@@ -349,26 +347,26 @@ export function Dashboard() {
             toast("Strategic initiative deployed", "success");
           }}>
             <div className="space-y-2">
-              <label className="chic-label text-zinc-500 ml-1">Initiative Label</label>
-              <Input placeholder="Enter strategic objective..." required className="chic-glass border-white/5 h-14 rounded-2xl focus:ring-mint-500/20 text-white" />
+              <label className="chic-label text-white/70 ml-1">Initiative Label</label>
+              <Input placeholder="Enter strategic objective..." required className="bg-white/10 border-white/20 h-14 rounded-2xl focus:ring-white/20 text-white placeholder:text-white/40" />
             </div>
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-2">
-                <label className="chic-label text-zinc-500 ml-1">Deployment Date</label>
-                <Input type="date" required className="chic-glass border-white/5 h-14 rounded-2xl text-white" />
+                <label className="chic-label text-white/70 ml-1">Deployment Date</label>
+                <Input type="date" required className="bg-white/10 border-white/20 h-14 rounded-2xl text-white" />
               </div>
               <div className="space-y-2">
-                <label className="chic-label text-zinc-500 ml-1">Priority Tier</label>
-                <select className="flex h-14 w-full rounded-2xl border border-white/5 bg-zinc-950/40 px-4 py-2 text-sm text-white focus:outline-none focus:ring-2 focus:ring-mint-500/20 backdrop-blur-3xl">
-                  <option className="bg-zinc-900">Tier A (Critical)</option>
-                  <option className="bg-zinc-900">Tier B (Strategic)</option>
-                  <option className="bg-zinc-900">Tier C (Operational)</option>
+                <label className="chic-label text-white/70 ml-1">Priority Tier</label>
+                <select className="flex h-14 w-full rounded-2xl border border-white/20 bg-white/10 px-4 py-2 text-sm text-white focus:outline-none focus:ring-2 focus:ring-white/20 backdrop-blur-3xl">
+                  <option className="bg-[#6DC7B8]">Tier A (Critical)</option>
+                  <option className="bg-[#6DC7B8]">Tier B (Strategic)</option>
+                  <option className="bg-[#6DC7B8]">Tier C (Operational)</option>
                 </select>
               </div>
             </div>
             <div className="flex justify-end gap-3 pt-4">
-              <Button variant="ghost" type="button" onClick={() => setIsModalOpen(false)} className="text-zinc-500 hover:text-white rounded-xl">Cancel</Button>
-              <Button type="submit" className="bg-mint-500 hover:bg-mint-600 text-zinc-950 font-black rounded-xl px-8 shadow-xl shadow-mint-500/20">Confirm Deployment</Button>
+              <Button variant="ghost" type="button" onClick={() => setIsModalOpen(false)} className="text-white/70 hover:text-white rounded-xl">Cancel</Button>
+              <Button type="submit" className="bg-white text-[#6DC7B8] font-black rounded-xl px-8 shadow-xl">Confirm Deployment</Button>
             </div>
           </form>
         </div>

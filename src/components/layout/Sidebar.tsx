@@ -151,9 +151,9 @@ export function Sidebar({ activeTab, setActiveTab, userRole }: SidebarProps) {
           </button>
         </nav>
         
-        <div className="mt-6 flex items-center gap-2 px-4 py-3 rounded-2xl bg-white/5 border border-white/5 group cursor-default">
-          <div className="w-2 h-2 rounded-full bg-mint-500 animate-pulse shadow-[0_0_10px_rgba(124,191,176,0.6)]" />
-          <span className="text-[10px] font-black uppercase tracking-widest text-zinc-500 group-hover:text-mint-500 transition-colors">System Nominal</span>
+        <div className="mt-6 flex items-center gap-2 px-4 py-3 rounded-2xl bg-white/5 border border-white/10 group cursor-default">
+          <div className="w-2.5 h-2.5 rounded-full bg-mint-500 animate-pulse shadow-[0_0_15px_#6DC7B8]" />
+          <span className="text-[10px] font-black uppercase tracking-[0.2em] text-white/40 group-hover:text-white transition-colors">System Nominal</span>
         </div>
       </div>
     </aside>

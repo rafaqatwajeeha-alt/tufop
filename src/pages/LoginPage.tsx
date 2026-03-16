@@ -36,9 +36,9 @@ export function LoginPage() {
       {/* --- EXTRA COOL DYNAMIC BACKGROUND --- */}
       <div className="absolute inset-0 z-0">
         {/* Animated Orbs */}
-        <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-mint-500/10 blur-[120px] rounded-full animate-float" />
-        <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-mint-400/10 blur-[120px] rounded-full animate-float-delayed" />
-        <div className="absolute top-[20%] right-[10%] w-[30%] h-[30%] bg-mint-600/5 blur-[100px] rounded-full animate-pulse" />
+        <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-[#6DC7B8]/10 blur-[120px] rounded-full animate-float" />
+        <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-[#6DC7B8]/10 blur-[120px] rounded-full animate-float-delayed" />
+        <div className="absolute top-[20%] right-[10%] w-[30%] h-[30%] bg-[#6DC7B8]/5 blur-[100px] rounded-full animate-pulse" />
         
         {/* Subtle Grid Pattern */}
         <div 
@@ -67,7 +67,7 @@ export function LoginPage() {
             className="text-4xl md:text-5xl font-black text-white tracking-tighter leading-none mb-4"
           >
             THE USMLE FORUM <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-mint-500 to-mint-400">
+            <span className="text-[#6DC7B8]">
               OF PAKISTAN
             </span>
           </motion.h1>
@@ -76,7 +76,7 @@ export function LoginPage() {
             initial={{ y: -10, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.5 }}
-            className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-mint-500/10 border border-mint-500/20 text-mint-500 text-[10px] uppercase tracking-[0.2em] font-bold"
+            className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/20 text-white text-[10px] uppercase tracking-[0.2em] font-black"
           >
             <Stethoscope className="w-3 h-3" />
             Official Member Portal
@@ -88,7 +88,7 @@ export function LoginPage() {
             initial={{ y: -20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.2 }}
-            className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-[10px] uppercase tracking-[0.2em] font-bold mb-6"
+            className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/20 text-white text-[10px] uppercase tracking-[0.2em] font-black mb-6"
           >
             <Stethoscope className="w-3 h-3" />
             Official Member Portal
@@ -137,14 +137,14 @@ export function LoginPage() {
                     System Identity (Email)
                   </label>
                   <div className="relative group">
-                    <Mail className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-zinc-500 group-focus-within:text-emerald-400 transition-colors" />
+                    <Mail className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-zinc-500 group-focus-within:text-white transition-colors" />
                     <Input
                       type="email"
                       placeholder="Enter your registered email"
                       required
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
-                      className="pl-12 bg-zinc-800/50 border-white/5 text-white placeholder:text-zinc-600 focus:border-emerald-500/50 focus:ring-emerald-500/20 rounded-2xl h-14 text-base transition-all"
+                      className="pl-12 bg-zinc-800/50 border-white/10 text-white placeholder:text-zinc-600 focus:border-white/20 focus:ring-white/10 rounded-2xl h-14 text-base transition-all"
                       disabled={isLoading}
                     />
                   </div>
@@ -160,14 +160,14 @@ export function LoginPage() {
                     Security Key
                   </label>
                   <div className="relative group">
-                    <KeyRound className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-zinc-500 group-focus-within:text-blue-400 transition-colors" />
+                    <KeyRound className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-zinc-500 group-focus-within:text-white transition-colors" />
                     <Input
                       type="password"
                       placeholder="••••••••••••"
                       required
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
-                      className="pl-12 bg-zinc-800/50 border-white/5 text-white placeholder:text-zinc-600 focus:border-blue-500/50 focus:ring-blue-500/20 rounded-2xl h-14 text-base transition-all"
+                      className="pl-12 bg-zinc-800/50 border-white/10 text-white placeholder:text-zinc-600 focus:border-white/20 focus:ring-white/10 rounded-2xl h-14 text-base transition-all"
                       disabled={isLoading}
                     />
                   </div>
@@ -182,7 +182,7 @@ export function LoginPage() {
               >
                 <Button 
                   type="submit" 
-                  className="w-full h-14 bg-white hover:bg-zinc-200 text-black font-bold text-lg rounded-2xl transition-all active:scale-[0.98] shadow-xl shadow-white/5 flex items-center justify-center gap-2 group" 
+                  className="w-full h-14 bg-white hover:bg-zinc-200 text-[#6DC7B8] font-black text-lg rounded-2xl transition-all active:scale-[0.98] shadow-xl shadow-white/5 flex items-center justify-center gap-2 group" 
                   disabled={isLoading}
                 >
                   {isLoading ? (
@@ -203,9 +203,9 @@ export function LoginPage() {
               transition={{ delay: 0.8 }}
               className="mt-8 pt-6 border-t border-white/5"
             >
-              <div className="flex items-center justify-between text-[11px] font-medium text-zinc-500 uppercase tracking-widest">
+              <div className="flex items-center justify-between text-[11px] font-black text-white/40 uppercase tracking-widest">
                 <span>Access: Restricted</span>
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                <span className="w-2 h-2 rounded-full bg-white animate-pulse" />
                 <span>Tier: Operations Lead</span>
               </div>
             </motion.div>
@@ -220,7 +220,7 @@ export function LoginPage() {
           className="mt-10 text-center text-[10px] text-zinc-600 uppercase tracking-[0.3em] font-black"
         >
           Secure Operations Portal <br />
-          <span className="text-emerald-500/40 mt-1 block">R-22 TUFOP CORE ACCESS</span>
+          <span className="text-white/20 mt-1 block tracking-[0.4em]">R-22 TUFOP CORE ACCESS</span>
         </motion.p>
       </motion.div>
     </div>

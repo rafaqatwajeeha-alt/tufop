@@ -4,10 +4,9 @@
   --color-zinc-950: #020617; 
   --color-zinc-900: #0f172a; 
   --color-zinc-800: #1e293b; 
-  --color-mint-500: #7CBFB0; /* Mint Seafoam - User Requested */
-  --color-mint-400: #A5D7C9;
-  --color-mint-600: #6FB5A5; 
-  --color-emerald-500: #10b981;
+  --color-mint-500: #6DC7B8; /* Specific Requested Mint */
+  --color-mint-400: #8ED8C9;
+  --color-mint-600: #5BB6A7; 
   --color-teal-950: #042f2e;
   --color-teal-900: #134e4a;
 }
@@ -25,7 +24,7 @@
 }
 
 body {
-  @apply bg-zinc-50 text-zinc-950 antialiased transition-colors duration-500 selection:bg-emerald-500/20;
+  @apply bg-zinc-50 text-zinc-950 antialiased transition-colors duration-500 selection:bg-white/10;
 }
 
 .dark body {
@@ -36,12 +35,12 @@ body {
 
 /* Premium Lush Card Styles */
 .dark .chic-glass {
-  @apply bg-zinc-950/40 backdrop-blur-3xl border border-mint-500/20 shadow-2xl;
-  background-image: radial-gradient(at 0% 0%, rgba(124, 191, 176, 0.1) 0, transparent 50%);
+  @apply bg-[#6DC7B8] text-white shadow-2xl;
+  background-image: linear-gradient(135deg, rgba(255, 255, 255, 0.1), transparent);
 }
 
 .dark .chic-white-glow {
-  @apply bg-white text-zinc-950 shadow-[0_0_35px_rgba(124,191,176,0.5),0_0_10px_rgba(124,191,176,0.3)];
+  @apply bg-white text-[#6DC7B8] shadow-[0_0_50px_rgba(109,199,184,0.6),0_0_20px_rgba(109,199,184,0.4)];
 }
 
 .dark .chic-border {
@@ -54,7 +53,7 @@ body {
   inset: 0;
   border-radius: inherit;
   padding: 1px;
-  background: linear-gradient(130deg, rgba(124, 191, 176, 0.4), transparent, rgba(124, 191, 176, 0.1));
+  background: linear-gradient(130deg, rgba(109, 199, 184, 0.4), transparent, rgba(109, 199, 184, 0.2));
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
@@ -65,7 +64,7 @@ body {
 /* Elegant Contrast Typography */
 .chic-heading {
   @apply font-black tracking-tighter text-white uppercase;
-  text-shadow: 0 0 30px rgba(124, 191, 176, 0.4);
+  text-shadow: 0 0 30px rgba(109, 199, 184, 0.4);
 }
 
 .chic-sub {
@@ -149,18 +148,4 @@ body {
 @keyframes shimmer {
   0% { transform: translateX(-100%) rotate(45deg); }
   100% { transform: translateX(100%) rotate(45deg); }
-}
-
-.chic-blue-glass {
-  background: rgba(30, 58, 138, 0.1);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-}
-
-.chic-blue-border {
-  border: 1px solid rgba(59, 130, 246, 0.1);
-}
-
-.chic-blue-glow {
-  box-shadow: 0 0 20px rgba(59, 130, 246, 0.1);
 }

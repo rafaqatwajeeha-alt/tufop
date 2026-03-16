@@ -98,7 +98,7 @@ export function Management() {
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         {/* Registration Form */}
-        <Card className="bg-emerald-950/20 backdrop-blur-2xl border-white/5 rounded-[32px] overflow-hidden shadow-2xl">
+        <Card className="rounded-[32px] overflow-hidden shadow-2xl">
           <CardHeader>
             <CardTitle className="flex items-center gap-3 text-xl font-black text-white uppercase tracking-tighter">
               <UserPlus className="h-6 w-6 text-white" />
@@ -107,22 +107,22 @@ export function Management() {
           </CardHeader>
           <CardContent className="space-y-6">
             <div className="space-y-2">
-              <label className="text-xs font-bold uppercase tracking-widest text-zinc-500">Full Name</label>
+              <label className="text-xs font-bold uppercase tracking-widest text-white/70">Full Name</label>
               <Input 
                 placeholder="e.g. Sarah Ahmed" 
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 onBlur={generateCredentials}
-                className="chic-glass chic-border border-white/5 text-white h-14 rounded-2xl placeholder:text-zinc-700"
+                className="bg-white/10 border-white/20 text-white h-14 rounded-2xl placeholder:text-white/30"
               />
             </div>
             <div className="space-y-2">
-              <label className="text-xs font-bold uppercase tracking-widest text-zinc-500">University</label>
+              <label className="text-xs font-bold uppercase tracking-widest text-white/70">University</label>
               <Input 
                 placeholder="e.g. NUST" 
                 value={university}
                 onChange={(e) => setUniversity(e.target.value)}
-                className="chic-glass chic-border border-white/5 text-white h-14 rounded-2xl placeholder:text-zinc-700"
+                className="bg-white/10 border-white/20 text-white h-14 rounded-2xl placeholder:text-white/30"
               />
             </div>
 
@@ -130,7 +130,7 @@ export function Management() {
                <Button 
                 onClick={handleCreate} 
                 disabled={!name || !university || isLoading}
-                className="w-full h-11 bg-zinc-900 dark:bg-white dark:text-zinc-950 hover:opacity-90"
+                className="w-full h-11 bg-white text-[#6DC7B8] hover:bg-white/90 font-black rounded-xl"
                >
                  {isLoading ? <RefreshCw className="h-4 w-4 animate-spin" /> : "Stage in Database"}
                </Button>
@@ -147,34 +147,34 @@ export function Management() {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.95 }}
               >
-                <Card className="border-emerald-500/30 bg-emerald-500/5 backdrop-blur-2xl rounded-[32px] overflow-hidden relative">
+                <Card className="rounded-[32px] overflow-hidden relative border-white/30">
                   <div className="absolute top-0 right-0 p-5 p-3">
-                    <Shield className="h-12 w-12 text-emerald-500/20" />
+                    <Shield className="h-12 w-12 text-white/10" />
                   </div>
                   <CardHeader>
-                    <CardTitle className="text-xs font-black uppercase tracking-[0.3em] text-emerald-500">Secure Access Token</CardTitle>
+                    <CardTitle className="text-xs font-black uppercase tracking-[0.3em] text-white/80">Secure Access Token</CardTitle>
                   </CardHeader>
                   <CardContent className="space-y-4">
                     <div className="space-y-1">
-                      <p className="text-[10px] text-zinc-500 font-bold uppercase tracking-wider">Access ID</p>
-                      <div className="flex items-center justify-between p-4 bg-emerald-950/20 rounded-2xl border border-white/5">
-                        <code className="text-sm font-mono text-emerald-400">{generatedId}</code>
+                      <p className="text-[10px] text-white/60 font-bold uppercase tracking-wider">Access ID</p>
+                      <div className="flex items-center justify-between p-4 bg-white/10 rounded-2xl border border-white/20">
+                        <code className="text-sm font-mono text-white">{generatedId}</code>
                       </div>
                     </div>
                     <div className="space-y-1">
-                      <p className="text-[10px] text-zinc-500 font-bold uppercase tracking-wider">Security Key</p>
-                      <div className="flex items-center justify-between p-4 bg-emerald-950/20 rounded-2xl border border-white/5">
-                        <code className="text-sm font-mono text-emerald-400">{generatedPass}</code>
+                      <p className="text-[10px] text-white/60 font-bold uppercase tracking-wider">Security Key</p>
+                      <div className="flex items-center justify-between p-4 bg-white/10 rounded-2xl border border-white/20">
+                        <code className="text-sm font-mono text-white">{generatedPass}</code>
                       </div>
                     </div>
                     
                     <Button 
                       onClick={copyToClipboard}
-                      className="w-full h-14 bg-white/5 hover:bg-white/10 text-zinc-400 hover:text-white border border-white/5 rounded-2xl font-black uppercase tracking-widest text-[10px]"
+                      className="w-full h-14 bg-white/10 hover:bg-white/20 text-white border border-white/20 rounded-2xl font-black uppercase tracking-widest text-[10px]"
                     >
                       {copied ? (
                         <>
-                          <Check className="h-4 w-4 text-emerald-500" />
+                          <Check className="h-4 w-4 text-white" />
                           Copied to Clipboard
                         </>
                       ) : (
@@ -199,15 +199,15 @@ export function Management() {
 
       {/* SQL Migration Box */}
       {generatedId && (
-        <Card className="bg-emerald-500/5 border-emerald-500/20 backdrop-blur-2xl rounded-[32px] overflow-hidden">
+        <Card className="rounded-[32px] overflow-hidden border-white/20">
           <CardContent className="p-8">
             <div className="flex items-start gap-4">
-              <div className="p-3 bg-emerald-500/10 rounded-2xl border border-emerald-500/20">
-                <Mail className="h-6 w-6 text-emerald-400" />
+              <div className="p-3 bg-white/10 rounded-2xl border border-white/20">
+                <Mail className="h-6 w-6 text-white" />
               </div>
               <div className="space-y-2">
                 <h3 className="text-lg font-black text-white uppercase tracking-tighter">Strategic Next Step: Identity Creation</h3>
-                <p className="text-xs text-emerald-600/80 dark:text-emerald-400/60 leading-relaxed">
+                <p className="text-xs text-white/70 leading-relaxed">
                   Front-end code cannot create secure Auth users directly for security reasons. 
                   Please go to your **Supabase Dashboard {"->"} Authentication {"->"} Add User** and paste the ID/Password there.
                 </p>

@@ -37,7 +37,7 @@ export function TopBar({ isDark, toggleTheme }: TopBarProps) {
           <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-zinc-500" />
           <Input 
             placeholder="Search TUFOP records and archives..." 
-            className="pl-12 bg-white/5 border-white/5 focus-visible:ring-emerald-500/20 text-white rounded-2xl h-12"
+            className="pl-12 bg-white/5 border-white/5 focus-visible:ring-white/10 text-white rounded-2xl h-12"
           />
         </div>
       </div>
@@ -63,7 +63,7 @@ export function TopBar({ isDark, toggleTheme }: TopBarProps) {
             >
               <Bell className="h-5 w-5" />
               {unreadCount > 0 && (
-                <span className="absolute top-2.5 right-2.5 w-2 h-2 bg-emerald-500 rounded-full border-2 border-zinc-950 animate-pulse" />
+                <span className="absolute top-2.5 right-2.5 w-2 h-2 bg-[#6DC7B8] rounded-full border-2 border-zinc-950 animate-pulse" />
               )}
             </Button>
 
@@ -81,7 +81,7 @@ export function TopBar({ isDark, toggleTheme }: TopBarProps) {
                     {unreadCount > 0 && (
                       <button 
                         onClick={markAllAsRead}
-                        className="text-[10px] font-bold text-emerald-400 hover:text-emerald-300 transition-colors"
+                        className="text-[10px] font-bold text-white/60 hover:text-white transition-colors"
                       >
                         Clear All
                       </button>
@@ -99,15 +99,15 @@ export function TopBar({ isDark, toggleTheme }: TopBarProps) {
                           key={notif.id} 
                           className={cn(
                             "p-5 transition-colors hover:bg-white/5 relative group",
-                            !notif.is_read && "bg-emerald-500/[0.03]"
+                            !notif.is_read && "bg-white/[0.03]"
                           )}
                         >
                           <div className="flex gap-4">
                             <div className={cn(
                               "h-10 w-10 rounded-xl flex items-center justify-center shrink-0 border border-white/5",
-                              notif.type === 'success' ? "bg-emerald-500/10 text-emerald-500" :
-                              notif.type === 'error' ? "bg-red-500/10 text-red-500" :
-                              "bg-blue-500/10 text-blue-500"
+                               notif.type === 'success' ? "bg-white/10 text-white" :
+                               notif.type === 'error' ? "bg-red-500/10 text-red-500" :
+                               "bg-white/10 text-white"
                             )}>
                                {notif.type === 'success' ? <CheckCircle2 className="h-5 w-5" /> :
                                 notif.type === 'error' ? <AlertIcon className="h-5 w-5" /> :
@@ -152,11 +152,11 @@ export function TopBar({ isDark, toggleTheme }: TopBarProps) {
               <div className="flex items-center justify-end gap-1.5">
                 <div className={cn(
                   "w-1 h-1 rounded-full animate-pulse",
-                  showProfileMenu ? "bg-emerald-600" : "bg-emerald-500"
+                  showProfileMenu ? "bg-white/60" : "bg-[#6DC7B8]"
                 )} />
                 <p className={cn(
                   "text-[9px] font-black uppercase tracking-widest leading-none",
-                  showProfileMenu ? "text-emerald-700" : "text-emerald-400"
+                  showProfileMenu ? "text-white/60" : "text-[#6DC7B8]"
                 )}>
                   {profile?.designation || 'Operational Tier'}
                 </p>
@@ -165,14 +165,14 @@ export function TopBar({ isDark, toggleTheme }: TopBarProps) {
             
             <div className={cn(
               "h-10 w-10 rounded-xl flex items-center justify-center overflow-hidden border shadow-sm transition-all duration-300",
-              showProfileMenu 
-                ? "bg-zinc-950 border-white ring-2 ring-emerald-500/20" 
+               showProfileMenu 
+                ? "bg-zinc-950 border-white ring-2 ring-white/10" 
                 : "bg-zinc-900 border-white/10 group-hover:scale-105"
             )}>
               {userInitial ? (
                 <span className={cn(
                   "font-black text-sm transition-colors",
-                  showProfileMenu ? "text-emerald-400" : "text-emerald-400"
+                  showProfileMenu ? "text-white" : "text-[#6DC7B8]"
                 )}>
                   {userInitial}
                 </span>
@@ -193,7 +193,7 @@ export function TopBar({ isDark, toggleTheme }: TopBarProps) {
               >
                 <div className="relative">
                   {/* Decorative Elements */}
-                  <div className="absolute top-0 right-0 w-24 h-24 bg-emerald-500/5 blur-2xl rounded-full" />
+                  <div className="absolute top-0 right-0 w-24 h-24 bg-white/5 blur-2xl rounded-full" />
                   
                   <div className="flex flex-col items-center text-center mb-8">
                     <div className="w-16 h-16 rounded-3xl bg-zinc-950 flex items-center justify-center mb-4 border-4 border-zinc-100 shadow-xl">

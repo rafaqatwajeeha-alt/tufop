@@ -23,24 +23,24 @@ const TEAM = [
     name: "Rithik Khiani",
     role: "Co-founder",
     bio: "Strategizing growth and empowering the next generation of leadership through innovative mentorship.",
-    gradient: "from-emerald-500 to-blue-600",
-    glow: "shadow-emerald-500/20",
+    gradient: "from-white/40 to-white/10",
+    glow: "shadow-white/20",
     badge: "Strategic Vision"
   },
   {
     name: "Daniyal Shahid",
     role: "Co-founder",
     bio: "Visionary leadership, building the future of the ambassador network with deep operational focus.",
-    gradient: "from-blue-600 to-emerald-600",
-    glow: "shadow-blue-500/20",
+    gradient: "from-white/40 to-white/10",
+    glow: "shadow-white/20",
     badge: "Network Growth"
   },
   {
     name: "Wajeeha Rafaqat",
     role: "Operations & Systems Lead",
     bio: "Driving the engine of TUFOP with precision engineering and high-performance system designs.",
-    gradient: "from-emerald-400 to-cyan-500",
-    glow: "shadow-emerald-400/20",
+    gradient: "from-white/40 to-white/10",
+    glow: "shadow-white/20",
     badge: "Architecture"
   }
 ];
@@ -48,22 +48,22 @@ const TEAM = [
 export function Team() {
   return (
     <div className="space-y-16 py-10 max-w-7xl mx-auto px-4 overflow-hidden relative">
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-40 bg-emerald-500/5 blur-[120px] rounded-full pointer-events-none" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-40 bg-white/5 blur-[120px] rounded-full pointer-events-none" />
       
       <div className="text-center space-y-8 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="inline-flex items-center gap-3 px-5 py-2 rounded-2xl bg-white/5 border border-white/10 text-[10px] font-black uppercase tracking-[0.5em] text-emerald-500 shadow-2xl"
+          className="inline-flex items-center gap-3 px-5 py-2 rounded-2xl bg-white/10 border border-white/20 text-[10px] font-black uppercase tracking-[0.5em] text-white shadow-2xl"
         >
-          <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+          <div className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
           The Executive Command
         </motion.div>
         
         <div className="space-y-4">
           <h1 className="text-6xl md:text-8xl chic-heading uppercase leading-[0.85]">
             <span className="opacity-40">The</span> <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-blue-400 to-emerald-500">Visionary Core</span>
+            <span className="text-white">Visionary Core</span>
           </h1>
           <p className="max-w-xl mx-auto text-zinc-500 font-black uppercase tracking-[0.2em] text-[10px] bg-white/5 py-3 rounded-full border border-white/5 px-8">
             Established 2024 • Strategic Operations Unit
@@ -94,17 +94,17 @@ export function Team() {
                     {member.name.split(' ').map(n => n[0]).join('')}
                     <div className="absolute inset-0 bg-white/10 rounded-[40px] opacity-0 group-hover:opacity-100 transition-opacity" />
                   </div>
-                  <div className="absolute -inset-8 bg-emerald-500/10 blur-[40px] rounded-full opacity-0 group-hover:opacity-100 transition-all duration-700" />
-                  <div className="absolute -bottom-3 -right-3 bg-zinc-950 rounded-2xl p-3 border-4 border-zinc-900 shadow-2xl z-30 group-hover:scale-110 transition-transform">
-                     <ShieldCheck className="h-6 w-6 text-emerald-500" />
+                  <div className="absolute -inset-8 bg-white/10 blur-[40px] rounded-full opacity-0 group-hover:opacity-100 transition-all duration-700" />
+                  <div className="absolute -bottom-3 -right-3 bg-white rounded-2xl p-3 border-4 border-[#6DC7B8] shadow-2xl z-30 group-hover:scale-110 transition-transform">
+                     <ShieldCheck className="h-6 w-6 text-[#6DC7B8]" />
                   </div>
                 </div>
 
                 <div className="space-y-4 mb-10 flex-1">
                    <div>
-                      <Badge className="bg-emerald-500/10 text-emerald-400 border-none px-3 py-1 text-[8px] font-black uppercase tracking-widest mb-3">{member.badge}</Badge>
+                      <Badge className="bg-white/20 text-white border-none px-3 py-1 text-[8px] font-black uppercase tracking-widest mb-3">{member.badge}</Badge>
                       <h3 className="text-3xl font-black text-white uppercase tracking-tighter leading-none">{member.name}</h3>
-                      <p className="text-[10px] font-black text-emerald-500/60 uppercase tracking-widest mt-2">{member.role}</p>
+                      <p className="text-[10px] font-black text-white/60 uppercase tracking-widest mt-2">{member.role}</p>
                    </div>
                    
                    <p className="text-zinc-500 text-xs leading-relaxed font-medium line-clamp-3">
@@ -119,7 +119,7 @@ export function Team() {
                    <button className="flex-1 h-12 rounded-2xl bg-white/5 hover:bg-white/10 transition-all flex items-center justify-center hover:scale-105 active:scale-95 group/btn">
                       <Mail className="h-5 w-5 text-zinc-600 group-hover/btn:text-emerald-400 transition-colors" />
                    </button>
-                   <button className="h-12 w-12 rounded-2xl bg-white/5 hover:bg-emerald-500 hover:text-black transition-all flex items-center justify-center hover:scale-105 active:scale-95">
+                   <button className="h-12 w-12 rounded-2xl bg-white/5 hover:bg-white hover:text-[#6DC7B8] transition-all flex items-center justify-center hover:scale-105 active:scale-95">
                       <ArrowUpRight className="h-5 w-5" />
                    </button>
                 </div>
@@ -138,12 +138,12 @@ export function Team() {
             <Command className="w-5 h-5 text-emerald-400" />
             <span className="chic-label text-white">Protocol V2.0</span>
          </div>
-         <div className="w-1.5 h-1.5 rounded-full bg-emerald-500/20" />
+         <div className="w-1.5 h-1.5 rounded-full bg-white/20" />
          <div className="flex items-center gap-3">
-            <Globe className="w-5 h-5 text-blue-400" />
+            <Globe className="w-5 h-5 text-white" />
             <span className="chic-label text-white">Global Ops</span>
          </div>
-         <div className="w-1.5 h-1.5 rounded-full bg-emerald-500/20" />
+         <div className="w-1.5 h-1.5 rounded-full bg-white/20" />
          <div className="flex items-center gap-3">
             <Heart className="w-5 h-5 text-red-400 fill-red-400/20" />
             <span className="chic-label text-white">TUFOP Core</span>
