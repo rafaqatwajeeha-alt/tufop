@@ -63,9 +63,10 @@ export function AmbassadorAccountability() {
   return (
     <div className="space-y-8 animate-in fade-in duration-500">
       <div className="flex items-end justify-between">
-        <div>
-          <h1 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-white">Ambassador Accountability</h1>
-          <p className="text-zinc-500 dark:text-zinc-400 mt-1">Track performance, tasks, and response metrics.</p>
+        <div className="flex flex-col">
+          <span className="text-[10px] font-black uppercase tracking-[0.3em] text-emerald-500/60 mb-1">Performance Protocol</span>
+          <h1 className="text-4xl chic-heading mb-2">Accountability Matrix</h1>
+          <p className="text-zinc-500 font-medium">Strategic tracking of personnel response metrics.</p>
         </div>
         <div className="flex gap-3">
           <Button variant="outline" size="sm" className="dark:border-zinc-800 dark:text-zinc-300">
@@ -82,7 +83,7 @@ export function AmbassadorAccountability() {
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
         {/* Sidebar List - Only for Admins */}
         {isAdmin ? (
-          <Card className="lg:col-span-1 dark:bg-zinc-900/50 dark:border-zinc-800">
+          <Card className="lg:col-span-1 chic-glass chic-border rounded-[32px] overflow-hidden">
             <CardHeader>
               <CardTitle className="text-sm font-semibold uppercase tracking-wider text-zinc-500">Ambassadors</CardTitle>
             </CardHeader>
@@ -111,7 +112,7 @@ export function AmbassadorAccountability() {
           </Card>
         ) : (
           <div className="lg:col-span-1 space-y-4">
-             <Card className="dark:bg-blue-900/10 dark:border-blue-900/30 border-blue-100 bg-blue-50">
+             <Card className="chic-glass chic-border rounded-[24px] bg-blue-500/5 border-blue-500/20 shadow-lg shadow-blue-500/5">
                <CardContent className="p-4">
                  <div className="flex items-center gap-3 text-blue-600 dark:text-blue-400">
                    <Users className="h-5 w-5" />
@@ -131,7 +132,7 @@ export function AmbassadorAccountability() {
             <>
               {/* Stats Overview */}
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <Card className="dark:bg-zinc-900 dark:border-zinc-800">
+                <Card className="chic-glass chic-border rounded-[28px] overflow-hidden">
                   <CardContent className="p-6">
                     <div className="flex items-center gap-4">
                       <div className="p-2 bg-emerald-100 dark:bg-emerald-900/30 rounded-lg">
@@ -144,7 +145,7 @@ export function AmbassadorAccountability() {
                     </div>
                   </CardContent>
                 </Card>
-                <Card className="dark:bg-zinc-900 dark:border-zinc-800">
+                <Card className="chic-glass chic-border rounded-[28px] overflow-hidden">
                   <CardContent className="p-6">
                     <div className="flex items-center gap-4">
                       <div className="p-2 bg-amber-100 dark:bg-amber-900/30 rounded-lg">
@@ -157,7 +158,7 @@ export function AmbassadorAccountability() {
                     </div>
                   </CardContent>
                 </Card>
-                <Card className="dark:bg-zinc-900 dark:border-zinc-800">
+                <Card className="chic-glass chic-border rounded-[28px] overflow-hidden">
                   <CardContent className="p-6">
                     <div className="flex items-center gap-4">
                       <div className="p-2 bg-blue-100 dark:bg-blue-900/30 rounded-lg">
@@ -173,7 +174,7 @@ export function AmbassadorAccountability() {
               </div>
 
               {/* Performance Chart */}
-              <Card className="dark:bg-zinc-900 dark:border-zinc-800">
+              <Card className="chic-glass chic-border rounded-[32px] overflow-hidden">
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
                     <BarChart3 className="h-5 w-5 text-zinc-400" />

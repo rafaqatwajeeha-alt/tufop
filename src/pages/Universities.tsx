@@ -22,14 +22,15 @@ export function Universities() {
     >
       <div className="flex items-end justify-between">
         <div>
-          <h1 className="text-3xl font-bold tracking-tight text-zinc-900 dark:text-white">University Directory</h1>
-          <p className="text-zinc-500 dark:text-zinc-400 mt-1">Status and coverage of participating institutions.</p>
+          <span className="text-[10px] font-black uppercase tracking-[0.3em] text-emerald-500/60 mb-1">Institutional Network</span>
+          <h1 className="text-4xl chic-heading mb-2">University Hubs</h1>
+          <p className="text-zinc-500 font-medium">Coverage and status of participating medical institutions.</p>
         </div>
         <div className="relative w-64">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-zinc-400" />
           <Input 
             placeholder="Filter by name..." 
-            className="pl-10 dark:bg-zinc-900 dark:border-zinc-800 dark:text-white"
+            className="pl-14 h-14 chic-glass chic-border rounded-[20px] text-white placeholder:text-zinc-700 focus:ring-emerald-500/20"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
           />
@@ -38,7 +39,7 @@ export function Universities() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {filtered.map((uni) => (
-          <Card key={uni.id} className="dark:bg-zinc-900/50 hover:shadow-lg transition-all border-t-2 border-t-emerald-500">
+          <Card key={uni.id} className="chic-glass chic-border rounded-[32px] overflow-hidden group hover:scale-[1.02] transition-all duration-500">
             <CardContent className="pt-6">
               <div className="flex justify-between items-start mb-4">
                 <div className="p-2.5 bg-emerald-500/10 rounded-xl border border-emerald-500/20">

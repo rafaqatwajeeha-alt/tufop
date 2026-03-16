@@ -39,7 +39,7 @@ export function GrowthMetrics() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {metrics.map((m) => (
-          <Card key={m.label} className="bg-emerald-950/20 backdrop-blur-2xl border-white/5">
+          <Card key={m.label} className="chic-glass chic-border rounded-[32px] overflow-hidden">
             <CardContent className="pt-6">
               <div className="flex justify-between items-start">
                 <div className={m.color}>
@@ -59,7 +59,7 @@ export function GrowthMetrics() {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        <Card className="dark:bg-zinc-900/50">
+        <Card className="chic-glass chic-border rounded-[32px] overflow-hidden">
           <CardHeader>
             <CardTitle className="text-sm dark:text-white">Engagement Trends (Monthly)</CardTitle>
           </CardHeader>
@@ -84,7 +84,7 @@ export function GrowthMetrics() {
           </CardContent>
         </Card>
 
-        <Card className="dark:bg-zinc-900/50">
+        <Card className="chic-glass chic-border rounded-[32px] overflow-hidden">
           <CardHeader>
             <CardTitle className="text-sm dark:text-white">Program Participation</CardTitle>
           </CardHeader>

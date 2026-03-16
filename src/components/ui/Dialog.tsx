@@ -15,7 +15,7 @@ export function Dialog({ isOpen, onClose, title, children }: DialogProps) {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm">
-      <div className="relative w-full max-w-lg rounded-xl bg-white dark:bg-zinc-900 p-6 shadow-lg animate-in fade-in zoom-in duration-200 border dark:border-zinc-800">
+      <div className="relative w-full max-w-lg rounded-[32px] chic-glass chic-border p-8 shadow-2xl animate-in fade-in zoom-in duration-300">
         <div className="flex items-center justify-between mb-4">
           <h2 className="text-xl font-semibold text-zinc-900 dark:text-white">{title}</h2>
           <Button variant="ghost" size="icon" onClick={onClose} className="h-8 w-8 dark:text-zinc-400">

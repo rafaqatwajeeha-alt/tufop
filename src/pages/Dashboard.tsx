@@ -46,12 +46,12 @@ export function Dashboard() {
         <div className="h-10 w-64 bg-zinc-800 rounded-lg mb-8" />
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {[1, 2, 3, 4].map(i => (
-            <div key={i} className="h-40 bg-zinc-900/50 rounded-3xl border border-white/5" />
+            <div key={i} className="h-40 chic-glass chic-border rounded-[32px] shadow-2xl" />
           ))}
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          <div className="lg:col-span-2 h-96 bg-zinc-900/50 rounded-3xl border border-white/5" />
-          <div className="h-96 bg-zinc-900/50 rounded-3xl border border-white/5" />
+          <div className="lg:col-span-2 h-96 chic-glass chic-border rounded-[32px]" />
+          <div className="h-96 chic-glass chic-border rounded-[32px]" />
         </div>
       </div>
     );
@@ -202,7 +202,7 @@ export function Dashboard() {
             </CardHeader>
             <CardContent className="p-8 pt-0 space-y-4">
               {(data?.projects || []).map((proj) => (
-                <div key={proj.id} className="group p-5 rounded-[24px] bg-emerald-950/10 border border-white/5 hover:border-emerald-500/20 transition-all hover:bg-emerald-500/5 relative overflow-hidden">
+                <div key={proj.id} className="group p-5 rounded-[24px] bg-emerald-400/5 border border-emerald-500/10 hover:border-emerald-500/30 transition-all hover:bg-emerald-500/10 relative overflow-hidden">
                   <div className="flex items-center justify-between mb-2">
                     <div className="flex items-center gap-3">
                       <div className={cn(
