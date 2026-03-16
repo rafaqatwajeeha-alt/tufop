@@ -41,8 +41,8 @@ export function Universities() {
           <Card key={uni.id} className="dark:bg-zinc-900/50 hover:shadow-lg transition-all border-t-2 border-t-emerald-500">
             <CardContent className="pt-6">
               <div className="flex justify-between items-start mb-4">
-                <div className="p-2 bg-emerald-50 dark:bg-emerald-900/20 rounded-lg">
-                  <Building2 className="h-5 w-5 text-emerald-600 dark:text-emerald-400" />
+                <div className="p-2.5 bg-emerald-500/10 rounded-xl border border-emerald-500/20">
+                  <Building2 className="h-6 w-6 text-emerald-400" />
                 </div>
                 <Badge variant={uni.status === 'active' ? 'success' : 'warning'}>
                   {uni.status}
@@ -60,9 +60,9 @@ export function Universities() {
                   <span className="text-zinc-500 font-medium">Platform Coverage</span>
                   <span className="dark:text-white font-bold">{uni.coverage}%</span>
                 </div>
-                <div className="w-full bg-zinc-100 dark:bg-zinc-800 h-2 rounded-full overflow-hidden">
+                <div className="w-full bg-white/5 h-2 rounded-full overflow-hidden border border-white/5">
                   <div 
-                    className="bg-emerald-500 h-full rounded-full" 
+                    className="bg-gradient-to-r from-emerald-600 to-emerald-400 h-full rounded-full transition-all duration-1000" 
                     style={{ width: `${uni.coverage}%` }} 
                   />
                 </div>

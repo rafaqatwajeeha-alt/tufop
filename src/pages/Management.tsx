@@ -82,11 +82,11 @@ export function Management() {
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         {/* Registration Form */}
-        <Card className="dark:bg-zinc-900/50 dark:border-zinc-800 border-zinc-200 shadow-xl shadow-zinc-200/50 dark:shadow-none bg-white">
+        <Card className="bg-zinc-900/40 backdrop-blur-2xl border-white/5 rounded-[32px] overflow-hidden shadow-2xl">
           <CardHeader>
-            <CardTitle className="flex items-center gap-2 text-lg">
-              <UserPlus className="h-5 w-5 text-blue-500" />
-              Register New Ambassador
+            <CardTitle className="flex items-center gap-3 text-xl font-black text-white uppercase tracking-tighter">
+              <UserPlus className="h-6 w-6 text-emerald-400" />
+              Register Strategic Asset
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-6">
@@ -131,31 +131,30 @@ export function Management() {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.95 }}
               >
-                <Card className="border-2 border-dashed border-blue-500/30 bg-blue-500/5 dark:bg-blue-500/5 backdrop-blur-sm overflow-hidden relative">
-                  <div className="absolute top-0 right-0 p-3">
-                    <Shield className="h-10 w-10 text-blue-500/10" />
+                <Card className="border-emerald-500/30 bg-emerald-500/5 backdrop-blur-2xl rounded-[32px] overflow-hidden relative">
+                  <div className="absolute top-0 right-0 p-5 p-3">
+                    <Shield className="h-12 w-12 text-emerald-500/20" />
                   </div>
                   <CardHeader>
-                    <CardTitle className="text-xs font-black uppercase tracking-[0.2em] text-blue-600 dark:text-blue-400">Credential Card</CardTitle>
+                    <CardTitle className="text-xs font-black uppercase tracking-[0.3em] text-emerald-500">Secure Access Token</CardTitle>
                   </CardHeader>
                   <CardContent className="space-y-4">
                     <div className="space-y-1">
-                      <p className="text-[10px] text-zinc-500 font-bold uppercase tracking-wider">TUFOP ID</p>
-                      <div className="flex items-center justify-between p-3 bg-white dark:bg-zinc-900 rounded-lg border dark:border-zinc-800">
-                        <code className="text-sm font-mono dark:text-white">{generatedId}</code>
+                      <p className="text-[10px] text-zinc-500 font-bold uppercase tracking-wider">Access ID</p>
+                      <div className="flex items-center justify-between p-4 bg-emerald-950/20 rounded-2xl border border-white/5">
+                        <code className="text-sm font-mono text-emerald-400">{generatedId}</code>
                       </div>
                     </div>
                     <div className="space-y-1">
-                      <p className="text-[10px] text-zinc-500 font-bold uppercase tracking-wider">TEMP PASSWORD</p>
-                      <div className="flex items-center justify-between p-3 bg-white dark:bg-zinc-900 rounded-lg border dark:border-zinc-800">
-                        <code className="text-sm font-mono dark:text-white">{generatedPass}</code>
+                      <p className="text-[10px] text-zinc-500 font-bold uppercase tracking-wider">Security Key</p>
+                      <div className="flex items-center justify-between p-4 bg-emerald-950/20 rounded-2xl border border-white/5">
+                        <code className="text-sm font-mono text-emerald-400">{generatedPass}</code>
                       </div>
                     </div>
                     
                     <Button 
                       onClick={copyToClipboard}
-                      variant="outline"
-                      className="w-full flex items-center gap-2 dark:border-zinc-800 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-all font-bold"
+                      className="w-full h-14 bg-white/5 hover:bg-white/10 text-zinc-400 hover:text-white border border-white/5 rounded-2xl font-black uppercase tracking-widest text-[10px]"
                     >
                       {copied ? (
                         <>
@@ -173,9 +172,9 @@ export function Management() {
                 </Card>
               </motion.div>
             ) : (
-              <div className="h-full min-h-[300px] border-2 border-dashed dark:border-zinc-800 rounded-2xl flex flex-col items-center justify-center p-8 text-center text-zinc-500">
-                <Key className="h-12 w-12 mb-4 opacity-10" />
-                <p className="text-sm">Credentials will appear here once you enter a name.</p>
+              <div className="h-full min-h-[300px] bg-white/5 border-2 border-dashed border-white/10 rounded-[32px] flex flex-col items-center justify-center p-8 text-center text-zinc-500">
+                <Key className="h-14 w-14 mb-4 opacity-10" />
+                <p className="text-[10px] font-black uppercase tracking-widest leading-loose">Credential matrix <br /> will materialize here</p>
               </div>
             )}
           </AnimatePresence>
@@ -184,14 +183,13 @@ export function Management() {
 
       {/* SQL Migration Box */}
       {generatedId && (
-        <Card className="dark:bg-zinc-950/50 border-emerald-500/20 bg-emerald-500/5">
-          <CardContent className="p-6">
+          <CardContent className="p-8">
             <div className="flex items-start gap-4">
-              <div className="p-2 bg-emerald-100 dark:bg-emerald-900/30 rounded-lg shrink-0">
-                <Mail className="h-5 w-5 text-emerald-600 dark:text-emerald-400" />
+              <div className="p-3 bg-emerald-500/10 rounded-2xl border border-emerald-500/20">
+                <Mail className="h-6 w-6 text-emerald-400" />
               </div>
               <div className="space-y-2">
-                <h3 className="font-bold text-emerald-700 dark:text-emerald-400">Next Step: Auth Creation</h3>
+                <h3 className="text-lg font-black text-white uppercase tracking-tighter">Strategic Next Step: Identity Creation</h3>
                 <p className="text-xs text-emerald-600/80 dark:text-emerald-400/60 leading-relaxed">
                   Front-end code cannot create secure Auth users directly for security reasons. 
                   Please go to your **Supabase Dashboard {"->"} Authentication {"->"} Add User** and paste the ID/Password there.
