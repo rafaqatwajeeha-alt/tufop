@@ -9,7 +9,7 @@ import { useDashboardData } from "../hooks/useDashboardData";
 import { motion } from "motion/react";
 
 export function Programs() {
-  const { data, isLoading } = useDashboardData();
+  const { data, loading } = useDashboardData();
 
   return (
     <motion.div 

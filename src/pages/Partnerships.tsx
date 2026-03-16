@@ -22,7 +22,7 @@ export function Partnerships() {
           <h1 className="text-2xl font-bold dark:text-white">Partnerships & Collaborators</h1>
           <p className="text-sm text-zinc-500">Track guest speakers, mentors, and partner organizations.</p>
         </div>
-        <Button size="sm">
+        <Button size="sm" className="bg-emerald-500 hover:bg-emerald-600 text-black font-bold h-10 px-6 rounded-xl">
           <Plus className="h-4 w-4 mr-2" />
           Add Partner
         </Button>
@@ -30,10 +30,10 @@ export function Partnerships() {
 
       <div className="relative">
         <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-zinc-400" />
-        <Input className="pl-10 dark:bg-zinc-900 dark:border-zinc-800" placeholder="Search partners by name, role or organization..." />
+        <Input className="pl-10 bg-emerald-500/5 border-white/5 text-white placeholder:text-zinc-600 focus:border-emerald-500/50 focus:ring-emerald-500/20 rounded-xl" placeholder="Search partners by name, role or organization..." />
       </div>
 
-      <Card className="dark:bg-zinc-900/50">
+      <Card className="bg-zinc-900/40 backdrop-blur-2xl border-white/5 rounded-[32px] overflow-hidden">
         <Table>
           <TableHeader>
             <TableRow className="dark:border-zinc-800">
