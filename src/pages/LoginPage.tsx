@@ -79,17 +79,7 @@ export function LoginPage() {
             Official Member Portal
           </motion.div>
           
-          <motion.h1 
-            initial={{ y: -10, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.3 }}
-            className="text-4xl md:text-5xl font-black text-white tracking-tighter leading-none mb-3"
-          >
-            THE USMLE FORUM <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-blue-500">
-              OF PAKISTAN
-            </span>
-          </motion.h1>
+
           
           <motion.p 
             initial={{ opacity: 0 }}
