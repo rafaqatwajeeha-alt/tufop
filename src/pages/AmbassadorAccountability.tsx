@@ -64,9 +64,9 @@ export function AmbassadorAccountability() {
     <div className="space-y-8 animate-in fade-in duration-500">
       <div className="flex items-end justify-between">
         <div className="flex flex-col">
-          <span className="text-[10px] font-black uppercase tracking-[0.3em] text-emerald-500/60 mb-1">Performance Protocol</span>
+          <span className="chic-sub text-mint-500/80 mb-1">Performance Protocol</span>
           <h1 className="text-4xl chic-heading mb-2">Accountability Matrix</h1>
-          <p className="text-zinc-500 font-medium">Strategic tracking of personnel response metrics.</p>
+          <p className="chic-text-muted">Strategic tracking of personnel response metrics.</p>
         </div>
         <div className="flex gap-3">
           <Button variant="outline" size="sm" className="dark:border-zinc-800 dark:text-zinc-300">
@@ -135,12 +135,12 @@ export function AmbassadorAccountability() {
                 <Card className="chic-glass chic-border rounded-[28px] overflow-hidden">
                   <CardContent className="p-6">
                     <div className="flex items-center gap-4">
-                      <div className="p-2 bg-emerald-100 dark:bg-emerald-900/30 rounded-lg">
-                        <CheckCircle2 className="h-5 w-5 text-emerald-600 dark:text-emerald-400" />
+                      <div className="p-2 bg-mint-500/10 rounded-lg border border-mint-500/20">
+                        <CheckCircle2 className="h-5 w-5 text-mint-500" />
                       </div>
                       <div>
-                        <div className="text-sm text-zinc-500">Task Completion</div>
-                        <div className="text-2xl font-bold dark:text-white">{selectedAmbassador.taskCompletion}%</div>
+                        <div className="chic-label text-zinc-500 mb-1">Task Completion</div>
+                        <div className="text-2xl font-black text-white">{selectedAmbassador.taskCompletion}%</div>
                       </div>
                     </div>
                   </CardContent>
@@ -148,12 +148,12 @@ export function AmbassadorAccountability() {
                 <Card className="chic-glass chic-border rounded-[28px] overflow-hidden">
                   <CardContent className="p-6">
                     <div className="flex items-center gap-4">
-                      <div className="p-2 bg-amber-100 dark:bg-amber-900/30 rounded-lg">
-                        <Clock className="h-5 w-5 text-amber-600 dark:text-amber-400" />
+                      <div className="p-2 bg-amber-500/10 rounded-lg border border-amber-500/20">
+                        <Clock className="h-5 w-5 text-amber-500" />
                       </div>
                       <div>
-                        <div className="text-sm text-zinc-500">Avg. Response Time</div>
-                        <div className="text-2xl font-bold dark:text-white">12.4m</div>
+                        <div className="chic-label text-zinc-500 mb-1">Response Time</div>
+                        <div className="text-2xl font-black text-white">12.4m</div>
                       </div>
                     </div>
                   </CardContent>
@@ -161,12 +161,12 @@ export function AmbassadorAccountability() {
                 <Card className="chic-glass chic-border rounded-[28px] overflow-hidden">
                   <CardContent className="p-6">
                     <div className="flex items-center gap-4">
-                      <div className="p-2 bg-blue-100 dark:bg-blue-900/30 rounded-lg">
-                        <MessageSquare className="h-5 w-5 text-blue-600 dark:text-blue-400" />
+                      <div className="p-2 bg-mint-500/10 rounded-lg border border-mint-500/20">
+                        <MessageSquare className="h-5 w-5 text-mint-500" />
                       </div>
                       <div>
-                        <div className="text-sm text-zinc-500">Active Conversations</div>
-                        <div className="text-2xl font-bold dark:text-white">8</div>
+                        <div className="chic-label text-zinc-500 mb-1">Conversations</div>
+                        <div className="text-2xl font-black text-white">8</div>
                       </div>
                     </div>
                   </CardContent>
@@ -175,33 +175,36 @@ export function AmbassadorAccountability() {
 
               {/* Performance Chart */}
               <Card className="chic-glass chic-border rounded-[32px] overflow-hidden">
-                <CardHeader>
+                <CardHeader className="p-8 pb-0">
                   <CardTitle className="flex items-center gap-2">
-                    <BarChart3 className="h-5 w-5 text-zinc-400" />
-                    Weekly Activity Trend
+                    <div className="w-8 h-8 rounded-full bg-mint-500/10 flex items-center justify-center border border-mint-500/20">
+                      <BarChart3 className="h-4 w-4 text-mint-500" />
+                    </div>
+                    <span className="chic-heading text-lg">Weekly Protocol Load</span>
                   </CardTitle>
                 </CardHeader>
-                <CardContent className="h-64">
+                <CardContent className="p-8 h-80">
                   <ResponsiveContainer width="100%" height="100%">
                     <AreaChart data={PERFORMANCE_DATA}>
                       <defs>
                         <linearGradient id="colorTasks" x1="0" y1="0" x2="0" y2="1">
-                          <stop offset="5%" stopColor="#18181b" stopOpacity={0.1}/>
-                          <stop offset="95%" stopColor="#18181b" stopOpacity={0}/>
+                          <stop offset="5%" stopColor="#7CBFB0" stopOpacity={0.2}/>
+                          <stop offset="95%" stopColor="#7CBFB0" stopOpacity={0}/>
                         </linearGradient>
                       </defs>
-                      <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f4f4f5" className="dark:stroke-zinc-800" />
-                      <XAxis dataKey="day" axisLine={false} tickLine={false} tick={{ fontSize: 12, fill: '#71717a' }} />
-                      <YAxis axisLine={false} tickLine={false} tick={{ fontSize: 12, fill: '#71717a' }} />
+                      <CartesianGrid strokeDasharray="4 4" vertical={false} stroke="#ffffff08" />
+                      <XAxis dataKey="day" axisLine={false} tickLine={false} tick={{ fontSize: 10, fill: '#ffffff', opacity: 0.3, fontWeight: 900 }} />
+                      <YAxis axisLine={false} tickLine={false} tick={{ fontSize: 10, fill: '#ffffff', opacity: 0.3, fontWeight: 900 }} />
                       <Tooltip 
                         contentStyle={{ 
-                          borderRadius: '8px', 
-                          border: '1px solid #e4e4e7',
-                          backgroundColor: 'rgba(255, 255, 255, 0.9)',
-                          backdropFilter: 'blur(4px)'
+                          borderRadius: '24px', 
+                          border: '1px solid rgba(124, 191, 176, 0.2)',
+                          backgroundColor: '#020617',
+                          padding: '16px'
                         }} 
+                        itemStyle={{ color: '#7CBFB0', fontWeight: 900, textTransform: 'uppercase', fontSize: '10px' }}
                       />
-                      <Area type="monotone" dataKey="tasks" stroke="#18181b" fillOpacity={1} fill="url(#colorTasks)" strokeWidth={2} />
+                      <Area type="monotone" dataKey="tasks" stroke="#7CBFB0" fillOpacity={1} fill="url(#colorTasks)" strokeWidth={4} dot={{ fill: '#7CBFB0', r: 4 }} />
                     </AreaChart>
                   </ResponsiveContainer>
                 </CardContent>

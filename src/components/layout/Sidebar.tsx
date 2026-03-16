@@ -121,8 +121,8 @@ export function Sidebar({ activeTab, setActiveTab, userRole }: SidebarProps) {
                     >
                       <div className="flex items-center gap-3">
                         <item.icon className={cn(
-                          "h-5 w-5 transition-colors",
-                          isActive ? "text-zinc-950 scale-110" : "text-zinc-600 group-hover:text-zinc-400"
+                          "h-5 w-5 transition-all duration-500",
+                          isActive ? "text-zinc-950 scale-110" : "text-zinc-600 group-hover:text-mint-500 group-hover:rotate-6"
                         )} />
                         <span className="tracking-tight">{item.label}</span>
                       </div>
