@@ -36,9 +36,9 @@ export function LoginPage() {
       {/* --- EXTRA COOL DYNAMIC BACKGROUND --- */}
       <div className="absolute inset-0 z-0">
         {/* Animated Orbs */}
-        <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-emerald-500/10 blur-[120px] rounded-full animate-float" />
-        <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-blue-600/10 blur-[120px] rounded-full animate-float-delayed" />
-        <div className="absolute top-[20%] right-[10%] w-[30%] h-[30%] bg-indigo-500/5 blur-[100px] rounded-full animate-pulse" />
+        <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-mint-500/10 blur-[120px] rounded-full animate-float" />
+        <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-mint-400/10 blur-[120px] rounded-full animate-float-delayed" />
+        <div className="absolute top-[20%] right-[10%] w-[30%] h-[30%] bg-mint-600/5 blur-[100px] rounded-full animate-pulse" />
         
         {/* Subtle Grid Pattern */}
         <div 
@@ -67,7 +67,7 @@ export function LoginPage() {
             className="text-4xl md:text-5xl font-black text-white tracking-tighter leading-none mb-4"
           >
             THE USMLE FORUM <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-blue-500">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-mint-500 to-mint-400">
               OF PAKISTAN
             </span>
           </motion.h1>
@@ -76,7 +76,7 @@ export function LoginPage() {
             initial={{ y: -10, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.5 }}
-            className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-[10px] uppercase tracking-[0.2em] font-bold"
+            className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-mint-500/10 border border-mint-500/20 text-mint-500 text-[10px] uppercase tracking-[0.2em] font-bold"
           >
             <Stethoscope className="w-3 h-3" />
             Official Member Portal
