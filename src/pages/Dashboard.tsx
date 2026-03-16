@@ -28,7 +28,12 @@ import {
   Area,
   XAxis,
   YAxis,
-  CartesianGrid
+  CartesianGrid,
+  BarChart,
+  Bar,
+  Cell,
+  PieChart,
+  Pie
 } from "recharts";
 
 import { useToast, ToastContainer } from "../components/ui/Toast";
@@ -226,6 +231,100 @@ export function Dashboard() {
               <Button variant="ghost" className="w-full h-12 rounded-2xl border border-white/5 text-zinc-500 hover:text-white hover:bg-white/5 text-[10px] font-black uppercase tracking-widest">
                 Full Strategic Roadmap
               </Button>
+            </CardContent>
+          </Card>
+        </motion.div>
+      </div>
+
+      {/* Strategic Analytics Deep Dive */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-12 pb-12">
+        {/* University Distribution (Bar Chart) */}
+        <motion.div variants={item}>
+          <Card className="chic-glass chic-border rounded-[32px] overflow-hidden flex flex-col h-[450px]">
+            <CardHeader className="p-8 pb-0">
+               <CardTitle className="text-xl chic-heading uppercase tracking-tighter">Strategic Coverage</CardTitle>
+               <p className="chic-sub text-emerald-400 mt-1">Institutional distribution of assets</p>
+            </CardHeader>
+            <CardContent className="p-8 pt-6 flex-1">
+               <div className="h-full w-full">
+                 <ResponsiveContainer width="100%" height="100%">
+                   <BarChart data={React.useMemo(() => {
+                     const counts: Record<string, number> = {};
+                     (data?.ambassadors || []).forEach(a => {
+                       const uni = a.university || "Other";
+                       counts[uni] = (counts[uni] || 0) + 1;
+                     });
+                     return Object.entries(counts).map(([name, value]) => ({ name, value }));
+                   }, [data?.ambassadors])}>
+                     <XAxis dataKey="name" hide />
+                     <Tooltip 
+                       cursor={{ fill: 'rgba(16, 185, 129, 0.05)' }}
+                       contentStyle={{ backgroundColor: '#020617', border: '1px solid rgba(16, 185, 129, 0.1)', borderRadius: '24px', padding: '16px' }}
+                       itemStyle={{ color: '#10b981', fontWeight: 900, textTransform: 'uppercase', fontSize: '10px' }}
+                     />
+                     <Bar dataKey="value" radius={[12, 12, 0, 0]}>
+                       {(data?.ambassadors || []).map((_, index) => (
+                         <Cell key={`cell-${index}`} fill={index % 2 === 0 ? "#10b981" : "#0d9488"} />
+                       ))}
+                     </Bar>
+                   </BarChart>
+                 </ResponsiveContainer>
+               </div>
+            </CardContent>
+          </Card>
+        </motion.div>
+
+        {/* Project Priority (Pie Chart) */}
+        <motion.div variants={item}>
+          <Card className="chic-glass chic-border rounded-[32px] overflow-hidden flex flex-col h-[450px]">
+            <CardHeader className="p-8 pb-0">
+               <CardTitle className="text-xl chic-heading uppercase tracking-tighter">Priority Allocation</CardTitle>
+               <p className="chic-sub text-blue-400 mt-1">Resource distribution by operation tier</p>
+            </CardHeader>
+            <CardContent className="p-8 pt-6 flex-1 flex flex-col items-center justify-center">
+               <div className="h-[250px] w-full">
+                 <ResponsiveContainer width="100%" height="100%">
+                   <PieChart>
+                     <Pie
+                       data={React.useMemo(() => {
+                         const counts: Record<string, number> = { "High": 0, "Medium": 0, "Low": 0 };
+                         (data?.projects || []).forEach(p => {
+                           const priority = p.priority || "Medium";
+                           counts[priority] = (counts[priority] || 0) + 1;
+                         });
+                         return Object.entries(counts).map(([name, value]) => ({ name, value }));
+                       }, [data?.projects])}
+                       innerRadius={70}
+                       outerRadius={90}
+                       paddingAngle={10}
+                       dataKey="value"
+                       stroke="none"
+                     >
+                       <Cell fill="#ef4444" /> {/* High */}
+                       <Cell fill="#f59e0b" /> {/* Medium */}
+                       <Cell fill="#10b981" /> {/* Low */}
+                     </Pie>
+                     <Tooltip 
+                       contentStyle={{ backgroundColor: '#020617', border: '1px solid rgba(255,255,255,0.05)', borderRadius: '24px', padding: '16px' }}
+                       itemStyle={{ fontSize: '10px', fontWeight: 900, textTransform: 'uppercase' }}
+                     />
+                   </PieChart>
+                 </ResponsiveContainer>
+               </div>
+               <div className="grid grid-cols-3 gap-6 mt-8 w-full">
+                  <div className="text-center">
+                    <div className="w-2 h-2 rounded-full bg-red-500 mx-auto mb-2 shadow-[0_0_10px_rgba(239,68,68,0.5)]"/> 
+                    <span className="chic-label">Tier A</span>
+                  </div>
+                  <div className="text-center">
+                    <div className="w-2 h-2 rounded-full bg-amber-500 mx-auto mb-2 shadow-[0_0_10px_rgba(245,158,11,0.5)]"/> 
+                    <span className="chic-label">Tier B</span>
+                  </div>
+                  <div className="text-center">
+                    <div className="w-2 h-2 rounded-full bg-emerald-500 mx-auto mb-2 shadow-[0_0_10px_rgba(16,185,129,0.5)]"/> 
+                    <span className="chic-label">Tier C</span>
+                  </div>
+               </div>
             </CardContent>
           </Card>
         </motion.div>

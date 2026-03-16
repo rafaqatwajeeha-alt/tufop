@@ -14,6 +14,7 @@ import { Button } from "../components/ui/Button";
 import { Input } from "../components/ui/Input";
 import { useDashboardData } from "../hooks/useDashboardData";
 import { supabase } from "../lib/supabase";
+import { EmailService } from "../lib/EmailService";
 import { motion, AnimatePresence } from "motion/react";
 
 export function Management() {
@@ -63,8 +64,10 @@ export function Management() {
 
       if (ambError) throw ambError;
 
-      // 3. Automation Note: Direct Auth creation requires Service Role.
-      // We will trigger a 'success' toast and copy the credentials.
+      // 3. Automation Layer: Dispatch Welcome Sequence
+      await EmailService.sendWelcomeEmail(name, generatedId, university);
+
+      // 4. Verification Toast & Backup Copy
       copyToClipboard();
       alert(`Success! ${name} has been staged in the system. Credentials copied to clipboard. \n\nPlease finalise in Supabase Auth.`);
       
